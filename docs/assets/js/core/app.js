@@ -60,6 +60,35 @@ function bindSiteMenu() {
   });
 }
 
+function normalizeInnerPageNavigation() {
+  const primaryNavigation = document.querySelector('[data-cv-primary-navigation]');
+
+  if (!(primaryNavigation instanceof HTMLElement)) {
+    return;
+  }
+
+  const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+
+  if (isHomePage) {
+    return;
+  }
+
+  const themeToggle = primaryNavigation.querySelector('#theme-toggle');
+  const homeLink = document.createElement('a');
+  homeLink.href = '/';
+  homeLink.textContent = 'Home';
+  homeLink.setAttribute('aria-label', 'Return to homepage');
+
+  primaryNavigation.replaceChildren();
+
+  if (themeToggle instanceof HTMLElement) {
+    primaryNavigation.append(themeToggle);
+  }
+
+  primaryNavigation.append(homeLink);
+  primaryNavigation.dataset.visible = 'true';
+}
+
 function bindPrimaryNavigationVisibility() {
   const hero = document.querySelector('.cv-page--hero');
   const primaryNavigation = document.querySelector('[data-cv-primary-navigation]');
@@ -86,6 +115,7 @@ async function initializeArtanLive() {
 
   try {
     await mountFragments();
+    normalizeInnerPageNavigation();
     bindSiteMenu();
     bindPrimaryNavigationVisibility();
     await import('./02-systems/theme.js');
