@@ -1,0 +1,109 @@
+{
+  "items": [
+    {
+      "id": "din",
+      "title": "دین",
+      "author": "Artan Davoodi",
+      "type": "Book",
+      "status": "Published",
+      "language": "Persian",
+      "cover": "/assets/media/publications/covers/din.svg",
+      "description": "A Persian-language philosophical work from Artan Davoodi's long-form writing archive",
+      "links": {
+        "appleBooks": "",
+        "amazon": "",
+        "additional": []
+      }
+    },
+    {
+      "id": "religion",
+      "title": "RELIGION",
+      "author": "Artan Davoodi",
+      "type": "Book",
+      "status": "Published",
+      "language": "English",
+      "cover": "/assets/media/publications/covers/religion.svg",
+      "description": "A long-form philosophical work from the earlier writing archive",
+      "links": {
+        "appleBooks": "",
+        "amazon": "",
+        "additional": []
+      }
+    },
+    {
+      "id": "sokoon",
+      "title": "سکون",
+      "author": "Artan Davoodi",
+      "type": "Book",
+      "status": "Published",
+      "language": "Persian",
+      "cover": "/assets/media/publications/covers/sokoon.svg",
+      "description": "A Persian-language work from the long-form philosophical writing archive",
+      "links": {
+        "appleBooks": "",
+        "amazon": "",
+        "additional": []
+      }
+    },
+    {
+      "id": "you",
+      "title": "YOU",
+      "author": "Artan Davoodi",
+      "type": "Book",
+      "status": "Published",
+      "language": "English",
+      "cover": "/assets/media/publications/covers/you.svg",
+      "description": "A long-form work from the earlier philosophical writing archive",
+      "links": {
+        "appleBooks": "",
+        "amazon": "",
+        "additional": []
+      }
+    },
+    {
+      "id": "love",
+      "title": "LOVE",
+      "author": "Artan Davoodi",
+      "type": "Book",
+      "status": "Published",
+      "language": "English",
+      "cover": "/assets/media/publications/covers/love.svg",
+      "description": "A long-form work from the earlier philosophical writing archive",
+      "links": {
+        "appleBooks": "",
+        "amazon": "",
+        "additional": []
+      }
+    },
+    {
+      "id": "law",
+      "title": "LAW",
+      "author": "Artan Davoodi",
+      "type": "Book",
+      "status": "Published",
+      "language": "English",
+      "cover": "/assets/media/publications/covers/law.svg",
+      "description": "A long-form work from the earlier philosophical writing archive",
+      "links": {
+        "appleBooks": "",
+        "amazon": "",
+        "additional": []
+      }
+    },
+    {
+      "id": "monad",
+      "title": "MONAD",
+      "author": "Artan Davoodi",
+      "type": "Book",
+      "status": "Published",
+      "language": "English",
+      "cover": "/assets/media/publications/covers/monad.svg",
+      "description": "A philosophical work on unity, awareness, and the structure of experience",
+      "links": {
+        "appleBooks": "",
+        "amazon": "",
+        "additional": []
+      }
+    }
+  ]
+}

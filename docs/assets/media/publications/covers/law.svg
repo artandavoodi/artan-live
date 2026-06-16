@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 960" role="img" aria-label="LAW book cover placeholder">
+  <rect width="640" height="960" fill="#050505"/>
+  <rect x="26" y="26" width="588" height="908" fill="none" stroke="#1f1f1f" stroke-width="2"/>
+  <circle cx="320" cy="360" r="76" fill="none" stroke="#a88f82" stroke-width="4"/>
+  <circle cx="264" cy="360" r="76" fill="none" stroke="#a88f82" stroke-width="4" opacity=".72"/>
+  <circle cx="376" cy="360" r="76" fill="none" stroke="#a88f82" stroke-width="4" opacity=".72"/>
+  <circle cx="320" cy="304" r="76" fill="none" stroke="#a88f82" stroke-width="4" opacity=".72"/>
+  <circle cx="320" cy="416" r="76" fill="none" stroke="#a88f82" stroke-width="4" opacity=".72"/>
+  <text x="320" y="585" fill="#a88f82" font-family="Georgia, serif" font-size="54" text-anchor="middle" letter-spacing="3">LAW</text>
+  <text x="320" y="665" fill="#a88f82" font-family="Georgia, serif" font-size="24" text-anchor="middle" letter-spacing="14">ARTAN</text>
+</svg>
