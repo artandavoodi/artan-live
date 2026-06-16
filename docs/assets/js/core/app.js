@@ -19,6 +19,15 @@ function resetInitialScrollPosition() {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 }
 
+function applyStoredThemeBeforeRuntime() {
+  const storedTheme = localStorage.getItem('artan-live-theme');
+  const theme = storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : 'light';
+
+  document.documentElement.setAttribute('data-theme', theme);
+  document.documentElement.setAttribute('data-theme-effective', theme);
+  document.documentElement.style.colorScheme = theme;
+}
+
 function setMenuOpen(isOpen) {
   const menu = document.querySelector('[data-cv-menu]');
   const toggle = document.querySelector('[data-cv-menu-toggle]');
@@ -60,6 +69,10 @@ function bindSiteMenu() {
   });
 }
 
+function isHomePage() {
+  return window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+}
+
 function normalizeInnerPageNavigation() {
   const primaryNavigation = document.querySelector('[data-cv-primary-navigation]');
 
@@ -67,26 +80,27 @@ function normalizeInnerPageNavigation() {
     return;
   }
 
-  const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
-
-  if (isHomePage) {
+  if (isHomePage()) {
+    primaryNavigation.hidden = false;
+    primaryNavigation.removeAttribute('aria-hidden');
     return;
   }
 
-  const themeToggle = primaryNavigation.querySelector('#theme-toggle');
-  const homeLink = document.createElement('a');
-  homeLink.href = '/';
-  homeLink.textContent = 'Home';
-  homeLink.setAttribute('aria-label', 'Return to homepage');
-
   primaryNavigation.replaceChildren();
+  primaryNavigation.hidden = true;
+  primaryNavigation.setAttribute('aria-hidden', 'true');
+  primaryNavigation.dataset.visible = 'false';
+}
 
-  if (themeToggle instanceof HTMLElement) {
-    primaryNavigation.append(themeToggle);
+function normalizeInnerPageFooter() {
+  const footerLinks = document.querySelector('.cv-footer__links');
+
+  if (!(footerLinks instanceof HTMLElement)) {
+    return;
   }
 
-  primaryNavigation.append(homeLink);
-  primaryNavigation.dataset.visible = 'true';
+  footerLinks.hidden = !isHomePage();
+  footerLinks.setAttribute('aria-hidden', isHomePage() ? 'false' : 'true');
 }
 
 function bindPrimaryNavigationVisibility() {
@@ -111,15 +125,17 @@ function bindPrimaryNavigationVisibility() {
 
 async function initializeArtanLive() {
   document.documentElement.dataset.appReady = 'false';
+  applyStoredThemeBeforeRuntime();
   resetInitialScrollPosition();
 
   try {
     await mountFragments();
+    await import('./02-systems/theme.js');
     normalizeInnerPageNavigation();
     bindSiteMenu();
     bindPrimaryNavigationVisibility();
-    await import('./02-systems/theme.js');
     await renderCv();
+    normalizeInnerPageFooter();
     document.documentElement.dataset.appReady = 'true';
     document.dispatchEvent(new CustomEvent('artan-live:ready'));
   } catch (error) {

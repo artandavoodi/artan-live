@@ -1,4 +1,3 @@
-
 /* =========================================================
   ARTAN.LIVE · THEME SYSTEM
   File: docs/assets/js/core/02-systems/theme.js
@@ -10,6 +9,10 @@ const THEME_LIGHT = 'light';
 const THEME_DARK = 'dark';
 const THEMES = new Set([THEME_LIGHT, THEME_DARK]);
 const DEFAULT_THEME = THEME_LIGHT;
+
+function getRoot() {
+  return document.documentElement;
+}
 
 function normalizeTheme(value) {
   const theme = String(value || '').trim().toLowerCase();
@@ -32,7 +35,7 @@ function storeTheme(theme) {
 
 function applyTheme(theme) {
   const nextTheme = normalizeTheme(theme);
-  const html = document.documentElement;
+  const html = getRoot();
   const toggle = document.getElementById('theme-toggle');
 
   html.setAttribute('data-theme', nextTheme);
@@ -80,6 +83,7 @@ function bindThemeToggle() {
 function initThemeSystem() {
   applyTheme(getStoredTheme());
   bindThemeToggle();
+  getRoot().dataset.themeReady = 'true';
 }
 
 initThemeSystem();

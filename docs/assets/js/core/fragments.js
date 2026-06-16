@@ -5,8 +5,8 @@
 ========================================================= */
 
 const FRAGMENT_PATHS = {
-  navigation: './assets/fragments/navigation.html',
-  footer: './assets/fragments/footer.html',
+  navigation: '/assets/fragments/navigation.html',
+  footer: '/assets/fragments/footer.html',
 };
 
 async function loadFragment(name, target) {
