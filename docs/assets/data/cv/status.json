@@ -2,7 +2,7 @@
   "availability": {
     "label": "Availability",
     "value": "Available for selected roles",
-    "description": "Open to selected leadership, product, interface, and AI-assisted digital systems roles."
+    "description": "Open to selected leadership, product, interface, and AI-assisted digital systems roles"
   },
   "roleTargets": [
     "AI product leadership",
@@ -18,6 +18,6 @@
   ],
   "accuracyBoundary": {
     "label": "Professional boundary",
-    "description": "I direct and structure AI-assisted product and web implementation workflows. I do not present myself as a conventional software engineer, full-stack developer, AI engineer, or machine learning engineer."
+    "description": "I direct and structure AI-assisted product and web implementation workflows. I do not present myself as a conventional software engineer, full-stack developer, AI engineer, or machine learning engineer"
   }
 }
