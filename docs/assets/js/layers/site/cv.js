@@ -23,6 +23,7 @@ const DETAIL_FRAGMENT_PATHS = {
 };
 
 let detailOverlayScrollY = 0;
+let heroTouchStartY = 0;
 
 const ICON_PATHS = {
   website: './registry/icons/public/assets/core/platform/website/website.svg',
@@ -189,12 +190,12 @@ function renderHero(data) {
   media.append(image);
 
   const content = createElement('div', 'cv-hero__content');
+  const secondary = createElement('div', 'cv-hero__secondary');
+
   content.append(
     createElement('h1', 'cv-title', data.profile.identity.displayName),
     createElement('p', 'cv-role', data.profile.headline),
     createElement('p', 'cv-subtitle', data.profile.subtitle),
-    createElement('p', 'cv-location', data.profile.location),
-    createElement('p', 'cv-summary', data.profile.summary),
   );
 
   const actions = createElement('div', 'cv-actions');
@@ -207,8 +208,112 @@ function renderHero(data) {
     createLink({ href: data.profile.cv.href, label: data.profile.cv.label, className: 'cv-action', icon: 'download' }),
   );
 
-  content.append(actions);
+  secondary.append(
+    createElement('p', 'cv-location', data.profile.location),
+    createElement('p', 'cv-summary', data.profile.summary),
+    actions,
+  );
+
+  content.append(secondary);
   target.replaceChildren(media, content);
+}
+
+function setHeroStage(isExpanded) {
+  document.documentElement.dataset.heroStage = isExpanded ? 'expanded' : 'compact';
+}
+
+function isHeroStageCandidate() {
+  const hero = document.querySelector('.cv-page--hero');
+
+  if (!(hero instanceof HTMLElement)) {
+    return false;
+  }
+
+  const bounds = hero.getBoundingClientRect();
+  return bounds.top <= 8 && bounds.bottom > window.innerHeight * 0.58;
+}
+
+function expandHeroStage() {
+  if (document.documentElement.dataset.heroStage === 'expanded') {
+    return false;
+  }
+
+  setHeroStage(true);
+  return true;
+}
+
+function collapseHeroStage() {
+  if (document.documentElement.dataset.heroStage !== 'expanded') {
+    return false;
+  }
+
+  setHeroStage(false);
+  return true;
+}
+
+function bindHeroStageReveal() {
+  setHeroStage(false);
+
+  window.addEventListener('wheel', (event) => {
+    if (!isHeroStageCandidate()) {
+      return;
+    }
+
+    if (event.deltaY > 0 && expandHeroStage()) {
+      event.preventDefault();
+      return;
+    }
+
+    if (event.deltaY < 0 && collapseHeroStage()) {
+      event.preventDefault();
+    }
+  }, { passive: false });
+
+  window.addEventListener('touchstart', (event) => {
+    heroTouchStartY = event.touches[0]?.clientY || 0;
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (event) => {
+    const currentY = event.touches[0]?.clientY || 0;
+    const movement = heroTouchStartY - currentY;
+
+    if (!isHeroStageCandidate()) {
+      return;
+    }
+
+    if (movement > 18 && expandHeroStage()) {
+      event.preventDefault();
+      return;
+    }
+
+    if (movement < -18 && collapseHeroStage()) {
+      event.preventDefault();
+    }
+  }, { passive: false });
+
+  window.addEventListener('keydown', (event) => {
+    const revealKeys = ['ArrowDown', 'PageDown', ' '];
+    const collapseKeys = ['ArrowUp', 'PageUp'];
+
+    if (!isHeroStageCandidate()) {
+      return;
+    }
+
+    if (revealKeys.includes(event.key) && expandHeroStage()) {
+      event.preventDefault();
+      return;
+    }
+
+    if (collapseKeys.includes(event.key) && collapseHeroStage()) {
+      event.preventDefault();
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    if ((window.scrollY || document.documentElement.scrollTop || 0) <= 2) {
+      setHeroStage(false);
+    }
+  }, { passive: true });
 }
 
 function renderFocus(data) {
@@ -675,6 +780,7 @@ export async function renderCv() {
   const data = await loadCvData();
 
   renderHero(data);
+  bindHeroStageReveal();
   renderFocus(data);
   bindFocusReveal();
   renderProjects(data);

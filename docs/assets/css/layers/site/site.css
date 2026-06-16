@@ -84,6 +84,34 @@ html {
   justify-items: center;
   gap: var(--spacing-sm);
   max-inline-size: min(50rem, 100%);
+  transform: translateY(0);
+  transition: transform 560ms var(--cv-motion-ease);
+}
+
+html[data-hero-stage='expanded'] .cv-hero__content {
+  transform: translateY(-2.15rem);
+}
+
+.cv-hero__secondary {
+  display: grid;
+  justify-items: center;
+  gap: var(--spacing-sm);
+  max-inline-size: min(42rem, 100%);
+  margin-block-start: 0;
+  opacity: 0;
+  transform: translateY(1.15rem);
+  pointer-events: none;
+  transition:
+    opacity 640ms var(--cv-motion-ease),
+    transform 640ms var(--cv-motion-ease),
+    margin-block-start 640ms var(--cv-motion-ease);
+}
+
+html[data-hero-stage='expanded'] .cv-hero__secondary {
+  margin-block-start: var(--spacing-xl);
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .cv-portrait {
@@ -174,6 +202,11 @@ html {
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
   text-transform: uppercase;
+}
+
+.cv-location {
+  color: var(--cv-text-primary);
+  opacity: 1;
 }
 
 .cv-actions {
@@ -415,6 +448,30 @@ html {
   }
 
   .cv-site-menu__link {
+    transform: none;
+    transition: none;
+  }
+
+  .cv-navigation__links--primary {
+    transform: none;
+    transition: none;
+  }
+
+  .cv-navigation {
+    transform: translate(-50%, 0);
+    transition: none;
+  }
+
+  .cv-navigation:has(.cv-navigation__links--primary[data-visible='false']) {
+    transform: translate(-50%, 0);
+  }
+
+  .cv-menu-button__line {
+    transition: none;
+  }
+
+  .cv-hero__content,
+  .cv-hero__secondary {
     transform: none;
     transition: none;
   }
@@ -714,12 +771,43 @@ html[data-theme="dark"] .cv-brand-logo {
 }
 
 .cv-navigation {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 50%;
+  z-index: 900;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-lg);
+  inline-size: min(100%, var(--cv-page-width));
   padding-block: var(--spacing-lg);
   border-block-end: 0;
+  opacity: 1;
+  pointer-events: none;
+  transform: translate(-50%, 0);
+  transition:
+    opacity 420ms var(--cv-motion-ease),
+    transform 420ms var(--cv-motion-ease);
+}
+
+.cv-navigation:has(.cv-navigation__links--primary[data-visible='false']),
+html[data-hero-stage='expanded'] .cv-navigation {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -0.5rem);
+}
+
+html[data-cv-menu-open] .cv-navigation {
+  z-index: 1200;
+  opacity: 1;
+  pointer-events: none;
+  transform: translate(-50%, 0);
+}
+
+html[data-cv-menu-open] .cv-navigation__links--primary {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0.5rem);
 }
 
 .cv-navigation__brand {
@@ -763,7 +851,23 @@ html[data-theme="dark"] .ui-logo-theme-aware {
 .cv-navigation__links {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: var(--spacing-lg);
+  pointer-events: auto;
+}
+
+.cv-navigation__links--primary {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity 420ms var(--cv-motion-ease),
+    transform 420ms var(--cv-motion-ease);
+}
+
+.cv-navigation__links--primary[data-visible='false'] {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(0.5rem);
 }
 
 .cv-theme-button.theme-toggle {
@@ -792,12 +896,14 @@ html[data-theme="dark"] .ui-logo-theme-aware {
   gap: 0.18rem;
   inline-size: 1.1rem;
   block-size: 1.1rem;
+  margin-inline-start: auto;
   border: 0;
   padding: 0;
   background: transparent;
   color: var(--cv-text-primary);
   cursor: pointer;
   opacity: 0.72;
+  pointer-events: auto;
   transition: opacity var(--cv-motion-duration) var(--cv-motion-ease);
 }
 
@@ -808,9 +914,30 @@ html[data-theme="dark"] .ui-logo-theme-aware {
 
 .cv-menu-button__line {
   display: block;
+  grid-area: 1 / 1;
   inline-size: 1rem;
   block-size: var(--border-width-hairline);
   background: currentColor;
+  transform-origin: center;
+  transition:
+    opacity var(--cv-motion-duration) var(--cv-motion-ease),
+    transform var(--cv-motion-duration) var(--cv-motion-ease);
+}
+
+.cv-menu-button__line:first-child {
+  transform: translateY(-0.18rem);
+}
+
+.cv-menu-button__line:last-child {
+  transform: translateY(0.18rem);
+}
+
+html[data-cv-menu-open] .cv-menu-button__line:first-child {
+  transform: rotate(45deg);
+}
+
+html[data-cv-menu-open] .cv-menu-button__line:last-child {
+  transform: rotate(-45deg);
 }
 
 .cv-site-menu[hidden] {
@@ -838,15 +965,9 @@ html[data-cv-menu-open] body {
   align-content: center;
   inline-size: 100%;
   min-block-size: 100svh;
-  padding: var(--cv-page-padding-block) var(--cv-page-padding-inline);
+  padding-block: var(--cv-page-padding-block);
+  padding-inline: var(--cv-page-padding-inline);
   box-sizing: border-box;
-}
-
-.cv-site-menu__close {
-  position: fixed;
-  inset-block-start: var(--spacing-xl);
-  inset-inline-end: var(--spacing-xl);
-  z-index: 1101;
 }
 
 .cv-site-menu__nav {
@@ -1286,8 +1407,13 @@ html[data-detail-overlay-open='true'] body {
     padding-block: 0;
   }
 
-  .cv-hero__content {
+  .cv-hero__content,
+  .cv-hero__secondary {
     max-inline-size: 100%;
+  }
+
+  html[data-hero-stage='expanded'] .cv-hero__content {
+    transform: translateY(-1.35rem);
   }
 
   .cv-portrait {
@@ -1375,27 +1501,31 @@ html[data-detail-overlay-open='true'] body {
   .cv-navigation {
     align-items: center;
     flex-direction: row;
-    justify-content: center;
-    padding-inline: var(--cv-page-padding-inline);
+    justify-content: space-between;
   }
 
   .cv-navigation__links {
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
     gap: var(--spacing-md);
   }
 
   .cv-site-menu__surface {
-    align-content: start;
+    align-content: center;
+    justify-items: center;
     padding-block: var(--spacing-5xl);
+    padding-inline: var(--cv-page-padding-inline);
   }
 
   .cv-site-menu__nav {
+    justify-items: center;
     gap: var(--spacing-md);
+    max-inline-size: 100%;
   }
 
   .cv-site-menu__link {
     font-size: min(12vw, 3.2rem);
+    text-align: center;
   }
 
   .cv-footer {

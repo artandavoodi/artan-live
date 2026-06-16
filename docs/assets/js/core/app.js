@@ -7,6 +7,18 @@
 import { mountFragments } from './fragments.js';
 import { renderCv } from '../layers/site/cv.js';
 
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
+function resetInitialScrollPosition() {
+  if (window.location.hash) {
+    return;
+  }
+
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+}
+
 function setMenuOpen(isOpen) {
   const menu = document.querySelector('[data-cv-menu]');
   const toggle = document.querySelector('[data-cv-menu-toggle]');
@@ -48,12 +60,34 @@ function bindSiteMenu() {
   });
 }
 
+function bindPrimaryNavigationVisibility() {
+  const hero = document.querySelector('.cv-page--hero');
+  const primaryNavigation = document.querySelector('[data-cv-primary-navigation]');
+
+  if (!(hero instanceof HTMLElement) || !(primaryNavigation instanceof HTMLElement)) {
+    return;
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    primaryNavigation.dataset.visible = 'true';
+    return;
+  }
+
+  const observer = new IntersectionObserver(([entry]) => {
+    primaryNavigation.dataset.visible = entry.isIntersecting ? 'true' : 'false';
+  }, { root: null, threshold: 0.38 });
+
+  observer.observe(hero);
+}
+
 async function initializeArtanLive() {
   document.documentElement.dataset.appReady = 'false';
+  resetInitialScrollPosition();
 
   try {
     await mountFragments();
     bindSiteMenu();
+    bindPrimaryNavigationVisibility();
     await import('./02-systems/theme.js');
     await renderCv();
     document.documentElement.dataset.appReady = 'true';
