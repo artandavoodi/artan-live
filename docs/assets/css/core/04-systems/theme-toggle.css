@@ -1,0 +1,95 @@
+/* =============================================================================
+   00) FILE INDEX
+   01) MODULE IDENTITY
+   02) THEME TOGGLE OWNERSHIP NOTE
+   03) SYSTEM TOGGLE BASE
+   04) CYCLE TOGGLE STATE
+   05) MODE VARIANTS
+   06) HOVER / FOCUS STATES
+   07) REDUCED MOTION
+   08) END OF FILE
+============================================================================= */
+
+/* =============================================================================
+   01) MODULE IDENTITY
+============================================================================= */
+/* /website/docs/assets/css/core/04-systems/theme-toggle.css */
+
+/* =============================================================================
+   02) THEME TOGGLE OWNERSHIP NOTE
+============================================================================= */
+/* Theme toggle remains a theme-specific consumer and must not become the sovereign generic toggle owner.
+   The generic reusable toggle primitive now lives in core/03-primitives/toggle.css and core/01-foundation/toggle.js.
+   This file keeps only the current theme-toggle presentation and theme-mode behavior. */
+
+/* =============================================================================
+   03) SYSTEM TOGGLE BASE
+============================================================================= */
+.theme-toggle:not([data-theme-option]){
+  display:inline-flex;
+  flex:0 0 auto;
+  align-items:center;
+  justify-content:center;
+  min-width:var(--control-height-sm);
+  min-height:var(--control-height-sm);
+  padding:var(--spacing-none);
+  border:var(--spacing-none);
+  border-radius:var(--radius-circle);
+  background:transparent;
+  color:var(--control-text-unified);
+  box-shadow:none;
+  z-index:var(--z-header-controls);
+  transition:var(--interaction-transition-control);
+}
+
+/* =============================================================================
+   04) CYCLE TOGGLE STATE
+============================================================================= */
+.theme-toggle:not([data-theme-option]){
+  width:var(--space-4);
+  height:var(--space-4);
+}
+
+/* =============================================================================
+   05) MODE VARIANTS
+============================================================================= */
+html[data-theme-effective="dark"] .theme-toggle:not([data-theme-option]){
+  background-color:var(--color-white);
+}
+
+html[data-theme-effective="light"] .theme-toggle:not([data-theme-option]){
+  background-color:var(--color-black);
+}
+
+html[data-theme="custom"] .theme-toggle:not([data-theme-option]){
+  background-color:var(--theme-accent-color);
+}
+
+/* =============================================================================
+   06) HOVER / FOCUS STATES
+============================================================================= */
+.theme-toggle:hover{
+  opacity:var(--overlay-opacity-open);
+}
+
+.theme-toggle:focus,
+.theme-toggle:focus-visible{
+  outline:none;
+}
+
+.theme-toggle:focus-visible{
+  box-shadow:var(--focus-ring-shadow);
+}
+
+/* =============================================================================
+   07) REDUCED MOTION
+============================================================================= */
+@media (prefers-reduced-motion:reduce){
+  .theme-toggle{
+    transition:none !important;
+  }
+}
+
+/* =============================================================================
+   08) END OF FILE
+============================================================================= */

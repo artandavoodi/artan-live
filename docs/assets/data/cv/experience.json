@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "organization": "Neuroartan",
+      "role": "Founder · Product & Interface Systems Lead",
+      "location": "",
+      "type": "Founder project",
+      "startDate": "Feb 2026",
+      "endDate": "Present",
+      "summary": "Building a governed cognitive product system across interface design, model personalization, documentation, and AI-assisted implementation",
+      "responsibilities": []
+    },
+    {
+      "organization": "Kreativoli",
+      "role": "Brand & Website Designer",
+      "location": "Copenhagen, Denmark",
+      "type": "Startup project",
+      "startDate": "2024",
+      "endDate": "Oct 2024",
+      "summary": "Developed the brand identity, website direction, visual system, early social media presence, photography direction, and early business presentation",
+      "responsibilities": []
+    },
+    {
+      "organization": "IKEA",
+      "role": "Visual Communication Designer",
+      "location": "Serbia",
+      "type": "Professional role",
+      "startDate": "May 2021",
+      "endDate": "Mar 2023",
+      "summary": "Worked on commercial activity design, sales-driven visual communication, customer-facing layouts, video projects, and brand-aligned visual materials",
+      "responsibilities": []
+    },
+    {
+      "organization": "Tarahe Bartar",
+      "role": "Design Lead",
+      "location": "Iran",
+      "type": "Professional role",
+      "startDate": "Feb 2016",
+      "endDate": "Feb 2017",
+      "summary": "Led design work across brand, campaign, and visual communication projects",
+      "responsibilities": []
+    },
+    {
+      "organization": "Freelance Art & Design",
+      "role": "Freelance Artist & Designer",
+      "location": "Independent",
+      "type": "Independent work",
+      "startDate": "Oct 2014",
+      "endDate": "Present",
+      "summary": "Created independent visual, artistic, and design work across selected personal and client-facing projects",
+      "responsibilities": []
+    }
+  ]
+}

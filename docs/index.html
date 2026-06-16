@@ -19,6 +19,9 @@
     <title>Artan · AI Product & Interface Systems Lead</title>
 
     <link rel="canonical" href="https://artan.live" />
+    <link rel="icon" href="./assets/brand/logo/symbol-artan.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/brand/logo/symbol-artan.svg" />
+    <script type="application/ld+json" id="cv-schema"></script>
     <link rel="stylesheet" href="./assets/css/core/00-orchestrator/style.css" />
     <script src="./assets/js/core/app.js" type="module" defer></script>
   </head>
@@ -30,73 +33,47 @@
     <div data-fragment="navigation"></div>
 
     <!-- =========================================================
-      MAIN · CV HUB
+      DATA · PUBLIC CV HUB
     ========================================================== -->
     <main class="cv-main" id="main-content">
-      <section class="cv-hero" aria-labelledby="cv-title">
-        <p class="cv-kicker">Artan.live</p>
-        <h1 class="cv-title" id="cv-title">Artan</h1>
-        <p class="cv-role">AI Product &amp; Interface Systems Lead</p>
-        <p class="cv-subtitle">Founder of Neuroartan · Cognitive Systems Designer · AI-assisted Product Builder</p>
-        <p class="cv-location">Zagreb, Croatia · Open to remote / EU opportunities</p>
-
-        <div class="cv-actions" aria-label="Primary links">
-          <a class="cv-action" href="mailto:davoodi@neuroartan.com">Email</a>
-          <a class="cv-action" href="./assets/pdf/artan-cv.pdf">Download CV</a>
-        </div>
+      <section class="cv-page cv-page--hero" id="profile" aria-label="Profile introduction">
+        <section class="cv-hero" aria-labelledby="cv-title" data-cv-section="hero"></section>
       </section>
 
-      <section class="cv-section" aria-labelledby="focus-title">
-        <h2 class="cv-section__title" id="focus-title">Focus</h2>
-        <div class="cv-grid cv-grid--focus">
-          <p>AI-assisted product building</p>
-          <p>Interface systems</p>
-          <p>Cognitive product design</p>
-          <p>Product structure and communication</p>
-        </div>
+      <section class="cv-page cv-page--focus" id="focus" aria-label="Professional focus">
+        <section class="cv-section cv-section--focus" data-cv-section="focus">
+          <div class="cv-grid cv-grid--focus" data-cv-list="focus"></div>
+        </section>
       </section>
 
-      <section class="cv-section" aria-labelledby="work-title">
-        <h2 class="cv-section__title" id="work-title">Selected Work</h2>
-        <article class="cv-card">
-          <p class="cv-card__eyebrow">Independent product project · 2026</p>
-          <h3 class="cv-card__title">Neuroartan</h3>
-          <p class="cv-card__text">A cognitive operating system project focused on structured thinking, model personalization, reflective interaction, and AI-assisted digital workflows.</p>
-          <a class="cv-card__link" href="https://www.neuroartan.com" rel="noopener">Visit Neuroartan</a>
-        </article>
+      <section class="cv-page cv-page--work" id="work" aria-label="Selected work">
+        <section class="cv-section cv-section--work" data-cv-section="work">
+          <div data-cv-list="projects"></div>
+        </section>
       </section>
 
-      <section class="cv-section" aria-labelledby="experience-title">
-        <h2 class="cv-section__title" id="experience-title">Experience</h2>
-        <div class="cv-list">
-          <p><strong>Neuroartan</strong> · Founder / Product Builder</p>
-          <p><strong>ARTANDA</strong> · Freelance Digital Creative Designer</p>
-          <p><strong>IKEA Serbia</strong> · Commercial Activity / Graphic Communication</p>
-          <p><strong>APC-CZA</strong> · Cultural Mediator</p>
-          <p><strong>PIN</strong> · Information Technology Instructor</p>
-          <p><strong>Tarahe Bartar</strong> · Team Lead</p>
-        </div>
+      <section class="cv-page cv-page--details" id="details" aria-label="Professional details">
+        <section class="cv-section cv-section--details" data-cv-section="details">
+          <div class="cv-detail-strip" data-cv-list="detail-triggers"></div>
+        </section>
+
+        <div data-fragment="footer"></div>
       </section>
 
-      <section class="cv-section" aria-labelledby="certifications-title">
-        <h2 class="cv-section__title" id="certifications-title">Certifications</h2>
-        <p class="cv-section__text">Selected certifications from Google, Meta, Coursera, and LinkedIn Learning in project management, communication, social media management, and public relations.</p>
-      </section>
-
-      <section class="cv-section" aria-labelledby="links-title">
-        <h2 class="cv-section__title" id="links-title">Links</h2>
-        <div class="cv-link-grid">
-          <a href="https://github.com/artandavoodi/neuroartan-website" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/artandavoodi/" rel="noopener">LinkedIn</a>
-          <a href="https://www.behance.net/artandavoodi" rel="noopener">Behance</a>
-          <a href="https://orcid.org/0009-0003-4653-6951" rel="noopener">ORCID</a>
-        </div>
-      </section>
     </main>
 
     <!-- =========================================================
-      MOUNT · FOOTER
+      MOUNT · DETAIL OVERLAY
     ========================================================== -->
-    <div data-fragment="footer"></div>
+    <section class="cv-detail-overlay" data-cv-detail-overlay hidden aria-hidden="true">
+      <article class="cv-detail-overlay__panel" role="dialog" aria-modal="true" aria-label="CV detail panel">
+        <button class="global-close-button" type="button" aria-label="Close detail panel" data-cv-detail-close>
+          <span class="global-close-button__line global-close-button__line--first" aria-hidden="true"></span>
+          <span class="global-close-button__line global-close-button__line--second" aria-hidden="true"></span>
+        </button>
+        <div class="cv-detail-overlay__content" data-cv-detail-content></div>
+      </article>
+    </section>
+
   </body>
 </html>

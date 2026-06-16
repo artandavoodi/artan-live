@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "label": "Neuroartan",
+      "type": "project",
+      "href": "https://www.neuroartan.com",
+      "icon": "platform",
+      "description": "Independent cognitive systems project"
+    },
+    {
+      "label": "LinkedIn",
+      "type": "profile",
+      "href": "https://www.linkedin.com/in/artandavoodi/",
+      "icon": "linkedin",
+      "description": "Professional profile"
+    },
+    {
+      "label": "GitHub",
+      "type": "proof",
+      "href": "https://github.com/artandavoodi/neuroartan-website",
+      "icon": "github",
+      "description": "AI-assisted website and product interface development"
+    },
+    {
+      "label": "Behance",
+      "type": "portfolio",
+      "href": "https://www.behance.net/artandavoodi",
+      "icon": "behance",
+      "description": "Selected visual and product work"
+    },
+    {
+      "label": "ORCID",
+      "type": "research",
+      "href": "https://orcid.org/0009-0003-4653-6951",
+      "icon": "orcid",
+      "description": "Research identity"
+    }
+  ]
+}

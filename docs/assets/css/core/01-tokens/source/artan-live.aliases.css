@@ -11,6 +11,16 @@
   --cv-text-secondary: var(--text-secondary-color);
   --cv-border: var(--border-color);
 
+  /* Layout */
+  --cv-page-width: var(--site-rail-width);
+  --cv-reading-width: min(var(--content-width-reading), var(--site-rail-width));
+  --cv-page-padding-inline: var(--site-shell-inline-padding);
+  --cv-page-padding-block: clamp(var(--spacing-3xl), 8vw, var(--spacing-6xl));
+  --cv-section-gap: clamp(var(--spacing-3xl), 8vw, var(--spacing-6xl));
+  --cv-content-gap: var(--spacing-xl);
+  --cv-grid-gap: var(--spacing-xl);
+  --cv-record-gap: var(--spacing-md);
+
   /* Surfaces */
   --cv-surface: var(--surface-1);
   --cv-surface-strong: var(--surface-2);
@@ -22,10 +32,27 @@
 
   /* Type */
   --cv-font-base: var(--font-base);
+  --cv-font-hero: var(--font-size-hero);
+  --cv-font-title: var(--font-size-title);
+  --cv-font-body: var(--font-size-body);
+  --cv-font-caption: var(--font-size-caption);
   --cv-line-body: var(--line-height-body);
   --cv-line-heading: var(--line-height-heading-tight);
+  --cv-letter-label: var(--letter-spacing-label);
+
+  /* Controls */
+  --cv-control-height: var(--control-height-md);
+  --cv-icon-size: 1.125rem;
 
   /* Motion */
   --cv-motion-duration: var(--duration-base, 240ms);
   --cv-motion-ease: var(--ease-standard, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+@media (max-width: 860px) {
+  :root {
+    --cv-page-width: var(--site-rail-width-mobile);
+    --cv-reading-width: min(var(--content-width-reading), var(--site-rail-width-mobile));
+    --cv-page-padding-inline: var(--site-shell-inline-padding-mobile);
+  }
 }

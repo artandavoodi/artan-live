@@ -1,0 +1,23 @@
+{
+  "availability": {
+    "label": "Availability",
+    "value": "Available for selected roles",
+    "description": "Open to selected leadership, product, interface, and AI-assisted digital systems roles."
+  },
+  "roleTargets": [
+    "AI product leadership",
+    "Interface systems",
+    "Product management",
+    "AI-assisted development coordination",
+    "Digital product strategy"
+  ],
+  "workMode": [
+    "Remote",
+    "EU opportunities",
+    "Selected full-time, part-time, and contract roles"
+  ],
+  "accuracyBoundary": {
+    "label": "Professional boundary",
+    "description": "I direct and structure AI-assisted product and web implementation workflows. I do not present myself as a conventional software engineer, full-stack developer, AI engineer, or machine learning engineer."
+  }
+}

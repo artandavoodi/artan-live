@@ -1,0 +1,33 @@
+{
+  "summary": "Selected certifications and learning programs from Berklee College of Music, Roskilde Festival, Google, Meta, and Coursera.",
+  "items": [
+    {
+      "title": "The Art of Music Production",
+      "provider": "Berklee College of Music / Coursera",
+      "completed": "Dec 2025",
+      "category": "Music Production",
+      "priority": "primary"
+    },
+    {
+      "title": "FLOKKR — Labs for Arts & Activism",
+      "provider": "Roskilde Festival",
+      "completed": "Jul 2024",
+      "category": "Arts and Activism",
+      "priority": "primary"
+    },
+    {
+      "title": "Foundations of Project Management",
+      "provider": "Google / Coursera",
+      "completed": "Sep 2022",
+      "category": "Project Management",
+      "priority": "primary"
+    },
+    {
+      "title": "Social Media Management",
+      "provider": "Meta / Coursera",
+      "completed": "Oct 2022",
+      "category": "Digital Communication",
+      "priority": "primary"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "items": [
+    {
+      "name": "Neuroartan",
+      "type": "",
+      "startYear": "2026",
+      "endYear": "Present",
+      "url": "https://www.neuroartan.com",
+      "repository": "https://github.com/artandavoodi/neuroartan-website",
+      "summary": "A cognitive operating system project focused on structured thinking, model personalization, reflective interaction, and AI-assisted digital workflows.",
+      "role": "Founder / Product Builder",
+      "scope": [
+        {
+          "label": "product direction",
+          "href": "https://docs.neuroartan.com/products/icos/"
+        },
+        {
+          "label": "interface systems",
+          "href": "https://neuroartan.com/pages/architecture/"
+        },
+        {
+          "label": "AI-assisted implementation",
+          "href": "https://github.com/artandavoodi/neuroartan-website"
+        },
+        {
+          "label": "model personalization",
+          "href": "https://docs.neuroartan.com/model-identity/"
+        },
+        {
+          "label": "documentation",
+          "href": "https://docs.neuroartan.com/get-started/public-documentation/"
+        },
+        {
+          "label": "public communication",
+          "href": "https://neuroartan.com/pages/about/"
+        }
+      ],
+      "accuracyNote": "This is presented as AI-assisted product and interface development, not as a conventional software engineering portfolio."
+    }
+  ]
+}

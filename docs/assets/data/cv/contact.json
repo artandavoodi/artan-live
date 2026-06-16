@@ -1,0 +1,17 @@
+{
+  "primaryEmail": {
+    "label": "Email",
+    "value": "davoodi@neuroartan.com",
+    "href": "mailto:davoodi@neuroartan.com"
+  },
+  "phone": {
+    "publish": false,
+    "value": ""
+  },
+  "location": {
+    "city": "Zagreb",
+    "country": "Croatia",
+    "display": "Zagreb, Croatia"
+  },
+  "availabilityRegion": "Remote / EU opportunities"
+}

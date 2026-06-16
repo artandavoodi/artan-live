@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "label": "Product interfaces",
+      "description": "Designing clear, quiet interfaces with strong structure, hierarchy, and interaction logic."
+    },
+    {
+      "label": "Cognitive systems",
+      "description": "Structuring products around memory, continuity, personalization, and reflective use."
+    },
+    {
+      "label": "Product communication",
+      "description": "Translating complex systems into clear public language, documentation, and commercial presentation."
+    },
+    {
+      "label": "AI-assisted direction",
+      "description": "Directing product implementation with AI-assisted workflows while keeping scope, quality, and decisions explicit."
+    }
+  ]
+}
