@@ -160,7 +160,10 @@ async function initializeArtanLive() {
     normalizeSiteMenuRoutes();
     bindSiteMenu();
     bindPrimaryNavigationVisibility();
-    await renderCv();
+
+    if (document.querySelector('[data-cv-section="hero"]')) {
+      await renderCv();
+    }
 
     if (document.querySelector('[data-publications-list]')) {
       const { renderPublications } = await import('../layers/site/publications.js');
