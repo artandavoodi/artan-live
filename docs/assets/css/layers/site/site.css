@@ -67,6 +67,38 @@ html {
   padding-block: var(--cv-page-padding-block);
 }
 
+.cv-page--article {
+  display: grid;
+  align-items: center;
+  padding-block: var(--cv-page-padding-block);
+}
+
+.cv-article {
+  display: grid;
+  gap: var(--spacing-3xl);
+  inline-size: 100%;
+  max-inline-size: var(--cv-reading-width);
+  margin-inline: auto;
+}
+
+.cv-article__header {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.cv-article__body {
+  display: grid;
+  gap: var(--spacing-xl);
+}
+
+.cv-article__body p {
+  margin: 0;
+  color: var(--cv-text-secondary);
+  font-size: var(--cv-font-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--cv-line-body);
+}
+
 .cv-section--focus {
   inline-size: 100%;
 }
@@ -1391,10 +1423,16 @@ html[data-detail-overlay-open='true'] body {
 
   .cv-page--focus,
   .cv-page--work,
-  .cv-page--details {
+  .cv-page--details,
+  .cv-page--article {
     align-items: start;
     min-block-size: auto;
     padding-block: var(--spacing-4xl);
+  }
+
+  .cv-article {
+    gap: var(--spacing-2xl);
+    max-inline-size: 100%;
   }
 
   .cv-page--details {
