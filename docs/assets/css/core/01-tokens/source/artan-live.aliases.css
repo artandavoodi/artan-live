@@ -1,0 +1,31 @@
+/* =========================================================
+  ARTAN.LIVE · SEMANTIC TOKEN ALIASES
+  File: docs/assets/css/core/01-tokens/source/artan-live.aliases.css
+  Purpose: Page-level aliases mapped to Neuroartan / Control Center tokens.
+========================================================= */
+
+:root {
+  /* Page */
+  --cv-page-bg: var(--bg-color);
+  --cv-text-primary: var(--text-primary-color);
+  --cv-text-secondary: var(--text-secondary-color);
+  --cv-border: var(--border-color);
+
+  /* Surfaces */
+  --cv-surface: var(--surface-1);
+  --cv-surface-strong: var(--surface-2);
+  --cv-surface-hover: var(--surface-3);
+
+  /* Brand */
+  --cv-accent: var(--color-primary1);
+  --cv-accent-secondary: var(--color-primary5);
+
+  /* Type */
+  --cv-font-base: var(--font-base);
+  --cv-line-body: var(--line-height-body);
+  --cv-line-heading: var(--line-height-heading-tight);
+
+  /* Motion */
+  --cv-motion-duration: var(--duration-base, 240ms);
+  --cv-motion-ease: var(--ease-standard, cubic-bezier(0.22, 1, 0.36, 1));
+}

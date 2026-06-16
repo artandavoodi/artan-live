@@ -1,0 +1,190 @@
+/* =========================================================
+  ARTAN.LIVE · SITE LAYER
+  File: docs/assets/css/layers/site/site.css
+  Purpose: Minimal public CV hub layout using Neuroartan / Control Center tokens.
+========================================================= */
+
+.cv-site {
+  background: var(--cv-page-bg);
+  color: var(--cv-text-primary);
+}
+
+.cv-main {
+  inline-size: min(100% - var(--spacing-2xl), var(--content-width-wide));
+  margin-inline: auto;
+  padding-block: var(--spacing-4xl);
+}
+
+.cv-hero {
+  min-block-size: 72vh;
+  display: grid;
+  align-content: center;
+  gap: var(--spacing-lg);
+  max-inline-size: var(--content-width-reading);
+}
+
+.cv-kicker,
+.cv-card__eyebrow,
+.cv-section__title {
+  margin: 0;
+  color: var(--cv-text-secondary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-label);
+  line-height: var(--line-height-heading-tight);
+  text-transform: uppercase;
+}
+
+.cv-title {
+  margin: 0;
+  color: var(--cv-text-primary);
+  font-size: var(--font-size-hero);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-heading);
+  line-height: var(--line-height-heading-tight);
+}
+
+.cv-role {
+  margin: 0;
+  color: var(--cv-text-primary);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-heading);
+  line-height: var(--line-height-heading);
+}
+
+.cv-subtitle,
+.cv-location,
+.cv-section__text,
+.cv-card__text,
+.cv-grid p,
+.cv-list p {
+  margin: 0;
+  color: var(--cv-text-secondary);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--cv-line-body);
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-block-start: var(--spacing-lg);
+}
+
+.cv-action,
+.cv-card__link,
+.cv-link-grid a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--control-height-md);
+  border: var(--border-width-hairline) solid var(--cv-border);
+  border-radius: var(--radius-pill);
+  background: var(--cv-surface);
+  color: var(--cv-text-primary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-label);
+  text-transform: uppercase;
+  transition:
+    background var(--cv-motion-duration) var(--cv-motion-ease),
+    border-color var(--cv-motion-duration) var(--cv-motion-ease),
+    transform var(--cv-motion-duration) var(--cv-motion-ease);
+}
+
+.cv-action {
+  padding-inline: var(--spacing-lg);
+}
+
+.cv-action:hover,
+.cv-card__link:hover,
+.cv-link-grid a:hover {
+  border-color: var(--cv-accent);
+  background: var(--cv-surface-hover);
+  transform: translateY(calc(var(--border-width-hairline) * -1));
+}
+
+.cv-section {
+  display: grid;
+  gap: var(--spacing-lg);
+  padding-block: var(--spacing-3xl);
+  border-block-start: var(--border-width-hairline) solid var(--cv-border);
+}
+
+.cv-grid,
+.cv-link-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-md);
+}
+
+.cv-grid p,
+.cv-card,
+.cv-list,
+.cv-link-grid a {
+  border: var(--border-width-hairline) solid var(--cv-border);
+  border-radius: var(--radius-xl);
+  background: var(--cv-surface);
+}
+
+.cv-grid p,
+.cv-link-grid a {
+  padding: var(--spacing-lg);
+}
+
+.cv-card {
+  display: grid;
+  gap: var(--spacing-md);
+  max-inline-size: var(--content-width-reading);
+  padding: var(--spacing-xl);
+}
+
+.cv-card__title {
+  margin: 0;
+  color: var(--cv-text-primary);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-heading);
+  line-height: var(--line-height-heading);
+}
+
+.cv-card__link {
+  justify-self: start;
+  margin-block-start: var(--spacing-sm);
+  padding-inline: var(--spacing-lg);
+}
+
+.cv-list {
+  display: grid;
+  gap: var(--spacing-sm);
+  max-inline-size: var(--content-width-reading);
+  padding: var(--spacing-xl);
+}
+
+.cv-list strong {
+  color: var(--cv-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.cv-link-grid a {
+  min-block-size: var(--control-height-lg);
+}
+
+@media (max-width: 860px) {
+  .cv-main {
+    inline-size: min(100% - var(--spacing-xl), var(--content-width-wide));
+    padding-block: var(--spacing-3xl);
+  }
+
+  .cv-hero {
+    min-block-size: auto;
+    padding-block: var(--spacing-4xl);
+  }
+
+  .cv-grid,
+  .cv-link-grid {
+    grid-template-columns: 1fr;
+  }
+}

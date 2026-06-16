@@ -1,0 +1,33 @@
+/* =========================================================
+  ARTAN.LIVE · FOUNDATION
+  File: docs/assets/css/core/02-foundation/foundation.css
+  Purpose: Base document behavior mapped to Neuroartan / Control Center tokens.
+========================================================= */
+
+html {
+  background: var(--cv-page-bg);
+}
+
+body {
+  min-block-size: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--color-primary1) 16%, transparent) 0%, transparent 34%),
+    var(--cv-page-bg);
+  color: var(--cv-text-primary);
+  font-family: var(--cv-font-base);
+  line-height: var(--cv-line-body);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--cv-accent) 38%, transparent);
+  color: var(--cv-text-primary);
+}
+
+:focus-visible {
+  outline: var(--border-width-hairline, 1px) solid var(--cv-accent);
+  outline-offset: 0.25rem;
+}
+
+[hidden] {
+  display: none !important;
+}

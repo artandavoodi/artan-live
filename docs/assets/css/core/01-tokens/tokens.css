@@ -1,0 +1,9 @@
+/* =========================================================
+  ARTAN.LIVE · TOKEN BRIDGE
+  File: docs/assets/css/core/01-tokens/tokens.css
+  Purpose: Bridge Artan.live to the Neuroartan / Control Center token system.
+========================================================= */
+
+@import url('./source/control-center.tokens.css');
+@import url('./source/neuroartan.tokens.css');
+@import url('./source/artan-live.aliases.css');
