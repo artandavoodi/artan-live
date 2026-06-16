@@ -1635,7 +1635,21 @@ html:has(.cv-page--article) .cv-page {
 
 html:has(.cv-page--article) .cv-page--article {
   align-items: start;
-  padding-block: var(--spacing-5xl) var(--spacing-3xl);
+  padding-block: calc(var(--cv-page-padding-block) + var(--spacing-3xl)) var(--spacing-3xl);
+}
+
+html:has(.cv-page--article) .cv-article {
+  padding-block-start: var(--spacing-3xl);
+}
+
+@media (max-width: 860px) {
+  html:has(.cv-page--article) .cv-page--article {
+    padding-block-start: var(--spacing-5xl);
+  }
+
+  html:has(.cv-page--article) .cv-article {
+    padding-block-start: var(--spacing-xl);
+  }
 }
 
 html:has(.cv-page--article) .cv-footer {

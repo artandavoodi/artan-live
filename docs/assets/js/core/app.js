@@ -73,6 +73,31 @@ function isHomePage() {
   return window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
 }
 
+function getCurrentMenuRoute() {
+  const pathname = window.location.pathname.replace(/\/index\.html$/, '/');
+
+  if (pathname === '/') {
+    return 'home';
+  }
+
+  return pathname.split('/').filter(Boolean)[0] || 'home';
+}
+
+function normalizeSiteMenuRoutes() {
+  const currentRoute = getCurrentMenuRoute();
+  const menuLinks = document.querySelectorAll('[data-cv-menu-route]');
+
+  menuLinks.forEach((link) => {
+    if (!(link instanceof HTMLElement)) {
+      return;
+    }
+
+    const isCurrentRoute = link.dataset.cvMenuRoute === currentRoute;
+    link.hidden = isCurrentRoute;
+    link.setAttribute('aria-hidden', isCurrentRoute ? 'true' : 'false');
+  });
+}
+
 function normalizeInnerPageNavigation() {
   const primaryNavigation = document.querySelector('[data-cv-primary-navigation]');
 
@@ -132,6 +157,7 @@ async function initializeArtanLive() {
     await mountFragments();
     await import('./02-systems/theme.js');
     normalizeInnerPageNavigation();
+    normalizeSiteMenuRoutes();
     bindSiteMenu();
     bindPrimaryNavigationVisibility();
     await renderCv();
