@@ -7,6 +7,8 @@
 **/*-copy.*
 
 # macOS / Finder duplicate asset copies
+.DS_Store
+**/.DS_Store
 **/* [0-9].svg
 **/* [0-9].png
 **/* [0-9].jpg
