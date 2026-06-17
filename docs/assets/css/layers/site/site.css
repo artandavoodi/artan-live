@@ -91,6 +91,28 @@ html {
   gap: var(--spacing-xl);
 }
 
+.cv-about-portrait {
+  align-self: stretch;
+  inline-size: 100%;
+  min-block-size: 100%;
+  margin: 0;
+}
+
+.cv-about-portrait img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: 100%;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  object-fit: cover;
+}
+
+.cv-about-legal-name {
+  display: none;
+}
+
 .cv-article__body p {
   margin: 0;
   color: var(--cv-text-secondary);
@@ -1971,6 +1993,27 @@ html[data-detail-overlay-open='true'] body {
   }
 }
 
+@media (min-width: 861px) {
+  html:has(.cv-page--article) .cv-article:has(.cv-about-portrait) {
+    max-inline-size: min(100%, 78rem);
+  }
+
+  html:has(.cv-page--article) .cv-article__body:has(.cv-about-portrait) {
+    grid-template-columns: minmax(30rem, 34rem) minmax(0, var(--cv-reading-width));
+    align-items: stretch;
+    column-gap: var(--spacing-3xl);
+  }
+
+  html:has(.cv-page--article) .cv-article__body:has(.cv-about-portrait) .cv-about-portrait {
+    grid-column: 1;
+    grid-row: 1 / span 6;
+  }
+
+  html:has(.cv-page--article) .cv-article__body:has(.cv-about-portrait) > :not(.cv-about-portrait) {
+    grid-column: 2;
+  }
+}
+
 @media (max-width: 860px) {
   html {
     scroll-snap-type: none;
@@ -2004,6 +2047,17 @@ html[data-detail-overlay-open='true'] body {
   .cv-article {
     gap: var(--spacing-2xl);
     max-inline-size: 100%;
+  }
+
+  .cv-about-portrait {
+    align-self: start;
+    inline-size: min(100%, 18rem);
+    min-block-size: auto;
+  }
+
+  .cv-about-portrait img {
+    block-size: 18rem;
+    min-block-size: 0;
   }
 
   .cv-publication-controls {
