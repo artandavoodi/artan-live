@@ -4,7 +4,7 @@
     <!-- =========================================================
       ARTAN.LIVE · MUSIC
       File: docs/music/index.html
-      Purpose: Secondary public hub page.
+      Purpose: JSON-driven public music archive page.
     ========================================================== -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,14 +29,32 @@
     <div data-fragment="navigation"></div>
 
     <main class="cv-main" id="main-content">
-      <section class="cv-page cv-page--hero" aria-labelledby="page-title">
-        <section class="cv-hero">
-          <div class="cv-hero__content">
-            <p class="cv-kicker">Artan.live</p>
-            <h1 class="cv-title" id="page-title">Music</h1>
-            <p class="cv-summary">Music releases, albums, and listening links will live here.</p>
-          </div>
-        </section>
+      <!-- =========================================================
+        ARTICLE SHELL
+      ========================================================== -->
+      <section class="cv-page cv-page--article" aria-labelledby="page-title">
+        <article class="cv-article" data-music-root>
+          <header class="cv-article__header">
+            <h1 class="cv-title" id="page-title" data-music-page-title>Music</h1>
+          </header>
+
+          <section class="cv-publication-controls" aria-label="Music controls">
+            <div class="cv-publication-tabs" aria-label="Music release category">
+              <button class="cv-publication-tabs__button" type="button" data-music-category="albums" aria-pressed="false">Albums</button>
+              <button class="cv-publication-tabs__button" type="button" data-music-category="singles" aria-pressed="true">Singles</button>
+              <button class="cv-publication-tabs__button" type="button" data-music-category="eps" aria-pressed="false">EPs</button>
+            </div>
+
+            <div class="cv-publication-filter" aria-label="Music status filter">
+              <span class="cv-publication-filter__icon" aria-hidden="true"></span>
+              <button class="cv-publication-filter__button" type="button" data-music-filter="all" aria-pressed="true">All</button>
+              <button class="cv-publication-filter__button" type="button" data-music-filter="released" aria-pressed="false">Released</button>
+              <button class="cv-publication-filter__button" type="button" data-music-filter="upcoming" aria-pressed="false">Upcoming</button>
+            </div>
+          </section>
+
+          <div class="cv-article__body" data-music-sections></div>
+        </article>
       </section>
 
       <div data-fragment="footer"></div>

@@ -89,7 +89,6 @@ function normalizeNavigationRouteTitle() {
     about: 'About',
     publications: 'Publications',
     music: 'Music',
-    writing: 'Writing',
     projects: 'Projects',
   };
 
@@ -216,6 +215,11 @@ async function initializeArtanLive() {
     if (document.querySelector('[data-publications-list]')) {
       const { renderPublications } = await import('../layers/site/publications.js');
       await renderPublications();
+    }
+
+    if (document.querySelector('[data-music-sections]')) {
+      const { renderMusic } = await import('../layers/site/music.js');
+      await renderMusic();
     }
 
     normalizeInnerPageFooter();

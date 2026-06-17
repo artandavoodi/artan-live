@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 512 512"
+   role="img"
+   aria-labelledby="title desc"
+   version="1.1"
+   id="svg2"
+   sodipodi:docname="gone-demo-icon.svg"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3">
+      <rect
+         style="fill:none;stroke-width:32.3924;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:19.1;paint-order:stroke fill markers"
+         id="rect3"
+         width="3960.7354"
+         height="4062.8235"
+         x="-10791.358"
+         y="-2180.54" />
+    </clipPath>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:menu-tooltip="Adds a small scale crossy graininess"
+       inkscape:menu="Overlays"
+       inkscape:label="Cross Noise B"
+       id="filter3"
+       x="0"
+       y="0"
+       width="1"
+       height="1">
+      <feComposite
+         in2="SourceGraphic"
+         result="result3"
+         operator="in"
+         in="result7"
+         id="feComposite3" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:menu-tooltip="Adds a small scale crossy graininess"
+       inkscape:menu="Overlays"
+       inkscape:label="Cross Noise B"
+       id="filter5"
+       x="0"
+       y="0"
+       width="1"
+       height="1">
+      <feColorMatrix
+         result="result6"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 1 "
+         id="feColorMatrix3" />
+      <feTurbulence
+         result="result0"
+         seed="0"
+         baseFrequency="1"
+         numOctaves="5"
+         type="fractalNoise"
+         id="feTurbulence3" />
+      <feConvolveMatrix
+         result="result5"
+         order="5 5"
+         kernelMatrix="-2 0 0 0 -2 0 -2 0 -2 0 0 0 -10 0 0 0 -2 0 -2 0 -2 0 0 0 -2 "
+         targetX="2"
+         targetY="2"
+         id="feConvolveMatrix3" />
+      <feColorMatrix
+         in="result5"
+         type="saturate"
+         values="0"
+         result="result4"
+         id="feColorMatrix4" />
+      <feComposite
+         in2="result6"
+         result="result2"
+         k3="0.5"
+         k2="0.5"
+         k1="0.43478261"
+         operator="arithmetic"
+         in="result4"
+         id="feComposite4"
+         k4="0" />
+      <feBlend
+         result="result7"
+         mode="normal"
+         in2="result4"
+         id="feBlend4" />
+      <feComposite
+         in2="SourceGraphic"
+         result="result3"
+         operator="in"
+         in="result7"
+         id="feComposite5" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:menu-tooltip="Adds a small scale crossy graininess"
+       inkscape:menu="Overlays"
+       inkscape:label="Cross Noise B"
+       id="filter3-6"
+       x="0"
+       y="0"
+       width="1"
+       height="1">
+      <feColorMatrix
+         result="result6"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 1 "
+         id="feColorMatrix1-5" />
+      <feTurbulence
+         result="result0"
+         seed="0"
+         baseFrequency="1"
+         numOctaves="5"
+         type="fractalNoise"
+         id="feTurbulence1-5" />
+      <feConvolveMatrix
+         result="result5"
+         order="5 5"
+         kernelMatrix="-2 0 0 0 -2 0 -2 0 -2 0 0 0 -10 0 0 0 -2 0 -2 0 -2 0 0 0 -2 "
+         targetX="2"
+         targetY="2"
+         id="feConvolveMatrix1-8" />
+      <feColorMatrix
+         in="result5"
+         type="saturate"
+         values="0"
+         result="result4"
+         id="feColorMatrix2-1" />
+      <feComposite
+         in2="result6"
+         result="result2"
+         k3="0.5"
+         k2="0.5"
+         k1="0.43478261"
+         operator="arithmetic"
+         in="result4"
+         id="feComposite2-4"
+         k4="0" />
+      <feBlend
+         result="result7"
+         mode="normal"
+         in2="result4"
+         id="feBlend2-7" />
+      <feComposite
+         in2="SourceGraphic"
+         result="result3"
+         operator="in"
+         in="result7"
+         id="feComposite3-1" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="namedview2"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="0.96912009"
+     inkscape:cx="250.74292"
+     inkscape:cy="269.31647"
+     inkscape:window-width="1472"
+     inkscape:window-height="923"
+     inkscape:window-x="0"
+     inkscape:window-y="33"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <title
+     id="title1">Gone Demo icon</title>
+  <desc
+     id="desc1">Minimal music release icon for Gone Demo by Artan.</desc>
+  <path
+     id="path1-1"
+     style="font-size:715.625px;font-family:'Heiti SC';-inkscape-font-specification:'Heiti SC';letter-spacing:372.722px;word-spacing:372.722px;fill:#917c6f;stroke-width:3810.47;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:19.1;paint-order:stroke fill markers;filter:url(#filter3)"
+     d="m 1088.3927,3522.7801 c -46.6357,0 -84.7085,14.639 -114.21813,43.9163 -29.5096,29.0206 -44.26418,63.4341 -44.26418,103.2411 0,39.807 14.75458,74.6061 44.26418,104.3972 29.50963,29.5341 69.03153,44.3013 118.56553,44.3013 43.2106,0 77.9897,-12.7125 104.3376,-38.1377 26.6113,-25.4251 40.3121,-60.9945 41.1026,-106.7083 H 1121.175 a 11.045397,10.766217 0 0 0 -11.0453,10.7662 v 10.4414 a 11.045397,10.766217 0 0 0 11.0453,10.7665 h 76.3031 c 1.525,0 2.5535,1.188 2.2583,2.6464 -4.8416,23.9209 -16.794,42.9421 -35.8571,57.0639 -19.761,14.3818 -43.2104,21.5728 -70.3487,21.5728 -36.6235,0 -67.1871,-11.6851 -91.6906,-35.0557 -24.24004,-23.6273 -36.36021,-51.2356 -36.36021,-82.8243 0,-20.2887 5.53327,-39.1649 16.59938,-56.6286 11.0661,-17.4637 26.34793,-31.3319 45.84533,-41.6046 19.4974,-10.2728 39.1266,-15.4093 58.8874,-15.4093 19.761,0 38.9947,4.1091 57.7017,12.3273 15.5906,6.6352 30.2662,15.7676 44.0268,27.3975 4.6084,3.8947 11.7192,3.9449 16.1319,-0.1607 l 10.1049,-9.4018 c 4.4126,-4.1055 4.3731,-10.7246 -0.2632,-14.5884 -18.1935,-15.1621 -36.7843,-26.6454 -55.7724,-34.4501 -21.6052,-9.2455 -45.0549,-13.8684 -70.3489,-13.8684 z m 307.4024,0 c -26.8749,0 -52.037,6.549 -75.4866,19.6468 -23.1861,13.0977 -41.4979,31.2034 -54.9353,54.3172 -13.4374,22.8569 -20.1562,47.7685 -20.1562,74.7345 0,26.7092 6.7188,51.4921 20.1562,74.349 13.4374,22.6001 32.0128,40.4492 55.7259,53.5469 23.7131,12.841 49.2702,19.2615 76.6721,19.2615 27.6652,0 53.2226,-6.549 76.6723,-19.6467 23.4496,-13.0978 41.8932,-31.0751 55.3306,-53.932 13.4374,-22.8569 20.1562,-47.6401 20.1562,-74.3492 0,-26.9661 -6.8506,-51.8776 -20.5515,-74.7346 -13.4374,-22.8569 -32.0125,-40.7057 -55.7255,-53.5466 -23.7131,-13.0978 -49.6661,-19.6468 -77.8582,-19.6468 z m 166.6945,6.9342 a 5.5226988,5.3831088 0 0 0 -5.5226,5.3831 v 273.9128 a 2.7613493,2.6915543 0 0 0 2.7614,2.6916 h 4.4042 a 27.613493,26.915543 0 0 0 27.6135,-26.9154 v -177.6412 l 181.5644,202.5297 a 6.0799844,5.9263084 0 0 0 4.5783,2.0269 h 1.9915 a 5.5226988,5.3831088 0 0 0 5.5226,-5.3831 v -249.6886 a 27.613493,26.915543 0 0 0 -27.6135,-26.9158 h -3.2187 a 2.7613493,2.6915543 0 0 0 -2.7611,2.6916 v 204.5616 l -182.7568,-205.2206 a 6.0534818,5.9004758 0 0 0 -4.5715,-2.0326 z m 257.5635,1.0754 a 27.613493,26.915543 0 0 0 -27.6132,26.9157 v 228.1563 a 27.613493,26.915543 0 0 0 27.6132,26.9154 h 113.1359 a 27.613493,26.915543 0 0 0 27.6135,-26.9154 v -3.1373 a 2.7613493,2.6915543 0 0 0 -2.7611,-2.6916 h -128.8517 a 2.7613493,2.6915543 0 0 1 -2.7612,-2.6915 v -75.5151 a 2.7613493,2.6915543 0 0 1 2.7612,-2.6915 h 102.9865 a 5.5226988,5.3831088 0 0 0 5.5226,-5.3832 v -21.5928 a 5.5226988,5.3831088 0 0 0 -5.5226,-5.3831 h -102.9865 a 2.7613493,2.6915543 0 0 1 -2.7612,-2.6915 v -97.8583 a 2.7613493,2.6915543 0 0 1 2.7612,-2.6915 h 127.6659 a 2.7613493,2.6915543 0 0 0 2.7614,-2.6916 v -3.1373 a 27.613493,26.915543 0 0 0 -27.6135,-26.9157 z m -423.0722,24.3497 c 32.4078,0 60.0731,11.1717 82.9958,33.5149 23.1861,22.3433 34.7791,49.9515 34.7791,82.8243 0,32.8729 -11.4615,60.2241 -34.3841,82.0537 -22.6592,21.8297 -50.456,32.7443 -83.3908,32.7443 -31.881,0 -59.283,-11.1715 -82.2056,-33.5148 -22.9227,-22.3433 -34.3839,-49.5661 -34.3839,-81.6685 0,-32.3592 11.0662,-59.7105 33.1984,-82.0537 22.3957,-22.6 50.1927,-33.9002 83.3911,-33.9002 z"
+     transform="matrix(0.32251968,0,0,0.32251968,-210.15592,-927.87558)" />
+</svg>

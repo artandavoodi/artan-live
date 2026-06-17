@@ -283,9 +283,6 @@ html {
 
 .cv-publication-item__cover-button[aria-expanded='true'] .cv-publication-item__cover-symbol {
   opacity: 1;
-}
-
-.cv-publication-item__cover-button[aria-expanded='true'] .cv-publication-item__cover-symbol {
   animation: cv-publication-symbol-spin 18s linear infinite;
 }
 
@@ -299,9 +296,134 @@ html {
   }
 }
 
+
 .cv-publication-item__cover-button:hover .cv-publication-item__cover-image,
 .cv-publication-item__cover-button:focus-visible .cv-publication-item__cover-image {
   box-shadow: 0 1.4rem 3rem rgb(0 0 0 / 20%);
+}
+
+/* =========================================================
+  MUSIC RELEASE SHOWCASE
+========================================================= */
+
+[data-page='music'] .cv-publication-item {
+  grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
+  align-items: start;
+}
+
+[data-page='music'] .cv-publication-item__cover-image {
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1.2rem 3.2rem rgb(0 0 0 / 18%);
+}
+
+[data-page='music'] .cv-publication-item__cover-button {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+[data-page='music'] .cv-publication-item__cover-symbol {
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  max-block-size: none;
+  margin: auto;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  transform-origin: center;
+}
+
+[data-page='music'] .cv-publication-item__cover-button[aria-expanded='true'] .cv-publication-item__cover-symbol {
+  animation: cv-music-symbol-breathe 7.5s var(--cv-motion-ease) infinite;
+}
+
+@keyframes cv-music-symbol-breathe {
+  0%,
+  100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+
+  48%,
+  52% {
+    opacity: 1;
+    transform: scale(1.018);
+  }
+}
+
+[data-page='music'] .cv-publication-item__cover-button:hover .cv-publication-item__cover-image,
+[data-page='music'] .cv-publication-item__cover-button:focus-visible .cv-publication-item__cover-image {
+  box-shadow: 0 1.55rem 3.8rem rgb(0 0 0 / 22%);
+}
+
+[data-page='music'] .cv-publication-item__content {
+  gap: var(--spacing-md);
+}
+
+[data-page='music'] .cv-publication-item__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  justify-self: end;
+  gap: var(--spacing-md);
+  margin-block-start: var(--spacing-sm);
+}
+
+[data-page='music'] .cv-publication-item__link {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 1.7rem;
+  block-size: 1.7rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--cv-text-primary);
+  text-decoration: none;
+  opacity: 0.68;
+  transition: opacity var(--cv-motion-duration) var(--cv-motion-ease);
+}
+
+[data-page='music'] .cv-publication-item__link::before {
+  content: '';
+  display: block;
+  inline-size: 1.05rem;
+  block-size: 1.05rem;
+  background-color: currentColor;
+  mask-image: var(--music-link-icon);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-image: var(--music-link-icon);
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+
+[data-page='music'] .cv-publication-item__link:hover,
+[data-page='music'] .cv-publication-item__link:focus-visible {
+  opacity: 1;
+}
+
+[data-page='music'] .cv-publication-item__link-label {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+[data-page='music'] .cv-publication-item__link[data-platform='appleMusic'] {
+  --music-link-icon: url('/registry/icons/public/assets/layers/website/social/platforms/apple-music.svg');
+}
+
+[data-page='music'] .cv-publication-item__link[data-platform='spotify'] {
+  --music-link-icon: url('/registry/icons/public/assets/layers/website/social/platforms/spotify.svg');
+}
+
+html[data-theme='dark'] [data-page='music'] .cv-publication-item__link {
+  color: var(--cv-text-primary);
 }
 
 .cv-publication-item__content {
@@ -483,6 +605,16 @@ html {
 .cv-publication-item__title-button:hover,
 .cv-publication-item__title-button:focus-visible {
   opacity: 0.72;
+}
+
+[data-page='music'] .cv-publication-item__title-button {
+  cursor: default;
+  pointer-events: none;
+}
+
+[data-page='music'] .cv-publication-item__title-button:hover,
+[data-page='music'] .cv-publication-item__title-button:focus-visible {
+  opacity: 1;
 }
 
 .cv-publication-preview-action {
@@ -2078,6 +2210,26 @@ html[data-detail-overlay-open='true'] body {
 
   .cv-publication-item__cover {
     inline-size: min(12rem, 64vw);
+  }
+
+  [data-page='music'] .cv-publication-item {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    gap: var(--spacing-xl);
+  }
+
+  [data-page='music'] .cv-publication-item__cover {
+    inline-size: min(100%, 22rem);
+    justify-self: start;
+  }
+
+  [data-page='music'] .cv-publication-item__content {
+    inline-size: 100%;
+  }
+
+  [data-page='music'] .cv-publication-item__links {
+    justify-content: flex-start;
+    justify-self: start;
   }
 
   .cv-publication-item__content {
