@@ -290,7 +290,8 @@ html {
 .cv-publication-item[data-direction='rtl'] .cv-publication-item__content,
 .cv-publication-item[data-direction='rtl'] .cv-publication-item__title,
 .cv-publication-item[data-direction='rtl'] .cv-publication-item__subtitle,
-.cv-publication-item[data-direction='rtl'] .cv-publication-item__text {
+.cv-publication-item[data-direction='rtl'] .cv-publication-item__text,
+.cv-publication-item[data-direction='rtl'] .cv-publication-item__details {
   direction: rtl;
   text-align: right;
   unicode-bidi: plaintext;
@@ -376,29 +377,63 @@ html {
 
 .cv-publication-item__details {
   display: grid;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
   margin-block-start: var(--spacing-md);
   padding-block-start: 0;
   border-block-start: 0;
 }
 
+.cv-publication-item__meta {
+  display: none;
+}
 
-.cv-publication-item__meta,
+
 .cv-publication-item__text {
+  display: block;
+  width: 100%;
+  border: 0;
   margin: 0;
+  padding: 0;
+  background: transparent;
   color: var(--cv-text-secondary);
   font-size: var(--cv-font-body);
   font-weight: var(--font-weight-regular);
   line-height: var(--cv-line-body);
+  text-align: inherit;
+  cursor: pointer;
 }
 
-.cv-publication-item__meta {
+.cv-publication-item__text:hover,
+.cv-publication-item__text:focus-visible,
+.cv-publication-item__text[aria-expanded='true'] {
+  color: var(--cv-text-primary);
+}
+
+.cv-publication-item__detail {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.42fr) minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--spacing-lg);
+}
+
+.cv-publication-item__detail-label {
+  color: var(--cv-text-secondary);
   font-size: var(--cv-font-caption);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
   text-transform: uppercase;
+  opacity: 0.72;
 }
+
+.cv-publication-item__detail-value {
+  color: var(--cv-text-primary);
+  font-size: var(--cv-font-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--cv-line-body);
+}
+
+
 
 .cv-publication-item__title {
   margin: 0;
@@ -1990,7 +2025,12 @@ html[data-detail-overlay-open='true'] body {
 
   .cv-publication-item__details {
     margin-block-start: var(--spacing-sm);
-    padding-block-start: var(--spacing-sm);
+    padding-block-start: 0;
+  }
+
+  .cv-publication-item__detail {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
   }
 
   .cv-page--details {

@@ -141,6 +141,45 @@ function createLink(href, label) {
   return link;
 }
 
+function renderPublicationLinks(links = {}) {
+  const list = createElement('div', 'cv-publication-links');
+  const appleBooks = links.appleBooks || '';
+  const amazon = links.amazon || '';
+
+  if (appleBooks) {
+    list.append(createLink(appleBooks, 'Apple Books'));
+  }
+
+  if (amazon) {
+    list.append(createLink(amazon, 'Amazon'));
+  }
+
+  (links.additional || []).forEach((item) => {
+    if (item?.href && item?.label) {
+      list.append(createLink(item.href, item.label));
+    }
+  });
+
+  if (!list.children.length) {
+    list.append(createElement('span', 'cv-publication-link cv-publication-link--pending', 'Links pending'));
+  }
+
+  return list;
+}
+
+function createDetail(label, value) {
+  if (!value) {
+    return null;
+  }
+
+  const detail = createElement('p', 'cv-publication-item__detail');
+  detail.append(
+    createElement('span', 'cv-publication-item__detail-label', label),
+    createElement('span', 'cv-publication-item__detail-value', value),
+  );
+  return detail;
+}
+
 function getCoverSource(book) {
   if (typeof book.cover === 'string') {
     return book.cover;
@@ -185,32 +224,6 @@ function setTextDirection(element, direction) {
   element.dataset.direction = value;
 }
 
-function renderPublicationLinks(links = {}) {
-  const list = createElement('div', 'cv-publication-links');
-  const appleBooks = links.appleBooks || '';
-  const amazon = links.amazon || '';
-
-  if (appleBooks) {
-    list.append(createLink(appleBooks, 'Apple Books'));
-  }
-
-  if (amazon) {
-    list.append(createLink(amazon, 'Amazon'));
-  }
-
-  (links.additional || []).forEach((item) => {
-    if (item?.href && item?.label) {
-      list.append(createLink(item.href, item.label));
-    }
-  });
-
-  if (!list.children.length) {
-    list.append(createElement('span', 'cv-publication-link cv-publication-link--pending', 'Links pending'));
-  }
-
-  return list;
-}
-
 function renderPublicationItem(book) {
   const direction = book.direction === 'rtl' ? 'rtl' : 'ltr';
   const item = createElement('article', 'cv-publication-item');
@@ -246,8 +259,6 @@ function renderPublicationItem(book) {
   const content = createElement('div', 'cv-publication-item__content');
   setTextDirection(content, direction);
 
-  const metaText = [book.type].filter(Boolean).join(' · ');
-  const meta = createElement('p', 'cv-publication-item__meta', metaText);
   const title = createElement('h2', 'cv-publication-item__title');
   const titleButton = document.createElement('button');
   titleButton.className = 'cv-publication-item__title-button';
@@ -257,22 +268,25 @@ function renderPublicationItem(book) {
   title.append(titleButton);
   const subtitle = createElement('p', 'cv-publication-item__subtitle', book.subtitle);
   const author = createElement('p', 'cv-publication-item__author', book.author);
-  const text = createElement('p', 'cv-publication-item__text', book.description);
+  const text = document.createElement('button');
+  text.className = 'cv-publication-item__text';
+  text.type = 'button';
+  text.textContent = book.description || '';
+  text.setAttribute('aria-expanded', 'false');
+  text.setAttribute('aria-label', `Open ${book.title} publication details`);
   const details = createElement('div', 'cv-publication-item__details');
   const preview = book.preview || {};
   const previewToggles = [];
 
   details.hidden = true;
-  details.append(
-    createElement('p', 'cv-publication-item__detail', book.publisher ? `Publisher: ${book.publisher}` : ''),
-    createElement('p', 'cv-publication-item__detail', book.publicationDate ? `Publication date: ${formatDate(book.publicationDate)}` : ''),
-    createElement('p', 'cv-publication-item__detail', book.series?.name ? `Series: ${book.series.name} · ${book.series.number}` : ''),
-    createElement('p', 'cv-publication-item__detail', book.genre ? `Genre: ${book.genre}` : ''),
-  );
-
-  details.querySelectorAll('.cv-publication-item__detail').forEach((detail) => {
-    if (!detail.textContent) {
-      detail.remove();
+  [
+    createDetail('Publisher', book.publisher),
+    createDetail('Publication date', book.publicationDate ? formatDate(book.publicationDate) : ''),
+    createDetail('Series', book.series?.name ? `${book.series.name} · ${book.series.number}` : ''),
+    createDetail('Genre', book.genre),
+  ].forEach((detail) => {
+    if (detail) {
+      details.append(detail);
     }
   });
 
@@ -306,14 +320,19 @@ function renderPublicationItem(book) {
     button.addEventListener('click', togglePreview);
   });
 
-  coverButton.addEventListener('click', () => {
+  function toggleDetails() {
     const isOpen = coverButton.getAttribute('aria-expanded') === 'true';
-    coverButton.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-    item.dataset.expanded = isOpen ? 'false' : 'true';
+    const nextValue = isOpen ? 'false' : 'true';
+    coverButton.setAttribute('aria-expanded', nextValue);
+    text.setAttribute('aria-expanded', nextValue);
+    item.dataset.expanded = nextValue;
     details.hidden = isOpen;
-  });
+  }
 
-  content.append(meta, title, subtitle, author, text, details, renderPublicationLinks(book.links));
+  coverButton.addEventListener('click', toggleDetails);
+  text.addEventListener('click', toggleDetails);
+
+  content.append(title, subtitle, author, text, details, renderPublicationLinks(book.links));
   item.append(cover, content);
 
   return item;
