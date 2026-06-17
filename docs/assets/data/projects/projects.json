@@ -39,22 +39,22 @@
       "links": {
         "website": {
           "label": "Website",
-          "href": "https://neuroartan.com",
-          "icon": "../assets/media/projects/current/neuroartan/links/website.svg"
+          "href": "https://neuroartan.com/",
+          "icon": "/registry/icons/public/assets/layers/website/navigation/actions/icos.svg"
         },
         "github": {
           "label": "GitHub",
           "href": "https://github.com/artandavoodi/neuroartan-website",
-          "icon": "../assets/media/projects/current/neuroartan/links/github.svg"
+          "icon": "/registry/icons/public/assets/system/social/github.svg"
         }
       },
       "media": {
         "cover": "../assets/media/projects/current/neuroartan/cover/neuroartan-cover.jpg",
-        "icon": "../assets/media/projects/current/neuroartan/icons/neuroartan-icon.svg"
+        "icon": "/registry/icons/public/assets/core/identity/brand/neuroartan/logo-plain.svg"
       },
       "cover": {
         "image": "../assets/media/projects/current/neuroartan/cover/neuroartan-cover.jpg",
-        "icon": "../assets/media/projects/current/neuroartan/icons/neuroartan-icon.svg"
+        "icon": "/registry/icons/public/assets/core/identity/brand/neuroartan/logo-plain.svg"
       },
       "symbol": "N"
     }
