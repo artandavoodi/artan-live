@@ -502,11 +502,8 @@ html {
   position: fixed;
   inset: 0;
   z-index: 1300;
-  display: grid;
-  align-items: start;
-  justify-items: center;
+  display: block;
   box-sizing: border-box;
-  padding-block: clamp(var(--spacing-5xl), 10vh, var(--spacing-7xl));
   padding-inline: var(--cv-page-padding-inline);
   overflow: auto;
   overscroll-behavior: contain;
@@ -532,6 +529,7 @@ html[data-publication-preview-open='true'] body {
   gap: var(--spacing-xl);
   inline-size: min(100%, 42rem);
   margin-inline: auto;
+  padding-block: clamp(10rem, 22vh, 18rem);
   color: var(--cv-text-secondary);
   font-size: var(--cv-font-body);
   font-weight: var(--font-weight-regular);
@@ -2117,12 +2115,14 @@ html[data-detail-overlay-open='true'] body {
   }
 
   .cv-publication-preview-overlay {
-    padding-block: var(--spacing-5xl);
+    padding-block: 0;
   }
 
   .cv-publication-preview-overlay__reader {
     inline-size: 100%;
+    padding-block: clamp(7rem, 18vh, 12rem);
   }
+
 
   .cv-detail-record__toggle {
     gap: var(--spacing-md);
