@@ -820,10 +820,15 @@ html[data-theme='dark'] [data-page='music'] .cv-publication-item__link {
   inset: 0;
   z-index: 1300;
   display: block;
+  inline-size: 100%;
+  block-size: 100dvh;
+  min-block-size: 100svh;
+  max-block-size: 100dvh;
   box-sizing: border-box;
   padding-inline: var(--cv-page-padding-inline);
   overflow: auto;
   overscroll-behavior: contain;
+  isolation: isolate;
   background: var(--cv-page-bg);
   color: var(--cv-text-primary);
 }
@@ -851,6 +856,23 @@ html[data-publication-preview-open='true'] body {
   font-size: var(--cv-font-body);
   font-weight: var(--font-weight-regular);
   line-height: var(--cv-line-body);
+}
+
+@media (max-width: 860px) {
+  .cv-publication-preview-overlay {
+    inset: 0;
+    block-size: 100dvh;
+    min-block-size: 100svh;
+    max-block-size: 100dvh;
+    padding-inline: var(--cv-page-padding-inline);
+    padding-block: env(safe-area-inset-top) env(safe-area-inset-bottom);
+    background: var(--cv-page-bg);
+  }
+
+  .cv-publication-preview-overlay__reader {
+    min-block-size: 100%;
+    padding-block: calc(var(--spacing-5xl) + var(--spacing-xl)) var(--spacing-5xl);
+  }
 }
 
 .cv-publication-preview-overlay__reader .cv-publication-preview__document {
@@ -2320,12 +2342,27 @@ html[data-detail-overlay-open='true'] body {
   }
 
   .cv-publication-controls {
-    align-items: flex-start;
-    gap: var(--spacing-md);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: var(--spacing-lg);
+    padding-block-end: var(--spacing-xl);
   }
 
+  .cv-publication-tabs,
   .cv-publication-filter {
+    inline-size: 100%;
+    max-inline-size: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     margin-inline-start: 0;
+    overflow: visible;
+  }
+
+  .cv-publication-tabs__button,
+  .cv-publication-filter__button {
+    flex: 0 1 auto;
+    white-space: nowrap;
   }
 
   .cv-publication-item {
@@ -2372,12 +2409,6 @@ html[data-detail-overlay-open='true'] body {
   [data-page='projects'] .cv-article--projects {
     max-inline-size: 100%;
     margin-inline: auto;
-  }
-
-  [data-page='projects'] .cv-publication-controls {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spacing-lg);
   }
 
   [data-page='music'] .cv-publication-item__links {
@@ -2526,12 +2557,19 @@ html[data-detail-overlay-open='true'] body {
   }
 
   .cv-publication-preview-overlay {
-    padding-block: 0;
+    inset: 0;
+    block-size: 100dvh;
+    min-block-size: 100svh;
+    max-block-size: 100dvh;
+    padding-inline: var(--cv-page-padding-inline);
+    padding-block: env(safe-area-inset-top) env(safe-area-inset-bottom);
+    background: var(--cv-page-bg);
   }
 
   .cv-publication-preview-overlay__reader {
     inline-size: 100%;
-    padding-block: clamp(7rem, 18vh, 12rem);
+    min-block-size: 100%;
+    padding-block: calc(var(--spacing-5xl) + var(--spacing-xl)) var(--spacing-5xl);
   }
 
 
