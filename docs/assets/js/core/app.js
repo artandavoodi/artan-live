@@ -222,6 +222,11 @@ async function initializeArtanLive() {
       await renderMusic();
     }
 
+    if (document.querySelector('[data-project-sections]')) {
+      const { renderProjects } = await import('../layers/site/projects.js');
+      await renderProjects();
+    }
+
     normalizeInnerPageFooter();
     document.documentElement.dataset.appReady = 'true';
     document.dispatchEvent(new CustomEvent('artan-live:ready'));

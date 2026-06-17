@@ -4,15 +4,15 @@
     <!-- =========================================================
       ARTAN.LIVE · PROJECTS
       File: docs/projects/index.html
-      Purpose: Secondary public hub page.
+      Purpose: Public project archive and current work showcase.
     ========================================================== -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Selected personal, creative, and product projects by Artan." />
+    <meta name="description" content="Selected current and previous projects by Artan, including Neuroartan, ICOS, cognitive systems, interface architecture, and AI-assisted product systems." />
     <meta name="theme-color" content="#f7f7f5" />
 
     <meta property="og:title" content="Artan · Projects" />
-    <meta property="og:description" content="Selected personal, creative, and product projects by Artan." />
+    <meta property="og:description" content="Selected current and previous projects by Artan, including Neuroartan and AI-assisted product systems." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://artan.live/projects/" />
 
@@ -29,17 +29,31 @@
     <div data-fragment="navigation"></div>
 
     <main class="cv-main" id="main-content">
-      <section class="cv-page cv-page--hero" aria-labelledby="page-title">
-        <section class="cv-hero">
-          <div class="cv-hero__content">
-            <p class="cv-kicker">Artan.live</p>
-            <h1 class="cv-title" id="page-title">Projects</h1>
-            <p class="cv-summary">Selected projects and case studies will live here.</p>
-          </div>
-        </section>
-      </section>
+      <section class="cv-page cv-page--article" aria-labelledby="page-title">
+        <article class="cv-article cv-article--projects" data-projects-root>
+          <header class="cv-article__header">
+            <h1 class="cv-title" id="page-title" data-projects-page-title>Projects</h1>
+          </header>
 
-      <div data-fragment="footer"></div>
+          <section class="cv-publication-controls" aria-label="Project controls">
+            <div class="cv-publication-tabs" aria-label="Project category">
+              <button class="cv-publication-tabs__button" type="button" data-project-category="current" aria-pressed="true">Current</button>
+              <button class="cv-publication-tabs__button" type="button" data-project-category="previous" aria-pressed="false">Previous</button>
+              <button class="cv-publication-tabs__button" type="button" data-project-category="archive" aria-pressed="false">Archive</button>
+            </div>
+
+            <div class="cv-publication-filter" aria-label="Project status filter">
+              <button class="cv-publication-filter__button" type="button" data-project-filter="all" aria-pressed="true">All</button>
+              <button class="cv-publication-filter__button" type="button" data-project-filter="active" aria-pressed="false">Active</button>
+              <button class="cv-publication-filter__button" type="button" data-project-filter="completed" aria-pressed="false">Completed</button>
+            </div>
+          </section>
+
+          <div class="cv-article__body" data-project-sections></div>
+        </article>
+
+        <div data-fragment="footer"></div>
+      </section>
     </main>
   </body>
 </html>

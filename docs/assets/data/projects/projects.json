@@ -1,0 +1,62 @@
+{
+  "page": {
+    "title": "Projects"
+  },
+  "items": [
+    {
+      "id": "neuroartan",
+      "order": 1,
+      "title": "Neuroartan",
+      "subtitle": "Current project",
+      "role": "Founder · AI Product & Interface Systems Lead",
+      "category": "current",
+      "status": "Active",
+      "year": "2026",
+      "type": "Company and product ecosystem",
+      "focus": "Cognitive systems, ICOS, interface architecture, governed intelligence, and AI-assisted product infrastructure",
+      "description": "Founder-led cognitive systems company and product ecosystem centered on ICOS, governed intelligence, profile-based continuity, and AI-assisted product/interface systems.",
+      "seo": {
+        "name": "Neuroartan",
+        "headline": "Founder-led cognitive systems company and AI-assisted product ecosystem",
+        "keywords": [
+          "Neuroartan",
+          "ICOS",
+          "cognitive systems",
+          "interface architecture",
+          "AI-assisted product systems",
+          "governed intelligence",
+          "profile-based continuity"
+        ]
+      },
+      "details": {
+        "Role": "Founder",
+        "Status": "Active",
+        "Type": "Company and product ecosystem",
+        "Focus": "Cognitive systems · ICOS · Interface architecture",
+        "System": "AI-assisted product building, governed documentation, public infrastructure, and model-oriented user experience",
+        "Public Direction": "Minimal, professional, Apple-like public ecosystem for Neuroartan and ICOS"
+      },
+      "links": {
+        "website": {
+          "label": "Website",
+          "href": "https://neuroartan.com",
+          "icon": "../assets/media/projects/current/neuroartan/links/website.svg"
+        },
+        "github": {
+          "label": "GitHub",
+          "href": "https://github.com/artandavoodi/neuroartan-website",
+          "icon": "../assets/media/projects/current/neuroartan/links/github.svg"
+        }
+      },
+      "media": {
+        "cover": "../assets/media/projects/current/neuroartan/cover/neuroartan-cover.jpg",
+        "icon": "../assets/media/projects/current/neuroartan/icons/neuroartan-icon.svg"
+      },
+      "cover": {
+        "image": "../assets/media/projects/current/neuroartan/cover/neuroartan-cover.jpg",
+        "icon": "../assets/media/projects/current/neuroartan/icons/neuroartan-icon.svg"
+      },
+      "symbol": "N"
+    }
+  ]
+}

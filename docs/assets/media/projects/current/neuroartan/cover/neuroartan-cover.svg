@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 3000" role="img" aria-labelledby="title desc">
+  <title id="title">Neuroartan project cover</title>
+  <desc id="desc">Minimal Neuroartan project cover for Artan.live.</desc>
+  <rect width="3000" height="3000" rx="420" fill="#f7f7f5"/>
+  <circle cx="1500" cy="1320" r="520" fill="none" stroke="#111111" stroke-width="42" opacity="0.92"/>
+  <circle cx="1500" cy="1320" r="230" fill="#111111" opacity="0.92"/>
+  <text x="1500" y="2130" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="210" font-weight="300" letter-spacing="-10" fill="#111111">Neuroartan</text>
+  <text x="1500" y="2315" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="72" font-weight="400" letter-spacing="8" fill="#111111" opacity="0.62">COGNITIVE SYSTEMS · ICOS · INTERFACE ARCHITECTURE</text>
+</svg>

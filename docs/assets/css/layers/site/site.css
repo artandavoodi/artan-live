@@ -422,8 +422,135 @@ html {
   --music-link-icon: url('/registry/icons/public/assets/layers/website/social/platforms/spotify.svg');
 }
 
+
 html[data-theme='dark'] [data-page='music'] .cv-publication-item__link {
   color: var(--cv-text-primary);
+}
+
+/* =========================================================
+  PROJECT SHOWCASE
+========================================================= */
+
+[data-page='projects'] .cv-article--projects {
+  inline-size: 100%;
+  max-inline-size: var(--cv-reading-width);
+  margin-inline: auto;
+}
+
+[data-page='projects'] .cv-publication-controls,
+[data-page='projects'] .cv-article__body {
+  inline-size: 100%;
+}
+
+[data-page='projects'] .cv-article__header {
+  display: none;
+}
+
+[data-page='projects'] .cv-publication-filter::before {
+  content: '';
+  display: inline-block;
+  inline-size: 1rem;
+  block-size: 1rem;
+  background-color: var(--cv-text-secondary);
+  mask-image: url('/registry/icons/public/assets/core/actions/filter/filter.svg');
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-image: url('/registry/icons/public/assets/core/actions/filter/filter.svg');
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+
+[data-page='projects'] .cv-publication-item {
+  grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
+  align-items: start;
+}
+
+[data-page='projects'] .cv-publication-item__cover-image {
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1.2rem 3.2rem rgb(0 0 0 / 18%);
+}
+
+[data-page='projects'] .cv-publication-item__cover-button {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+[data-page='projects'] .cv-publication-item__title-button {
+  cursor: default;
+  pointer-events: none;
+}
+
+[data-page='projects'] .cv-publication-item__title-button:hover,
+[data-page='projects'] .cv-publication-item__title-button:focus-visible {
+  opacity: 1;
+}
+
+[data-page='projects'] .cv-publication-item__cover-symbol {
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  max-block-size: none;
+  margin: auto;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  transform-origin: center;
+}
+
+[data-page='projects'] .cv-publication-item__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  justify-self: end;
+  gap: var(--spacing-lg);
+  margin-block-start: var(--spacing-sm);
+}
+
+[data-page='projects'] .cv-publication-item__link {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 1.8rem;
+  block-size: 1.8rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--cv-text-primary);
+  text-decoration: none;
+  opacity: 0.68;
+  transition: opacity var(--cv-motion-duration) var(--cv-motion-ease);
+}
+
+[data-page='projects'] .cv-publication-item__link::before {
+  content: '';
+  display: block;
+  inline-size: 1.35rem;
+  block-size: 1.35rem;
+  background-color: currentColor;
+  mask-image: var(--project-link-icon);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-image: var(--project-link-icon);
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+
+[data-page='projects'] .cv-publication-item__link:hover,
+[data-page='projects'] .cv-publication-item__link:focus-visible {
+  opacity: 1;
+}
+
+[data-page='projects'] .cv-publication-item__link-label {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 .cv-publication-item__content {
@@ -2227,7 +2354,38 @@ html[data-detail-overlay-open='true'] body {
     inline-size: 100%;
   }
 
+  [data-page='projects'] .cv-publication-item {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    gap: var(--spacing-xl);
+  }
+
+  [data-page='projects'] .cv-publication-item__cover {
+    inline-size: min(100%, 22rem);
+    justify-self: start;
+  }
+
+  [data-page='projects'] .cv-publication-item__content {
+    inline-size: 100%;
+  }
+
+  [data-page='projects'] .cv-article--projects {
+    max-inline-size: 100%;
+    margin-inline: auto;
+  }
+
+  [data-page='projects'] .cv-publication-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+  }
+
   [data-page='music'] .cv-publication-item__links {
+    justify-content: flex-start;
+    justify-self: start;
+  }
+
+  [data-page='projects'] .cv-publication-item__links {
     justify-content: flex-start;
     justify-self: start;
   }
@@ -2440,6 +2598,10 @@ html:has(.cv-page--article) .cv-article {
   padding-block-start: 0;
 }
 
+html:has(.cv-page--article) [data-page='projects'] .cv-article--projects {
+  margin-inline: auto;
+}
+
 html:has(.cv-page--article) .cv-article__header .cv-title {
   position: absolute;
   inline-size: 1px;
@@ -2460,6 +2622,10 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-title:only-child) {
 
   html:has(.cv-page--article) .cv-article {
     padding-block-start: 0;
+  }
+
+  html:has(.cv-page--article) [data-page='projects'] .cv-article--projects {
+    margin-inline: auto;
   }
 }
 

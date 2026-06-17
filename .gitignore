@@ -1,1 +1,33 @@
 .DS_Store
+
+# macOS / Finder duplicate copies
+**/* 2.*
+**/* copy.*
+**/* copy [0-9]*.*
+**/*-copy.*
+
+# macOS / Finder duplicate asset copies
+**/* [0-9].svg
+**/* [0-9].png
+**/* [0-9].jpg
+**/* [0-9].jpeg
+**/* [0-9].webp
+**/* [0-9].ico
+**/* copy.svg
+**/* copy.png
+**/* copy.jpg
+**/* copy.jpeg
+**/* copy.webp
+**/* copy.ico
+**/* copy [0-9].svg
+**/* copy [0-9].png
+**/* copy [0-9].jpg
+**/* copy [0-9].jpeg
+**/* copy [0-9].webp
+**/* copy [0-9].ico
+**/*-copy.svg
+**/*-copy.png
+**/*-copy.jpg
+**/*-copy.jpeg
+**/*-copy.webp
+**/*-copy.ico
