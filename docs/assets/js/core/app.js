@@ -83,6 +83,37 @@ function getCurrentMenuRoute() {
   return pathname.split('/').filter(Boolean)[0] || 'home';
 }
 
+function normalizeNavigationRouteTitle() {
+  const routeTitle = document.querySelector('[data-cv-route-title]');
+  const routeLabels = {
+    about: 'About',
+    publications: 'Publications',
+    music: 'Music',
+    writing: 'Writing',
+    projects: 'Projects',
+  };
+
+  if (!(routeTitle instanceof HTMLAnchorElement)) {
+    return;
+  }
+
+  const currentRoute = getCurrentMenuRoute();
+  const label = routeLabels[currentRoute];
+
+  if (!label || isHomePage()) {
+    routeTitle.hidden = true;
+    routeTitle.setAttribute('aria-hidden', 'true');
+    routeTitle.textContent = '';
+    routeTitle.href = '/';
+    return;
+  }
+
+  routeTitle.textContent = label;
+  routeTitle.href = `/${currentRoute}/`;
+  routeTitle.hidden = false;
+  routeTitle.setAttribute('aria-hidden', 'false');
+}
+
 function normalizeSiteMenuRoutes() {
   const currentRoute = getCurrentMenuRoute();
   const menuLinks = document.querySelectorAll('[data-cv-menu-route]');
@@ -148,6 +179,21 @@ function bindPrimaryNavigationVisibility() {
   observer.observe(hero);
 }
 
+function bindRouteTitleVisibility() {
+  const routeTitle = document.querySelector('[data-cv-route-title]');
+
+  if (!(routeTitle instanceof HTMLElement) || isHomePage()) {
+    return;
+  }
+
+  const updateVisibility = () => {
+    routeTitle.dataset.visible = window.scrollY <= 8 ? 'true' : 'false';
+  };
+
+  updateVisibility();
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+}
+
 async function initializeArtanLive() {
   document.documentElement.dataset.appReady = 'false';
   applyStoredThemeBeforeRuntime();
@@ -157,9 +203,11 @@ async function initializeArtanLive() {
     await mountFragments();
     await import('./02-systems/theme.js');
     normalizeInnerPageNavigation();
+    normalizeNavigationRouteTitle();
     normalizeSiteMenuRoutes();
     bindSiteMenu();
     bindPrimaryNavigationVisibility();
+    bindRouteTitleVisibility();
 
     if (document.querySelector('[data-cv-section="hero"]')) {
       await renderCv();

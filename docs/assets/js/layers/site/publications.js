@@ -14,14 +14,175 @@ function createElement(tagName, className, textContent) {
   return element;
 }
 
+const STORE_ICON_PATHS = {
+  'Apple Books': '/registry/icons/public/assets/core/commerce/books/apple-books/apple-books.svg',
+  Amazon: '/registry/icons/public/assets/core/commerce/marketplaces/amazon/amazon.svg',
+};
+const PREVIEW_ICON_PATH = '/registry/icons/public/assets/core/actions/preview/preview.svg';
+
+function createStoreIcon(label) {
+  if (label === 'Apple Books') {
+    const icon = document.createElement('img');
+    icon.className = 'cv-publication-link__image';
+    icon.src = STORE_ICON_PATHS[label] || '';
+    icon.alt = '';
+    icon.loading = 'lazy';
+    icon.setAttribute('aria-hidden', 'true');
+    return icon;
+  }
+
+  const icon = document.createElement('span');
+  icon.className = 'cv-publication-link__icon';
+  icon.style.setProperty('--cv-publication-link-icon', `url("${STORE_ICON_PATHS[label] || ''}")`);
+  icon.setAttribute('aria-hidden', 'true');
+  return icon;
+}
+
+function createPreviewIcon() {
+  const icon = document.createElement('span');
+  icon.className = 'cv-publication-preview-toggle__icon';
+  icon.style.setProperty('--cv-publication-preview-icon', `url("${PREVIEW_ICON_PATH}")`);
+  icon.setAttribute('aria-hidden', 'true');
+  return icon;
+}
+
+function createPreviewToggle(label = 'Preview') {
+  const button = document.createElement('button');
+  button.className = 'cv-publication-preview-toggle';
+  button.type = 'button';
+  button.setAttribute('aria-expanded', 'false');
+  button.append(createPreviewIcon());
+  button.append(createElement('span', 'cv-publication-preview-toggle__label', label));
+  return button;
+}
+
+function getPreviewOverlayElements() {
+  const overlay = document.querySelector('[data-publication-preview-overlay]');
+  const reader = document.querySelector('[data-publication-preview-reader]');
+  const closeButton = document.querySelector('[data-publication-preview-close]');
+
+  if (!(overlay instanceof HTMLElement) || !(reader instanceof HTMLElement) || !(closeButton instanceof HTMLButtonElement)) {
+    return null;
+  }
+
+  return { overlay, reader, closeButton };
+}
+
+function closePreviewOverlay() {
+  const elements = getPreviewOverlayElements();
+
+  if (!elements) {
+    return;
+  }
+
+  elements.overlay.hidden = true;
+  elements.overlay.setAttribute('aria-hidden', 'true');
+  document.documentElement.removeAttribute('data-publication-preview-open');
+}
+
+async function openPreviewOverlay(preview, direction) {
+  const elements = getPreviewOverlayElements();
+
+  if (!elements || !preview?.path) {
+    return;
+  }
+
+  setTextDirection(elements.reader, direction);
+  elements.reader.textContent = 'Loading preview…';
+  elements.overlay.hidden = false;
+  elements.overlay.setAttribute('aria-hidden', 'false');
+  document.documentElement.setAttribute('data-publication-preview-open', 'true');
+
+  try {
+    const response = await fetch(`${preview.path}?v=${Date.now()}`, { cache: 'no-store' });
+
+    if (!response.ok) {
+      throw new Error(`Unable to load preview from ${preview.path}`);
+    }
+
+    elements.reader.innerHTML = await response.text();
+  } catch (error) {
+    elements.reader.textContent = 'Preview is not available yet.';
+    console.error('[artan.live]', error);
+  }
+}
+
+function bindPreviewOverlay() {
+  const elements = getPreviewOverlayElements();
+
+  if (!elements || elements.overlay.dataset.bound === 'true') {
+    return;
+  }
+
+  elements.overlay.dataset.bound = 'true';
+  elements.closeButton.addEventListener('click', closePreviewOverlay);
+  elements.overlay.addEventListener('click', (event) => {
+    if (event.target === elements.overlay) {
+      closePreviewOverlay();
+    }
+  });
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closePreviewOverlay();
+    }
+  });
+}
+
 function createLink(href, label) {
   const link = document.createElement('a');
   link.className = 'cv-publication-link';
   link.href = href;
-  link.textContent = label;
   link.target = '_blank';
   link.rel = 'noreferrer';
+  link.dataset.store = label.toLowerCase().replace(/\s+/g, '-');
+  link.setAttribute('aria-label', label);
+  link.append(createStoreIcon(label));
+  link.append(createElement('span', 'cv-publication-link__label', label));
   return link;
+}
+
+function getCoverSource(book) {
+  if (typeof book.cover === 'string') {
+    return book.cover;
+  }
+
+  return book.cover?.image || book.cover?.svg || '';
+}
+
+function getSymbolSource(book) {
+  if (typeof book.icon === 'string') {
+    return book.icon;
+  }
+
+  return book.cover?.symbol || book.cover?.svg || '';
+}
+
+function formatDate(value) {
+  if (!value) {
+    return '';
+  }
+
+  const date = new Date(`${value}T00:00:00`);
+
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  return new Intl.DateTimeFormat('en', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
+}
+
+function setTextDirection(element, direction) {
+  if (!(element instanceof HTMLElement)) {
+    return;
+  }
+
+  const value = direction === 'rtl' ? 'rtl' : 'ltr';
+  element.dir = value;
+  element.dataset.direction = value;
 }
 
 function renderPublicationLinks(links = {}) {
@@ -51,26 +212,195 @@ function renderPublicationLinks(links = {}) {
 }
 
 function renderPublicationItem(book) {
+  const direction = book.direction === 'rtl' ? 'rtl' : 'ltr';
   const item = createElement('article', 'cv-publication-item');
-  const cover = createElement('figure', 'cv-publication-item__cover');
-  const image = document.createElement('img');
+  item.dataset.publicationId = book.id || '';
+  item.dataset.language = book.language || '';
+  setTextDirection(item, direction);
 
-  image.src = book.cover;
+  const cover = createElement('figure', 'cv-publication-item__cover');
+  const coverButton = createElement('button', 'cv-publication-item__cover-button');
+  const image = document.createElement('img');
+  const symbol = document.createElement('img');
+  const coverSource = getCoverSource(book);
+  const symbolSource = getSymbolSource(book);
+
+  coverButton.type = 'button';
+  coverButton.setAttribute('aria-expanded', 'false');
+  coverButton.setAttribute('aria-label', `Open ${book.title} publication details`);
+
+  image.className = 'cv-publication-item__cover-image';
+  image.src = coverSource;
   image.alt = `${book.title} book cover`;
   image.loading = 'lazy';
 
-  cover.append(image);
+  symbol.className = 'cv-publication-item__cover-symbol';
+  symbol.src = symbolSource;
+  symbol.alt = '';
+  symbol.loading = 'lazy';
+  symbol.setAttribute('aria-hidden', 'true');
+
+  coverButton.append(image, symbol);
+  cover.append(coverButton);
 
   const content = createElement('div', 'cv-publication-item__content');
-  const meta = createElement('p', 'cv-publication-item__meta', [book.type, book.status, book.language].filter(Boolean).join(' · '));
-  const title = createElement('h2', 'cv-publication-item__title', book.title);
+  setTextDirection(content, direction);
+
+  const metaText = [book.type].filter(Boolean).join(' · ');
+  const meta = createElement('p', 'cv-publication-item__meta', metaText);
+  const title = createElement('h2', 'cv-publication-item__title');
+  const titleButton = document.createElement('button');
+  titleButton.className = 'cv-publication-item__title-button';
+  titleButton.type = 'button';
+  titleButton.textContent = book.title;
+  titleButton.setAttribute('aria-expanded', 'false');
+  title.append(titleButton);
+  const subtitle = createElement('p', 'cv-publication-item__subtitle', book.subtitle);
   const author = createElement('p', 'cv-publication-item__author', book.author);
   const text = createElement('p', 'cv-publication-item__text', book.description);
+  const details = createElement('div', 'cv-publication-item__details');
+  const preview = book.preview || {};
+  const previewToggles = [];
 
-  content.append(meta, title, author, text, renderPublicationLinks(book.links));
+  details.hidden = true;
+  details.append(
+    createElement('p', 'cv-publication-item__detail', book.publisher ? `Publisher: ${book.publisher}` : ''),
+    createElement('p', 'cv-publication-item__detail', book.publicationDate ? `Publication date: ${formatDate(book.publicationDate)}` : ''),
+    createElement('p', 'cv-publication-item__detail', book.series?.name ? `Series: ${book.series.name} · ${book.series.number}` : ''),
+    createElement('p', 'cv-publication-item__detail', book.genre ? `Genre: ${book.genre}` : ''),
+  );
+
+  details.querySelectorAll('.cv-publication-item__detail').forEach((detail) => {
+    if (!detail.textContent) {
+      detail.remove();
+    }
+  });
+
+  if (preview.path) {
+    const previewAction = createElement('div', 'cv-publication-preview-action');
+    const previewButton = createPreviewToggle(preview.label || 'Preview');
+    previewToggles.push(titleButton, previewButton);
+    previewAction.append(previewButton);
+    details.append(previewAction);
+  } else {
+    titleButton.disabled = true;
+  }
+
+  async function togglePreview() {
+    if (!preview.path) {
+      return;
+    }
+
+    previewToggles.forEach((button) => {
+      button.setAttribute('aria-expanded', 'true');
+    });
+
+    await openPreviewOverlay(preview, direction);
+
+    previewToggles.forEach((button) => {
+      button.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  previewToggles.forEach((button) => {
+    button.addEventListener('click', togglePreview);
+  });
+
+  coverButton.addEventListener('click', () => {
+    const isOpen = coverButton.getAttribute('aria-expanded') === 'true';
+    coverButton.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+    item.dataset.expanded = isOpen ? 'false' : 'true';
+    details.hidden = isOpen;
+  });
+
+  content.append(meta, title, subtitle, author, text, details, renderPublicationLinks(book.links));
   item.append(cover, content);
 
   return item;
+}
+
+function applyPublicationFilter(filter) {
+  const nextFilter = filter || 'English';
+  const buttons = document.querySelectorAll('[data-publication-filter]');
+  const items = document.querySelectorAll('[data-publication-id]');
+
+  buttons.forEach((button) => {
+    if (!(button instanceof HTMLElement)) {
+      return;
+    }
+
+    const isActive = button.dataset.publicationFilter === nextFilter;
+    button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+
+  items.forEach((item) => {
+    if (!(item instanceof HTMLElement)) {
+      return;
+    }
+
+    const shouldShow = item.dataset.language === nextFilter;
+    item.hidden = !shouldShow;
+    item.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+  });
+}
+
+function bindPublicationFilters() {
+  const buttons = document.querySelectorAll('[data-publication-filter]');
+
+  buttons.forEach((button) => {
+    if (!(button instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    if (button.dataset.filterBound === 'true') {
+      return;
+    }
+
+    button.dataset.filterBound = 'true';
+    button.addEventListener('click', () => applyPublicationFilter(button.dataset.publicationFilter));
+  });
+}
+
+function applyPublicationCategory(category) {
+  const nextCategory = category || 'books';
+  const buttons = document.querySelectorAll('[data-publication-category]');
+  const panels = document.querySelectorAll('[data-publication-panel]');
+
+  buttons.forEach((button) => {
+    if (!(button instanceof HTMLElement)) {
+      return;
+    }
+
+    const isActive = button.dataset.publicationCategory === nextCategory;
+    button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+
+  panels.forEach((panel) => {
+    if (!(panel instanceof HTMLElement)) {
+      return;
+    }
+
+    const shouldShow = panel.dataset.publicationPanel === nextCategory;
+    panel.hidden = !shouldShow;
+    panel.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+  });
+}
+
+function bindPublicationCategories() {
+  const buttons = document.querySelectorAll('[data-publication-category]');
+
+  buttons.forEach((button) => {
+    if (!(button instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    if (button.dataset.categoryBound === 'true') {
+      return;
+    }
+
+    button.dataset.categoryBound = 'true';
+    button.addEventListener('click', () => applyPublicationCategory(button.dataset.publicationCategory));
+  });
 }
 
 export async function renderPublications() {
@@ -87,7 +417,14 @@ export async function renderPublications() {
   }
 
   const data = await response.json();
-  const items = Array.isArray(data.items) ? data.items : [];
+  const items = Array.isArray(data.items)
+    ? [...data.items].sort((first, second) => (first.order || 0) - (second.order || 0))
+    : [];
 
   target.replaceChildren(...items.map(renderPublicationItem));
+  bindPreviewOverlay();
+  bindPublicationCategories();
+  bindPublicationFilters();
+  applyPublicationCategory('books');
+  applyPublicationFilter('English');
 }

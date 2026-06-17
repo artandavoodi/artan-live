@@ -1,106 +1,261 @@
 {
   "items": [
     {
-      "id": "din",
-      "title": "دین",
-      "author": "Artan Davoodi",
-      "type": "Book",
-      "status": "Published",
-      "language": "Persian",
-      "cover": "/assets/media/publications/covers/din.svg",
-      "description": "A Persian-language philosophical work from Artan Davoodi's long-form writing archive",
-      "links": {
-        "appleBooks": "",
-        "amazon": "",
-        "additional": []
-      }
-    },
-    {
-      "id": "religion",
-      "title": "RELIGION",
-      "author": "Artan Davoodi",
-      "type": "Book",
-      "status": "Published",
-      "language": "English",
-      "cover": "/assets/media/publications/covers/religion.svg",
-      "description": "A long-form philosophical work from the earlier writing archive",
-      "links": {
-        "appleBooks": "",
-        "amazon": "",
-        "additional": []
-      }
-    },
-    {
-      "id": "sokoon",
-      "title": "سکون",
-      "author": "Artan Davoodi",
-      "type": "Book",
-      "status": "Published",
-      "language": "Persian",
-      "cover": "/assets/media/publications/covers/sokoon.svg",
-      "description": "A Persian-language work from the long-form philosophical writing archive",
-      "links": {
-        "appleBooks": "",
-        "amazon": "",
-        "additional": []
-      }
-    },
-    {
       "id": "you",
+      "order": 1,
       "title": "YOU",
+      "subtitle": "A Reflection of Becoming",
       "author": "Artan Davoodi",
+      "authorSortName": "Davoodi, Artan",
       "type": "Book",
       "status": "Published",
       "language": "English",
-      "cover": "/assets/media/publications/covers/you.svg",
-      "description": "A long-form work from the earlier philosophical writing archive",
+      "direction": "ltr",
+      "publisher": "Artan Press",
+      "publicationDate": "2025-11-03",
+      "series": {
+        "name": "I",
+        "number": 1
+      },
+      "printLength": "39 pages",
+      "genre": "Poetry",
+      "category": "Poetry / General",
+      "subcategory": "General, Lyrics",
+      "appleId": "6754849429",
+      "vendorId": "10083772681",
+      "cover": "/assets/media/publications/covers/you.jpeg",
+      "icon": "/assets/media/publications/icons/you.svg",
+      "preview": {
+        "type": "sample",
+        "format": "html",
+        "path": "/assets/media/publications/previews/you.html",
+        "label": "Preview"
+      },
+      "description": "YOU traces an inward movement through uncertainty, clarity, and integration. Written as a reflective passage across inner states, the book weaves lyrical prose with contemplative insight. Each section marks a transition — from fragmentation toward coherence, from questioning toward embodied presence. The narrative unfolds as a sustained meditation on identity, connection, and authorship. YOU deepens the emotional and introspective arc of the Artan series.",
       "links": {
-        "appleBooks": "",
+        "appleBooks": "http://books.apple.com/us/book/id6754849429",
         "amazon": "",
         "additional": []
       }
     },
     {
       "id": "love",
+      "order": 2,
       "title": "LOVE",
+      "subtitle": "A Dialogue of Becoming",
       "author": "Artan Davoodi",
+      "authorSortName": "Davoodi, Artan",
       "type": "Book",
       "status": "Published",
       "language": "English",
-      "cover": "/assets/media/publications/covers/love.svg",
-      "description": "A long-form work from the earlier philosophical writing archive",
+      "direction": "ltr",
+      "publisher": "Artan Press",
+      "publicationDate": "2025-11-03",
+      "series": {
+        "name": "I",
+        "number": 2
+      },
+      "printLength": "145 pages",
+      "genre": "Poetry",
+      "category": "Poetry / General",
+      "subcategory": "Inspiration & Personal Growth, Affirmations",
+      "appleId": "6754840664",
+      "vendorId": "10083772014",
+      "cover": "/assets/media/publications/covers/love.jpeg",
+      "icon": "/assets/media/publications/icons/love.svg",
+      "preview": {
+        "type": "sample",
+        "format": "html",
+        "path": "/assets/media/publications/previews/love.html",
+        "label": "Preview"
+      },
+      "description": "LOVE unfolds as a lyrical exploration of growth, memory, and self-integration. Structured as an intimate dialogue across time, the book traces the movement from vulnerability to clarity, from fragmentation to authorship. Each passage reflects the unfolding of consciousness through relationship — with self, with memory, with presence. The work carries emotional precision within a disciplined architecture, allowing poetry and structure to coexist in balance. LOVE expands the Artan series into the terrain of feeling, continuity, and self-realization.",
       "links": {
-        "appleBooks": "",
-        "amazon": "",
-        "additional": []
-      }
-    },
-    {
-      "id": "law",
-      "title": "LAW",
-      "author": "Artan Davoodi",
-      "type": "Book",
-      "status": "Published",
-      "language": "English",
-      "cover": "/assets/media/publications/covers/law.svg",
-      "description": "A long-form work from the earlier philosophical writing archive",
-      "links": {
-        "appleBooks": "",
+        "appleBooks": "http://books.apple.com/us/book/id6754840664",
         "amazon": "",
         "additional": []
       }
     },
     {
       "id": "monad",
+      "order": 3,
       "title": "MONAD",
+      "subtitle": "An Architecture of Awareness",
       "author": "Artan Davoodi",
+      "authorSortName": "Davoodi, Artan",
       "type": "Book",
       "status": "Published",
       "language": "English",
-      "cover": "/assets/media/publications/covers/monad.svg",
-      "description": "A philosophical work on unity, awareness, and the structure of experience",
+      "direction": "ltr",
+      "publisher": "Artan Press",
+      "publicationDate": "2025-10-12",
+      "series": {
+        "name": "I",
+        "number": 3
+      },
+      "printLength": "119 pages",
+      "genre": "Philosophy",
+      "category": "Philosophy / General",
+      "subcategory": "General",
+      "appleId": "6753911336",
+      "vendorId": "10083756185",
+      "cover": "/assets/media/publications/covers/monad.jpeg",
+      "icon": "/assets/media/publications/icons/monad.svg",
+      "preview": {
+        "type": "sample",
+        "format": "html",
+        "path": "/assets/media/publications/previews/monad.html",
+        "label": "Preview"
+      },
+      "description": "MONAD presents a structured exploration of awareness as the organizing principle of experience. Through disciplined reasoning and conceptual architecture, the book develops a coherent framework for identity, meaning, and perception from within a single point of view. Each chapter builds toward clarity — integrating philosophy, structure, and authorship into a unified perspective. MONAD stands as the foundational volume in the Artan philosophical series.",
       "links": {
-        "appleBooks": "",
+        "appleBooks": "http://books.apple.com/us/book/id6753911336",
+        "amazon": "https://www.amazon.com/MONAD-Architecture-Awareness-Artan-Davoodi/dp/B0GPN42VYG",
+        "additional": []
+      }
+    },
+    {
+      "id": "law",
+      "order": 4,
+      "title": "LAW",
+      "subtitle": "The Architecture of Order",
+      "author": "Artan Davoodi",
+      "authorSortName": "Davoodi, Artan",
+      "type": "Book",
+      "status": "Published",
+      "language": "English",
+      "direction": "ltr",
+      "publisher": "Artan Press",
+      "publicationDate": "2025-10-29",
+      "series": {
+        "name": "I",
+        "number": 4
+      },
+      "printLength": "27 pages",
+      "genre": "Spirituality",
+      "category": "Mind, Body, Spirit / General",
+      "subcategory": "Metaphysics, General",
+      "interestAge": "12 years and up",
+      "appleId": "6754649161",
+      "vendorId": "10083769289",
+      "cover": "/assets/media/publications/covers/law.jpeg",
+      "icon": "/assets/media/publications/icons/law.svg",
+      "preview": {
+        "type": "sample",
+        "format": "html",
+        "path": "/assets/media/publications/previews/law.html",
+        "label": "Preview"
+      },
+      "description": "LAW explores the structural principles through which experience takes form. The book examines order, symmetry, and balance as organizing dynamics within perception and creation. Through precise philosophical construction, it articulates how coherence emerges from within a unified perspective. Each section builds a model of structure — where pattern, causality, and authorship converge into intelligible design. LAW deepens the architectural foundation established in MONAD, expanding the framework into the domain of order and formation.",
+      "links": {
+        "appleBooks": "http://books.apple.com/us/book/id6754649161",
+        "amazon": "",
+        "additional": []
+      }
+    },
+    {
+      "id": "religion",
+      "order": 5,
+      "title": "RELIGION",
+      "subtitle": "Belief and the Architecture of Identity",
+      "author": "Artan Davoodi",
+      "authorSortName": "Davoodi, Artan",
+      "type": "Book",
+      "status": "Published",
+      "language": "English",
+      "direction": "ltr",
+      "publisher": "Artan Press",
+      "publicationDate": "2026-02-11",
+      "series": null,
+      "printLength": "38 pages",
+      "genre": "Philosophy",
+      "category": "Philosophy / General",
+      "subcategory": "General, Metaphysics",
+      "interestAge": "12 years",
+      "appleId": "6759045376",
+      "vendorId": "10083846726",
+      "cover": "/assets/media/publications/covers/religion.jpeg",
+      "icon": "/assets/media/publications/icons/religion.svg",
+      "preview": {
+        "type": "sample",
+        "format": "html",
+        "path": "/assets/media/publications/previews/religion.html",
+        "label": "Preview"
+      },
+      "description": "RELIGION examines belief as structure and identity as formation. Through philosophical analysis and historical reflection, the book investigates how systems of faith arise, how they organize authority, and how they shape individual and collective consciousness. It traces the mechanics of inherited narratives, institutional expansion, and psychological attachment to doctrine. Each chapter moves toward structural clarity — revealing how belief functions, how it sustains coherence, and how awareness reorganizes when certainty shifts. RELIGION stands as a rigorous inquiry into conviction, identity, and the evolution of consciousness within the Artan series.",
+      "links": {
+        "appleBooks": "http://books.apple.com/us/book/id6759045376",
+        "amazon": "",
+        "additional": []
+      }
+    },
+    {
+      "id": "din",
+      "order": 6,
+      "title": "دین",
+      "subtitle": "باور و معماری هویت",
+      "author": "Artan Davoodi",
+      "authorSortName": "Davoodi, Artan",
+      "type": "Book",
+      "status": "Published",
+      "language": "Persian",
+      "direction": "rtl",
+      "publisher": "Artan Press",
+      "publicationDate": "2026-02-21",
+      "series": null,
+      "printLength": "37 pages",
+      "genre": "Philosophy",
+      "category": "Philosophy / General",
+      "subcategory": "General, Metaphysics",
+      "interestAge": "12 years",
+      "appleId": "6759509728",
+      "vendorId": "10083855039",
+      "cover": "/assets/media/publications/covers/din.jpeg",
+      "icon": "/assets/media/publications/icons/din.svg",
+      "preview": {
+        "type": "sample",
+        "format": "html",
+        "path": "/assets/media/publications/previews/din.html",
+        "label": "Preview"
+      },
+      "description": "دین بررسی فلسفیِ ساختار باور و شکل‌گیری هویت است. این کتاب با نگاهی تحلیلی و تاریخی، چگونگی پدیدآمدن نظام‌های اعتقادی، تثبیت اقتدار، و تأثیر آن‌ها بر آگاهی فردی و جمعی را واکاوی می‌کند. هر فصل، لایه‌ای از سازوکار شکل‌گیری یقین، استمرار روایت‌های موروثی، و بازسازمان‌دهی هویت را روشن می‌سازد. اثر، خواننده را به درک دقیق‌تری از نسبت میان باور، قدرت، و خودآگاهی هدایت می‌کند و نشان می‌دهد چگونه ساختارهای اعتقادی در گذر زمان به نظام‌های پایدار معنا تبدیل می‌شوند. دین بخشی تحلیلی و ساختاری از مجموعه آثار آرتان است؛ پژوهشی در باب هویت، آگاهی و تحول اندیشه.",
+      "links": {
+        "appleBooks": "http://books.apple.com/us/book/id6759509728",
+        "amazon": "",
+        "additional": []
+      }
+    },
+    {
+      "id": "sokoon",
+      "order": 7,
+      "title": "سکون",
+      "subtitle": "حضور و آفرینش درون",
+      "author": "Artan Davoodi",
+      "authorSortName": "Davoodi, Artan",
+      "type": "Book",
+      "status": "Published",
+      "language": "Persian",
+      "direction": "rtl",
+      "publisher": "Artan Press",
+      "publicationDate": "2025-11-04",
+      "series": null,
+      "printLength": "65 pages",
+      "genre": "Philosophy",
+      "category": "Philosophy / General",
+      "subcategory": "General",
+      "appleId": "6754879858",
+      "vendorId": "10083773376",
+      "cover": "/assets/media/publications/covers/sokoon.jpeg",
+      "icon": "/assets/media/publications/icons/sokoon.svg",
+      "preview": {
+        "type": "sample",
+        "format": "html",
+        "path": "/assets/media/publications/previews/sokoon.html",
+        "label": "Preview"
+      },
+      "description": "سکون تأملی درونی بر حضور، آگاهی و خویش‌آفرینی است. این اثر حرکت از درون به سوی انسجام را روایت می‌کند؛ جایی که تجربه، احساس و اندیشه در یک مرکز واحد همگرا می‌شوند. هر بخش لحظه‌ای از مواجهه با خویش و بازشناسی سرچشمه‌ی معناست. در این کتاب، سکوت به وضوح تبدیل می‌شود و حضور به آفرینش. روایت، آرام و متمرکز، خواننده را به درک عمیق‌تری از زندگی و آگاهی شخصی هدایت می‌کند. سکون بخشی از مجموعه آثار آرتان است؛ مسیری تأملی برای کشف تجربه‌ی زیسته در چارچوبی منسجم و درونی.",
+      "links": {
+        "appleBooks": "http://books.apple.com/us/book/id6754879858",
         "amazon": "",
         "additional": []
       }

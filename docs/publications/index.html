@@ -33,14 +33,37 @@
         <article class="cv-article">
           <header class="cv-article__header">
             <h1 class="cv-title" id="page-title">Publications</h1>
-            <p class="cv-role">Books, manuscripts, and long-form authored works</p>
           </header>
 
-          <div class="cv-publication-list" data-publications-list aria-label="Selected publications"></div>
+          <section class="cv-publication-controls" aria-label="Publication controls">
+            <div class="cv-publication-tabs" aria-label="Publication category">
+              <button class="cv-publication-tabs__button" type="button" data-publication-category="books" aria-pressed="true">Books</button>
+              <button class="cv-publication-tabs__button" type="button" data-publication-category="essays" aria-pressed="false">Essays</button>
+            </div>
+
+            <div class="cv-publication-filter" aria-label="Publication language filter" data-publication-panel="books">
+              <span class="cv-publication-filter__icon" aria-hidden="true"></span>
+              <button class="cv-publication-filter__button" type="button" data-publication-filter="English" aria-pressed="true">English</button>
+              <button class="cv-publication-filter__button" type="button" data-publication-filter="Persian" aria-pressed="false">Persian</button>
+            </div>
+          </section>
+
+          <div class="cv-publication-list" data-publications-list data-publication-panel="books" aria-label="Selected publications"></div>
+
+          <section class="cv-publication-empty" data-publication-panel="essays" hidden>
+            <p>Essays will be added here as selected public works are prepared.</p>
+          </section>
         </article>
       </section>
 
       <div data-fragment="footer"></div>
     </main>
+    <section class="cv-publication-preview-overlay" data-publication-preview-overlay hidden aria-hidden="true" aria-label="Publication preview">
+      <button class="global-close-button" type="button" data-publication-preview-close aria-label="Close preview">
+        <span class="global-close-button__line global-close-button__line--first" aria-hidden="true"></span>
+        <span class="global-close-button__line global-close-button__line--second" aria-hidden="true"></span>
+      </button>
+      <article class="cv-publication-preview-overlay__reader" data-publication-preview-reader></article>
+    </section>
   </body>
 </html>
