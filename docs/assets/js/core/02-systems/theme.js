@@ -80,13 +80,11 @@ function bindThemeToggle() {
   });
 }
 
-function initThemeSystem() {
+export function initThemeSystem() {
   applyTheme(getStoredTheme());
   bindThemeToggle();
   getRoot().dataset.themeReady = 'true';
 }
-
-initThemeSystem();
 
 window.ArtanLiveTheme = Object.freeze({
   applyTheme,

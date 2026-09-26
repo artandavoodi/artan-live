@@ -6,6 +6,7 @@
 
 import { mountFragments } from './fragments.js';
 import { renderCv } from '../layers/site/cv.js';
+import { initThemeSystem } from './02-systems/theme.js';
 
 if ('scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual';
@@ -17,15 +18,6 @@ function resetInitialScrollPosition() {
   }
 
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-}
-
-function applyStoredThemeBeforeRuntime() {
-  const storedTheme = localStorage.getItem('artan-live-theme');
-  const theme = storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : 'light';
-
-  document.documentElement.setAttribute('data-theme', theme);
-  document.documentElement.setAttribute('data-theme-effective', theme);
-  document.documentElement.style.colorScheme = theme;
 }
 
 function setMenuOpen(isOpen) {
@@ -70,7 +62,7 @@ function bindSiteMenu() {
 }
 
 function isHomePage() {
-  return window.location.pathname === '/' || window.location.pathname.endsWith('/index.html');
+  return document.body.dataset.page === 'home';
 }
 
 function getCurrentMenuRoute() {
@@ -195,12 +187,11 @@ function bindRouteTitleVisibility() {
 
 async function initializeArtanLive() {
   document.documentElement.dataset.appReady = 'false';
-  applyStoredThemeBeforeRuntime();
-  resetInitialScrollPosition();
-
   try {
+    initThemeSystem();
+    resetInitialScrollPosition();
     await mountFragments();
-    await import('./02-systems/theme.js');
+    initThemeSystem();
     normalizeInnerPageNavigation();
     normalizeNavigationRouteTitle();
     normalizeSiteMenuRoutes();

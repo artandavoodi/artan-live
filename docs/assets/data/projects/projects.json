@@ -4,6 +4,30 @@
   },
   "items": [
     {
+      "id": "artan-records",
+      "order": 2,
+      "title": "Artan Records",
+      "subtitle": "Music and collaboration",
+      "role": "Founder",
+      "category": "current",
+      "status": "Active",
+      "type": "Independent record label",
+      "description": "An independent record label for music and collaboration, welcoming artists with a voice of their own.",
+      "details": { "Role": "Founder", "Focus": "Music, artists and collaboration" },
+      "links": {
+        "website": { "label": "Artan Records", "href": "https://artanrecords.com/", "icon": "/registry/icons/public/assets/core/platform/website/website.svg" }
+      },
+      "media": {
+        "cover": "https://artandavoodi.com/assets/media/music/albums/salim/cover/salim-cover.webp",
+        "icon": "/registry/icons/public/assets/core/platform/website/website.svg"
+      },
+      "cover": {
+        "image": "https://artandavoodi.com/assets/media/music/albums/salim/cover/salim-cover.webp",
+        "icon": "/registry/icons/public/assets/core/platform/website/website.svg"
+      },
+      "symbol": "AR"
+    },
+    {
       "id": "neuroartan",
       "order": 1,
       "title": "Neuroartan",

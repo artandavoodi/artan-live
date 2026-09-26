@@ -1,6 +1,20 @@
 {
   "items": [
     {
+      "label": "Artist website",
+      "type": "portfolio",
+      "href": "https://artandavoodi.com/",
+      "icon": "website",
+      "description": "Music and visual work by Artan Davoodi"
+    },
+    {
+      "label": "Artan Records",
+      "type": "project",
+      "href": "https://artanrecords.com/",
+      "icon": "website",
+      "description": "Independent record label for music and collaboration"
+    },
+    {
       "label": "Neuroartan",
       "type": "project",
       "href": "https://www.neuroartan.com",
