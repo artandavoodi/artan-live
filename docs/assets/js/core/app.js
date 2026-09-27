@@ -5,6 +5,7 @@
 ========================================================= */
 
 import { mountFragments } from './fragments.js';
+import { bindMenu } from './menu.js';
 import { renderCv } from '../layers/site/cv.js';
 import { initThemeSystem } from './02-systems/theme.js';
 
@@ -20,43 +21,17 @@ function resetInitialScrollPosition() {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 }
 
-function setMenuOpen(isOpen) {
-  const menu = document.querySelector('[data-cv-menu]');
-  const toggle = document.querySelector('[data-cv-menu-toggle]');
-
-  if (!(menu instanceof HTMLElement) || !(toggle instanceof HTMLButtonElement)) {
-    return;
-  }
-
-  menu.hidden = !isOpen;
-  menu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-  toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  document.documentElement.toggleAttribute('data-cv-menu-open', isOpen);
-}
-
 function bindSiteMenu() {
   const toggle = document.querySelector('[data-cv-menu-toggle]');
-  const close = document.querySelector('[data-cv-menu-close]');
-  const menu = document.querySelector('[data-cv-menu]');
-
-  if (!(toggle instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) {
-    return;
-  }
-
-  toggle.addEventListener('click', () => {
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    setMenuOpen(!isOpen);
-  });
-
-  close?.addEventListener('click', () => setMenuOpen(false));
-
-  menu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => setMenuOpen(false));
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      setMenuOpen(false);
+  if (!toggle) return;
+  bindMenu({
+    openLabel: toggle.getAttribute('aria-label'),
+    closeLabel: toggle.dataset.closeLabel,
+    selectors: {
+      toggle: '[data-cv-menu-toggle]',
+      menu: '[data-cv-menu]',
+      navigation: '.cv-navigation',
+      background: 'main, [data-cv-primary-navigation], [data-cv-route-title]'
     }
   });
 }

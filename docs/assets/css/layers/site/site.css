@@ -908,7 +908,7 @@ html[data-publication-preview-open='true'] body {
   gap: var(--spacing-sm);
   max-inline-size: min(50rem, 100%);
   transform: translateY(0);
-  transition: transform 560ms var(--cv-motion-ease);
+  transition: transform var(--site-menu-motion-duration) var(--site-navigation-ease);
 }
 
 html[data-hero-stage='expanded'] .cv-hero__content {
@@ -1182,8 +1182,8 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   opacity: 0;
   transform: translateY(-0.5rem);
   transition:
-    opacity 560ms var(--cv-motion-ease),
-    transform 560ms var(--cv-motion-ease),
+    opacity var(--site-menu-motion-duration) var(--site-navigation-ease),
+    transform var(--site-menu-motion-duration) var(--site-navigation-ease),
     border-color 560ms var(--cv-motion-ease);
   transition-delay: calc(var(--focus-row-index) * 90ms);
 }
@@ -1320,7 +1320,7 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
     transition: none;
   }
 
-  .cv-navigation:has(.cv-navigation__links--primary:not([hidden])[data-visible='false']) {
+  html[data-header-hidden]:not([data-menu-open]) .cv-navigation {
     transform: translate(-50%, 0);
   }
 
@@ -1359,8 +1359,8 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   opacity: 0;
   transform: translateY(-0.45rem);
   transition:
-    opacity 560ms var(--cv-motion-ease),
-    transform 560ms var(--cv-motion-ease);
+    opacity var(--site-menu-motion-duration) var(--site-navigation-ease),
+    transform var(--site-menu-motion-duration) var(--site-navigation-ease);
 }
 
 .cv-page--work[data-work-visible='true'] .cv-card--project {
@@ -1425,10 +1425,10 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   color: var(--cv-text-primary);
   text-decoration: none;
   opacity: 0;
-  transform: translateY(-0.35rem);
+  transform: translateY(calc(var(--site-menu-motion-offset) * -1));
   transition:
-    opacity 560ms var(--cv-motion-ease),
-    transform 560ms var(--cv-motion-ease);
+    opacity var(--site-menu-motion-duration) var(--site-navigation-ease),
+    transform var(--site-menu-motion-duration) var(--site-navigation-ease);
   transition-delay: calc(var(--project-scope-index) * 80ms);
 }
 
@@ -1651,31 +1651,31 @@ html[data-theme="dark"] .cv-brand-logo {
   pointer-events: none;
   transform: translate(-50%, 0);
   transition:
-    opacity 420ms var(--cv-motion-ease),
-    transform 420ms var(--cv-motion-ease);
+    opacity var(--site-header-motion-duration) var(--site-navigation-ease),
+    transform var(--site-header-motion-duration) var(--site-navigation-ease);
 }
 
-.cv-navigation:has(.cv-navigation__links--primary:not([hidden])[data-visible='false']),
-html[data-hero-stage='expanded'] .cv-navigation {
+html[data-header-hidden]:not([data-menu-open]) .cv-navigation,
+html[data-hero-stage='expanded']:not([data-menu-open]) .cv-navigation {
   opacity: 0;
   pointer-events: none;
-  transform: translate(-50%, -0.5rem);
+  transform: translate(-50%, calc(var(--site-header-motion-offset) * -1));
 }
 
-html[data-cv-menu-open] .cv-navigation {
+html[data-menu-open] .cv-navigation {
   z-index: 1200;
   opacity: 1;
   pointer-events: none;
   transform: translate(-50%, 0);
 }
 
-html[data-cv-menu-open] .cv-navigation__links--primary {
+html[data-menu-open] .cv-navigation__links--primary {
   opacity: 0;
   pointer-events: none;
-  transform: translateX(0.5rem);
+  transform: translateX(var(--site-header-motion-offset));
 }
 
-html[data-cv-menu-open] .cv-navigation__route-title {
+html[data-menu-open] .cv-navigation__route-title {
   opacity: 0;
   pointer-events: none;
 }
@@ -1726,8 +1726,8 @@ html[data-theme="dark"] .ui-logo-theme-aware {
   transform: translateX(0);
   transition:
     color var(--cv-motion-duration) var(--cv-motion-ease),
-    opacity 420ms var(--cv-motion-ease),
-    transform 420ms var(--cv-motion-ease);
+    opacity var(--site-header-motion-duration) var(--site-navigation-ease),
+    transform var(--site-header-motion-duration) var(--site-navigation-ease);
 }
 
 .cv-navigation__route-title:hover,
@@ -1743,7 +1743,7 @@ html[data-theme="dark"] .ui-logo-theme-aware {
 .cv-navigation__route-title[data-visible='false'] {
   opacity: 0;
   pointer-events: none;
-  transform: translateX(0.5rem);
+  transform: translateX(var(--site-header-motion-offset));
 }
 
 .cv-navigation__links a {
@@ -1766,14 +1766,14 @@ html[data-theme="dark"] .ui-logo-theme-aware {
   opacity: 1;
   transform: translateX(0);
   transition:
-    opacity 420ms var(--cv-motion-ease),
-    transform 420ms var(--cv-motion-ease);
+    opacity var(--site-header-motion-duration) var(--site-navigation-ease),
+    transform var(--site-header-motion-duration) var(--site-navigation-ease);
 }
 
 .cv-navigation__links--primary[data-visible='false'] {
   opacity: 0;
   pointer-events: none;
-  transform: translateX(0.5rem);
+  transform: translateX(var(--site-header-motion-offset));
 }
 
 .cv-theme-button.theme-toggle {
@@ -1838,11 +1838,11 @@ html[data-theme="dark"] .ui-logo-theme-aware {
   transform: translateY(0.18rem);
 }
 
-html[data-cv-menu-open] .cv-menu-button__line:first-child {
+html[data-menu-open] .cv-menu-button__line:first-child {
   transform: rotate(45deg);
 }
 
-html[data-cv-menu-open] .cv-menu-button__line:last-child {
+html[data-menu-open] .cv-menu-button__line:last-child {
   transform: rotate(-45deg);
 }
 
@@ -1859,8 +1859,8 @@ html[data-cv-menu-open] .cv-menu-button__line:last-child {
   color: var(--cv-text-primary);
 }
 
-html[data-cv-menu-open],
-html[data-cv-menu-open] body {
+html[data-menu-open],
+html[data-menu-open] body {
   overflow: hidden;
   overscroll-behavior: none;
 }
@@ -1892,15 +1892,16 @@ html[data-cv-menu-open] body {
   line-height: 0.98;
   text-decoration: none;
   opacity: 0.72;
-  transform: translateY(-0.35rem);
+  transform: translateY(calc(var(--site-menu-motion-offset) * -1));
   transition:
-    opacity 560ms var(--cv-motion-ease),
-    transform 560ms var(--cv-motion-ease);
+    opacity var(--site-menu-motion-duration) var(--site-navigation-ease),
+    transform var(--site-menu-motion-duration) var(--site-navigation-ease);
 }
 
-html[data-cv-menu-open] .cv-site-menu__link {
+html[data-menu-open] .cv-site-menu__link {
   opacity: 1;
   transform: translateY(0);
+  transition-delay: calc(var(--site-menu-item-index, 0) * var(--site-menu-motion-stagger));
 }
 
 .cv-site-menu__link:hover,
@@ -1976,10 +1977,10 @@ html[data-theme="dark"] .cv-theme-button.theme-toggle {
   cursor: pointer;
   text-align: left;
   opacity: 0;
-  transform: translateY(-0.35rem);
+  transform: translateY(calc(var(--site-menu-motion-offset) * -1));
   transition:
-    opacity 560ms var(--cv-motion-ease),
-    transform 560ms var(--cv-motion-ease);
+    opacity var(--site-menu-motion-duration) var(--site-navigation-ease),
+    transform var(--site-menu-motion-duration) var(--site-navigation-ease);
   transition-delay: calc(var(--detail-trigger-index, 0) * 90ms);
 }
 
@@ -2028,8 +2029,8 @@ html[data-theme="dark"] .cv-theme-button.theme-toggle {
   opacity: 0;
   transform: translateY(-0.25rem);
   transition:
-    opacity 560ms var(--cv-motion-ease),
-    transform 560ms var(--cv-motion-ease);
+    opacity var(--site-menu-motion-duration) var(--site-navigation-ease),
+    transform var(--site-menu-motion-duration) var(--site-navigation-ease);
   transition-delay: calc((var(--detail-trigger-index, 0) * 90ms) + 80ms);
 }
 
@@ -2062,8 +2063,8 @@ html[data-theme="dark"] .cv-theme-button.theme-toggle {
   opacity: 0;
   transform: translateY(-0.25rem);
   transition:
-    opacity 560ms var(--cv-motion-ease),
-    transform 560ms var(--cv-motion-ease);
+    opacity var(--site-menu-motion-duration) var(--site-navigation-ease),
+    transform var(--site-menu-motion-duration) var(--site-navigation-ease);
   transition-delay: calc((var(--detail-trigger-index, 0) * 90ms) + 120ms);
 }
 
@@ -2669,4 +2670,24 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-title:only-child) {
 
 html:has(.cv-page--article) .cv-footer {
   margin-block-start: var(--spacing-3xl);
+}
+
+/* Keep the closed menu mounted so open and close transitions both run. */
+html[data-menu-ready] .cv-site-menu {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--site-header-motion-duration) var(--site-navigation-ease), visibility var(--site-header-motion-duration) step-end;
+}
+html[data-menu-ready][data-menu-open] .cv-site-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity var(--site-header-motion-duration) var(--site-navigation-ease), visibility var(--site-header-motion-duration) step-start;
+}
+html[data-header-hidden]:not([data-menu-open]) .cv-navigation * { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  html[data-menu-ready] .cv-site-menu,
+  .cv-navigation,
+  html[data-menu-open] .cv-site-menu__link { transition: none; transition-delay: 0s; }
 }
