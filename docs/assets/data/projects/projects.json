@@ -7,23 +7,38 @@
       "id": "artan-records",
       "order": 2,
       "title": "Artan Records",
-      "subtitle": "Music and collaboration",
+      "subtitle": "Independent record label",
       "role": "Founder",
       "category": "current",
       "status": "Active",
       "type": "Independent record label",
-      "description": "An independent record label for music and collaboration, welcoming artists with a voice of their own.",
-      "details": { "Role": "Founder", "Focus": "Music, artists and collaboration" },
-      "links": {
-        "website": { "label": "Artan Records", "href": "https://artanrecords.com/", "icon": "/registry/icons/public/assets/core/platform/website/website.svg" }
+      "year": "2025",
+      "focus": "Music releases, artists and creative collaboration",
+      "description": "Artan Records is an independent record label founded by Artan Davoodi in 2025. Music releases and artist collaboration connect through one ecosystem: the public label, artist documentation and Studio.",
+      "seo": {
+        "name": "Artan Records",
+        "headline": "Independent record label founded by Artan Davoodi",
+        "keywords": ["Artan Records", "Artan Davoodi", "independent record label", "music releases", "artist collaboration", "artist documentation", "Artan Records Studio"]
       },
-      "media": {
-        "cover": "https://artandavoodi.com/assets/media/music/albums/salim/cover/salim-cover.webp",
-        "icon": "/registry/icons/public/assets/core/platform/website/website.svg"
+      "details": {
+        "Role": "Founder",
+        "Founded": "2025",
+        "Status": "Active",
+        "Type": "Independent record label",
+        "Focus": "Music releases · Artists · Creative collaboration",
+        "System": "Public label website, artist guidance and a static Studio foundation",
+        "Public Direction": "Artist-led music, clear release information and opportunities for collaboration"
+      },
+      "links": {
+        "website": { "label": "Artan Records", "href": "https://artanrecords.com/", "icon": "/assets/brand/logo/artan-records-symbol-black.svg", "darkIcon": "/assets/brand/logo/artan-records-symbol-white.svg" },
+        "github": { "label": "GitHub", "href": "https://github.com/artandavoodi/artanrecords", "icon": "/registry/icons/public/assets/system/social/github.svg" }
       },
       "cover": {
-        "image": "https://artandavoodi.com/assets/media/music/albums/salim/cover/salim-cover.webp",
-        "icon": "/registry/icons/public/assets/core/platform/website/website.svg"
+        "image": "/assets/brand/logo/artan-records-wordmark-black.svg",
+        "darkImage": "/assets/brand/logo/artan-records-wordmark-white.svg",
+        "alt": "Artan Records wordmark",
+        "icon": "/assets/brand/logo/artan-records-symbol-black.svg",
+        "darkIcon": "/assets/brand/logo/artan-records-symbol-white.svg"
       },
       "symbol": "AR"
     },

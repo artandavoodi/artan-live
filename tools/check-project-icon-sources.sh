@@ -36,7 +36,14 @@ for item in d.get("items", []):
             icon_paths.append((f"links.{key}.icon", value["icon"]))
 
     for label, path in icon_paths:
-        if not str(path).startswith("/registry/icons/"):
+        approved_brand_assets = {
+            "/assets/brand/logo/artan-records-symbol-black.svg",
+            "/assets/brand/logo/artan-records-symbol-white.svg",
+        }
+        if str(path) in approved_brand_assets:
+            if not Path("docs" + str(path)).is_file():
+                violations.append(f"{item_id}: missing registered brand asset {path}")
+        elif not str(path).startswith("/registry/icons/"):
             violations.append(f"{item_id}: {label} must reference /registry/icons/, got {path}")
 
 if violations:

@@ -52,13 +52,21 @@ function getProjectIconSource(item) {
   return normalizeAssetPath(item.cover?.icon || item.media?.icon || '');
 }
 
+function bindImageAppearance(image, lightSource, darkSource) {
+  image.src = lightSource;
+  if (!darkSource) return;
+  image.dataset.lightSrc = lightSource;
+  image.dataset.darkSrc = normalizeAssetPath(darkSource);
+  if (document.documentElement.dataset.themeEffective === 'dark') image.src = image.dataset.darkSrc;
+}
+
 function renderProjectCoverIcon(item, titleText) {
   const iconSource = getProjectIconSource(item);
 
   if (iconSource) {
     const icon = document.createElement('img');
     icon.className = 'cv-publication-item__cover-symbol';
-    icon.src = iconSource;
+    bindImageAppearance(icon, iconSource, item.cover?.darkIcon);
     icon.alt = `${titleText} icon`;
     icon.loading = 'lazy';
     return icon;
@@ -117,7 +125,16 @@ function renderProjectLinks(item) {
     const iconSource = normalizeAssetPath(value.icon || '');
 
     if (iconSource) {
-      link.style.setProperty('--project-link-icon', `url('${iconSource}')`);
+      if (value.darkIcon) {
+        const image = createElement('img', 'cv-project-link-icon');
+        bindImageAppearance(image, iconSource, value.darkIcon);
+        image.alt = '';
+        image.setAttribute('aria-hidden', 'true');
+        link.dataset.brandIcon = 'true';
+        link.appendChild(image);
+      } else {
+        link.style.setProperty('--project-link-icon', `url('${iconSource}')`);
+      }
     }
 
     link.appendChild(hiddenLabel);
@@ -140,8 +157,8 @@ function renderProjectCover(item, titleText) {
   if (coverSource) {
     const image = document.createElement('img');
     image.className = 'cv-publication-item__cover-image';
-    image.src = coverSource;
-    image.alt = `${titleText} cover image`;
+    bindImageAppearance(image, coverSource, item.cover?.darkImage);
+    image.alt = item.cover?.alt || `${titleText} cover image`;
     image.loading = 'lazy';
     coverButton.appendChild(image);
   }

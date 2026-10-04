@@ -208,21 +208,17 @@ function renderHero(data) {
     createElement('p', 'cv-subtitle', data.profile.subtitle),
   );
 
-  const actions = createElement('div', 'cv-actions');
-  actions.setAttribute('aria-label', 'Primary links');
-  const emailAction = createLink({ href: data.contact.primaryEmail.href, label: data.contact.primaryEmail.label, className: 'cv-action cv-action--email', icon: 'email' });
-  emailAction.append(createElement('span', 'cv-action__tooltip', data.contact.primaryEmail.value));
-
-  actions.append(
-    emailAction,
-    createLink({ href: data.profile.cv.href, label: data.profile.cv.label, className: 'cv-action', icon: 'download' }),
-  );
-
   secondary.append(
     createElement('p', 'cv-location', data.profile.location),
     createElement('p', 'cv-summary', data.profile.summary),
-    actions,
   );
+
+  if (data.profile.cv.publish !== false) {
+    const actions = createElement('div', 'cv-actions');
+    actions.setAttribute('aria-label', 'Primary links');
+    actions.append(createLink({ href: data.profile.cv.href, label: data.profile.cv.label, className: 'cv-action', icon: 'download' }));
+    secondary.append(actions);
+  }
 
   content.append(secondary);
   target.replaceChildren(media, content);
@@ -761,6 +757,10 @@ function renderFooterLinks(data) {
   }
 
   const links = getVisibleProfessionalLinks(data);
+  const email = data.contact.primaryEmail;
+  if (!links.some(link => link.href === email.href)) {
+    links.push({ href: email.href, label: email.label, icon: 'email', type: 'email' });
+  }
 
   target.replaceChildren(...links.map(createFooterLink));
 }

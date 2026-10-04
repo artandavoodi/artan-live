@@ -470,6 +470,7 @@ html[data-theme='dark'] [data-page='music'] .cv-publication-item__link {
 
 [data-page='projects'] .cv-publication-item__cover-image {
   aspect-ratio: 1;
+  object-fit: contain;
   border-radius: var(--radius-lg);
   box-shadow: 0 1.2rem 3.2rem rgb(0 0 0 / 18%);
 }
@@ -487,17 +488,6 @@ html[data-theme='dark'] [data-page='music'] .cv-publication-item__link {
 [data-page='projects'] .cv-publication-item__title-button:hover,
 [data-page='projects'] .cv-publication-item__title-button:focus-visible {
   opacity: 1;
-}
-
-[data-page='projects'] .cv-publication-item__cover-symbol {
-  inset: 0;
-  inline-size: 100%;
-  block-size: 100%;
-  max-block-size: none;
-  margin: auto;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
-  transform-origin: center;
 }
 
 [data-page='projects'] .cv-publication-item__links {
@@ -524,7 +514,7 @@ html[data-theme='dark'] [data-page='music'] .cv-publication-item__link {
   transition: opacity var(--cv-motion-duration) var(--cv-motion-ease);
 }
 
-[data-page='projects'] .cv-publication-item__link::before {
+[data-page='projects'] .cv-publication-item__link:not([data-brand-icon])::before {
   content: '';
   display: block;
   inline-size: 1.35rem;
@@ -538,6 +528,13 @@ html[data-theme='dark'] [data-page='music'] .cv-publication-item__link {
   -webkit-mask-position: center;
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: contain;
+}
+
+[data-page='projects'] .cv-project-link-icon {
+  display: block;
+  inline-size: 1.35rem;
+  block-size: 1.35rem;
+  object-fit: contain;
 }
 
 [data-page='projects'] .cv-publication-item__link:hover,
