@@ -41,6 +41,9 @@ function applyTheme(theme) {
   html.setAttribute('data-theme', nextTheme);
   html.setAttribute('data-theme-effective', nextTheme);
   html.style.colorScheme = nextTheme;
+  for (const image of document.querySelectorAll('img[data-light-src][data-dark-src]')) {
+    image.src = nextTheme === THEME_DARK ? image.dataset.darkSrc : image.dataset.lightSrc;
+  }
 
   if (toggle instanceof HTMLElement) {
     toggle.setAttribute('aria-pressed', nextTheme === THEME_DARK ? 'true' : 'false');

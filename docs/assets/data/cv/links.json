@@ -11,7 +11,7 @@
       "label": "Artan Records",
       "type": "project",
       "href": "https://artanrecords.com/",
-      "icon": "website",
+      "icon": "artan-records",
       "description": "Independent record label for music and collaboration"
     },
     {
@@ -20,6 +20,20 @@
       "href": "https://www.neuroartan.com",
       "icon": "platform",
       "description": "Independent cognitive systems project"
+    },
+    {
+      "label": "Instagram",
+      "type": "profile",
+      "href": "https://www.instagram.com/artandavoodi/",
+      "icon": "instagram",
+      "description": "Instagram profile"
+    },
+    {
+      "label": "Facebook",
+      "type": "profile",
+      "href": "https://www.facebook.com/artandavoodi",
+      "icon": "facebook",
+      "description": "Facebook profile"
     },
     {
       "label": "LinkedIn",

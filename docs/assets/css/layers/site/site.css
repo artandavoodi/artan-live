@@ -41,6 +41,7 @@ html {
 .cv-page--work,
 .cv-page--details {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
   gap: var(--cv-section-gap);
   padding-block: var(--cv-page-padding-block);
@@ -1583,8 +1584,12 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   opacity: 0.72;
 }
 
-html[data-theme="dark"] .ui-icon-theme-aware {
+html[data-theme="dark"] .ui-icon-theme-aware:not([data-dark-src]):not([data-dark-monochrome]) {
   filter: invert(1);
+}
+
+html[data-theme-effective='dark'] img[data-dark-monochrome] {
+  filter: brightness(0) invert(1);
 }
 
 html[data-theme="dark"] .cv-brand-logo {
@@ -1930,6 +1935,8 @@ html[data-theme="dark"] .cv-theme-button.theme-toggle {
 
 .cv-footer__links {
   display: flex;
+  flex-wrap: wrap;
+  max-inline-size: 100%;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xl);
@@ -1937,6 +1944,7 @@ html[data-theme="dark"] .cv-theme-button.theme-toggle {
 
 .cv-footer-link {
   position: relative;
+  flex-shrink: 0;
   display: inline-grid;
   place-items: center;
   inline-size: 1.8rem;
@@ -1948,18 +1956,13 @@ html[data-theme="dark"] .cv-theme-button.theme-toggle {
 .cv-footer-link .ui-icon-theme-aware {
   inline-size: 1.35rem;
   block-size: 1.35rem;
-  opacity: 0.72;
-  transition: opacity var(--cv-motion-duration) var(--cv-motion-ease);
-}
-
-.cv-footer-link:hover .ui-icon-theme-aware,
-.cv-footer-link:focus-visible .ui-icon-theme-aware {
   opacity: 1;
+  transition: none;
 }
 
 .cv-detail-strip {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0;
 }
 

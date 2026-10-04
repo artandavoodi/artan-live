@@ -26,7 +26,10 @@ let detailOverlayScrollY = 0;
 let heroTouchStartY = 0;
 
 const ICON_PATHS = {
-  website: './registry/icons/public/assets/core/platform/website/website.svg',
+  website: './assets/brand/logo/symbol-artan.svg',
+  'artan-records': { src: './assets/brand/logo/artan-records-symbol-black.svg', darkSrc: './assets/brand/logo/artan-records-symbol-white.svg' },
+  instagram: './registry/icons/public/assets/system/social/instagram.svg',
+  facebook: './registry/icons/public/assets/layers/website/social/platforms/facebook.svg',
   platform: './registry/icons/public/assets/layers/website/navigation/actions/icos.svg',
   github: './registry/icons/public/assets/system/social/github.svg',
   linkedin: './registry/icons/public/assets/system/social/linkedin.svg',
@@ -37,9 +40,9 @@ const ICON_PATHS = {
   open: './registry/icons/public/assets/core/actions/open/open.svg',
   focus: './registry/icons/public/assets/system/cv/focus.svg',
   projects: './registry/icons/public/assets/system/cv/projects.svg',
-  experience: './registry/icons/public/assets/system/cv/experience.svg',
-  certifications: './registry/icons/public/assets/system/cv/certifications.svg',
-  languages: './registry/icons/public/assets/system/cv/languages.svg',
+  experience: './registry/icons/public/assets/core/interface/status/experience.svg',
+  certifications: './registry/icons/public/assets/layers/website/profile/social/Award.svg',
+  languages: './registry/icons/public/assets/core/navigation/language/language.svg',
   links: './registry/icons/public/assets/system/cv/links.svg',
   plus: './registry/icons/public/assets/core/actions/create/plus.svg',
   minus: './registry/icons/public/assets/core/actions/minus/minus.svg',
@@ -70,7 +73,14 @@ function createIcon(icon, label) {
   }
 
   const image = createElement('img', 'ui-icon-theme-aware');
-  image.src = ICON_PATHS[icon];
+  const source = ICON_PATHS[icon];
+  image.src = typeof source === 'string' ? source : source.src;
+  if (source.darkSrc) {
+    image.dataset.lightSrc = source.src;
+    image.dataset.darkSrc = source.darkSrc;
+    image.src = document.documentElement.dataset.theme === 'dark' ? source.darkSrc : source.src;
+  }
+  if (icon === 'website') image.dataset.darkMonochrome = 'true';
   image.alt = '';
   image.width = 24;
   image.height = 24;
