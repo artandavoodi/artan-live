@@ -44,6 +44,17 @@ select {
   font: inherit;
 }
 
+select {
+  -webkit-appearance: auto;
+  appearance: auto;
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: var(--control-height-md);
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  font: inherit;
+}
+
 a {
   color: inherit;
   text-decoration: none;
