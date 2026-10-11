@@ -13,7 +13,7 @@ jobs:
       - run: node tools/check-metadata.mjs
       - run: git diff --exit-code -- docs/index.html
   browsers:
-    uses: artandavoodi/artanrecords/.github/workflows/browser-regression.yml@c0645851e9c45e6ce9aa0acc2bd36d1e50765952
+    uses: artandavoodi/artanrecords/.github/workflows/browser-regression.yml@6cf843224cbc004194684360c4a229eef7e27215
     with:
       site: hub
-      suite_ref: c0645851e9c45e6ce9aa0acc2bd36d1e50765952
+      suite_ref: 6cf843224cbc004194684360c4a229eef7e27215
