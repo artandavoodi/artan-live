@@ -31,6 +31,7 @@ function bindSiteMenu() {
       toggle: '[data-cv-menu-toggle]',
       menu: '[data-cv-menu]',
       navigation: '.cv-navigation',
+      menuControls: '[data-menu-theme]',
       background: 'main, [data-cv-primary-navigation], [data-cv-route-title]'
     }
   });
