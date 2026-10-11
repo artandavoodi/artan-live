@@ -1,0 +1,19 @@
+name: Public site validation
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tools/check-metadata.mjs
+      - run: git diff --exit-code -- docs/index.html
+  browsers:
+    uses: artandavoodi/artanrecords/.github/workflows/browser-regression.yml@c0645851e9c45e6ce9aa0acc2bd36d1e50765952
+    with:
+      site: hub
+      suite_ref: c0645851e9c45e6ce9aa0acc2bd36d1e50765952
