@@ -1778,7 +1778,7 @@ html[data-theme="dark"] .ui-logo-theme-aware {
   transform: translateX(var(--site-header-motion-offset));
 }
 
-.cv-theme-button.theme-toggle {
+.cv-theme-button {
   position: absolute;
   inset-inline-start: 0;
   inset-block-start: 50%;
@@ -1898,11 +1898,11 @@ html[data-menu-open] .cv-site-menu__link {
   opacity: 0.72;
 }
 
-html[data-theme="light"] .cv-theme-button.theme-toggle {
+html[data-theme="light"] .cv-theme-button {
   background: var(--cv-text-primary);
 }
 
-html[data-theme="dark"] .cv-theme-button.theme-toggle {
+html[data-theme="dark"] .cv-theme-button {
   background: var(--cv-text-primary);
 }
 
