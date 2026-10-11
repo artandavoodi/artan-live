@@ -284,7 +284,7 @@ export async function renderProjects() {
     return;
   }
 
-  const response = await fetch(PROJECTS_PATH);
+  const response = await fetch(PROJECTS_PATH, { cache: 'no-cache' });
 
   if (!response.ok) {
     throw new Error(`Unable to load projects from ${PROJECTS_PATH}`);

@@ -190,7 +190,7 @@ async function initializeArtanLive() {
     }
 
     if (document.querySelector('[data-project-sections]')) {
-      const { renderProjects } = await import('../layers/site/projects.js');
+      const { renderProjects } = await import('../layers/site/projects.js?v=2');
       await renderProjects();
     }
 
