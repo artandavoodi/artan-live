@@ -195,6 +195,10 @@ function renderHero(data) {
   const media = createElement('figure', 'cv-portrait');
   const image = createElement('img');
   image.src = data.profile.portrait.src;
+  if(data.profile.portrait.variants?.length) {
+    image.srcset=data.profile.portrait.variants.map(v=>`${v.src} ${v.width}w`).join(', ');
+    image.sizes=data.profile.portrait.sizes;
+  }
   image.alt = data.profile.portrait.alt;
   image.loading = 'eager';
   media.append(image);
@@ -765,27 +769,6 @@ function renderFooterLinks(data) {
   target.replaceChildren(...links.map(createFooterLink));
 }
 
-function renderSchema(data) {
-  const target = document.querySelector('#cv-schema');
-
-  if (!target) {
-    return;
-  }
-
-  target.textContent = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: data.profile.identity.publicName,
-    alternateName: data.profile.identity.legalName,
-    jobTitle: data.profile.headline,
-    email: data.contact.primaryEmail.value,
-    url: 'https://artan.live',
-    sameAs: data.links.items
-      .map((item) => item.href)
-      .filter((href) => href !== 'https://artan.live'),
-  });
-}
-
 export async function renderCv() {
   const data = await loadCvData();
 
@@ -799,7 +782,6 @@ export async function renderCv() {
   bindDetailsReveal();
   renderLinks(data);
   renderFooterLinks(data);
-  renderSchema(data);
   renderSectionIcons();
   bindDetailOverlay(data);
 

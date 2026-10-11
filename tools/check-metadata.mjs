@@ -1,0 +1,17 @@
+import {readFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import assert from 'node:assert/strict';
+const root=new URL('../',import.meta.url);
+const read=path=>readFile(new URL(path,root),'utf8');
+const before=await read('docs/index.html');
+execFileSync(process.execPath,['tools/build-metadata.mjs'],{cwd:root});
+assert.equal(await read('docs/index.html'),before,'Homepage metadata requires regeneration');
+const profile=JSON.parse(await read('docs/assets/data/cv/profile.json'));
+const contact=JSON.parse(await read('docs/assets/data/cv/contact.json'));
+const schema=JSON.parse(before.match(/id="cv-schema">([\s\S]*?)<\/script>/)[1]);
+assert.equal(schema.name,profile.identity.displayName);
+assert.equal(schema.jobTitle,profile.headline);
+assert.equal(schema.email,contact.primaryEmail.value);
+assert.ok(schema.image.contentUrl.endsWith(profile.portrait.src.replace(/^\.\//,'')));
+assert.ok(schema.sameAs.every(url=>url.startsWith('https://')));
+console.log('PASS: initial profile metadata is deterministic and matches approved profile JSON.');

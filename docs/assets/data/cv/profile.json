@@ -12,7 +12,28 @@
   "summary": "I design product interfaces, structure cognitive systems, and translate complex ideas into clear public language, documentation, and commercial presentation",
   "portrait": {
     "src": "./assets/media/portrait/artan-portrait.jpg",
-    "alt": "Portrait of Artan Davoodi"
+    "alt": "Portrait of Artan Davoodi",
+    "width": 2155,
+    "height": 2155,
+    "variants": [
+      {
+        "src": "assets/media/portrait/responsive/artan-portrait-w320.jpg",
+        "width": 320
+      },
+      {
+        "src": "assets/media/portrait/responsive/artan-portrait-w640.jpg",
+        "width": 640
+      },
+      {
+        "src": "assets/media/portrait/responsive/artan-portrait-w1280.jpg",
+        "width": 1280
+      },
+      {
+        "src": "assets/media/portrait/artan-portrait.jpg",
+        "width": 2155
+      }
+    ],
+    "sizes": "(max-width: 860px) 100vw, 50vw"
   },
   "cv": {
     "publish": false,

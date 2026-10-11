@@ -1898,14 +1898,6 @@ html[data-menu-open] .cv-site-menu__link {
   opacity: 0.72;
 }
 
-html[data-theme="light"] .cv-theme-button {
-  background: var(--cv-text-primary);
-}
-
-html[data-theme="dark"] .cv-theme-button {
-  background: var(--cv-text-primary);
-}
-
 .cv-footer {
   display: flex;
   flex-direction: column;

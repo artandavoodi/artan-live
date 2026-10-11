@@ -1,11 +1,14 @@
 /* Hub-owned menu-only theme control, distributed to the artist website. */
 [data-menu-theme] {
-  inline-size: var(--spacing-sm);
-  block-size: var(--spacing-sm);
+  display: grid;
+  place-items: center;
+  inline-size: var(--site-theme-target-size);
+  block-size: var(--site-theme-target-size);
+  margin-inline-start: calc((var(--site-theme-dot-size) - var(--site-theme-target-size)) / 2);
   border: 0;
   padding: 0;
   border-radius: var(--radius-circle);
-  background: var(--cv-text-primary);
+  background: transparent;
   color: transparent;
   cursor: pointer;
   pointer-events: none;
@@ -14,6 +17,14 @@
   transform: scale(0);
   transition: opacity var(--duration-slow) var(--ease-standard), transform var(--duration-slow) var(--ease-standard), visibility var(--duration-slow);
 }
+[data-menu-theme]::before {
+  content: '';
+  inline-size: var(--site-theme-dot-size);
+  block-size: var(--site-theme-dot-size);
+  border-radius: var(--radius-circle);
+  background: var(--cv-text-primary);
+}
+[data-menu-theme]:focus-visible { outline: var(--border-width-hairline) solid var(--cv-text-primary); outline-offset: var(--spacing-xs); }
 html[data-menu-open] [data-menu-theme] {
   visibility: visible;
   opacity: 1;
