@@ -6,7 +6,7 @@
 
 import { mountFragments } from './fragments.js';
 import { bindMenu } from './menu.js';
-import { renderCv } from '../layers/site/cv.js';
+import { renderCv } from '../layers/site/cv.js?v=2';
 import { initThemeSystem } from './02-systems/theme.js';
 
 if ('scrollRestoration' in window.history) {

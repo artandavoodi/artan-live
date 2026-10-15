@@ -483,7 +483,7 @@ function createDetailTrigger({ key, label, description, icon }, index = 0) {
   return button;
 }
 
-function renderDetailTriggers() {
+function renderDetailTriggers(data) {
   const target = document.querySelector('[data-cv-list="detail-triggers"]');
 
   if (!target) {
@@ -511,7 +511,9 @@ function renderDetailTriggers() {
     },
   ];
 
-  target.replaceChildren(...triggers.map((trigger, index) => createDetailTrigger(trigger, index)));
+  target.replaceChildren(...triggers
+    .filter(trigger=>trigger.key!=='languages' || data.languages.publish!==false)
+    .map((trigger, index) => createDetailTrigger(trigger, index)));
 }
 
 function createRecordList(items, renderer) {
@@ -778,7 +780,7 @@ export async function renderCv() {
   bindFocusReveal();
   renderProjects(data);
   bindWorkReveal();
-  renderDetailTriggers();
+  renderDetailTriggers(data);
   bindDetailsReveal();
   renderLinks(data);
   renderFooterLinks(data);

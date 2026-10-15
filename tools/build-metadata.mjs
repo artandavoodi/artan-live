@@ -2,7 +2,7 @@
 import {readFile,writeFile} from 'node:fs/promises';
 const docs=new URL('../docs/',import.meta.url);
 const json=async path=>JSON.parse(await readFile(new URL(path,docs),'utf8'));
-const [profile,contact,links]=await Promise.all(['assets/data/cv/profile.json','assets/data/cv/contact.json','assets/data/cv/links.json'].map(json));
+const [profile,contact,links,languages]=await Promise.all(['assets/data/cv/profile.json','assets/data/cv/contact.json','assets/data/cv/links.json','assets/data/cv/languages.json'].map(json));
 const origin=`https://${profile.identity.domain}/`;
 const title=`${profile.identity.displayName} · ${profile.headline}`;
 const portrait=new URL(profile.portrait.src,origin).href;
@@ -20,6 +20,7 @@ meta('name','twitter:image',portrait);
 html=html.replace(/<title>[\s\S]*?<\/title>/,`<title>${escape(title)}</title>`);
 html=html.replace(/<link rel="canonical"[^>]*>/,`<link rel="canonical" href="${origin}" />`);
 const person={'@context':'https://schema.org','@type':'Person','@id':origin+'#person',name:profile.identity.displayName,alternateName:profile.identity.legalName,url:origin,image:{'@type':'ImageObject',contentUrl:portrait,caption:profile.portrait.alt},jobTitle:profile.headline,description:profile.summary,email:contact.primaryEmail.value,sameAs:links.items.map(l=>l.href).filter(h=>h?.startsWith('https:')&&h!==origin&&h!==origin.slice(0,-1))};
+person.knowsLanguage=languages.items.map(item=>item.language);
 html=html.replace(/(<script type="application\/ld\+json" id="cv-schema">)[\s\S]*?(<\/script>)/,`$1\n${JSON.stringify(person,null,2).replace(/</g,'\\u003c')}\n    $2`);
 await writeFile(new URL('index.html',docs),html);
 console.log('Generated initial profile metadata from approved JSON.');
