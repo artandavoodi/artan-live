@@ -152,7 +152,7 @@ html {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
   cursor: pointer;
   opacity: 0.72;
 }
@@ -208,7 +208,7 @@ html {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
   cursor: pointer;
   opacity: 0.72;
 }
@@ -692,7 +692,7 @@ html[data-theme='dark'] [data-page='music'] .cv-publication-item__link {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
   opacity: 0.72;
 }
 
@@ -760,7 +760,7 @@ html[data-theme='dark'] [data-page='music'] .cv-publication-item__link {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
   cursor: pointer;
   opacity: 0.72;
 }
@@ -960,7 +960,7 @@ html[data-hero-stage='expanded'] .cv-hero__secondary {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .cv-section__title {
@@ -974,7 +974,7 @@ html[data-hero-stage='expanded'] .cv-hero__secondary {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .cv-section__title .ui-icon-theme-aware {
@@ -1057,7 +1057,7 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   font-size: var(--cv-font-caption);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .cv-location {
@@ -1084,7 +1084,7 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   font-size: var(--cv-font-caption);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
-  text-transform: uppercase;
+  text-transform: none;
   opacity: 0.72;
   transition: opacity var(--cv-motion-duration) var(--cv-motion-ease);
 }
@@ -1509,7 +1509,7 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .cv-record__location {
@@ -1519,7 +1519,7 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
   opacity: 0;
   transform: translateX(-0.18rem);
   transition:
@@ -1540,7 +1540,7 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .cv-data-item,
@@ -1709,7 +1709,7 @@ html[data-theme="dark"] .ui-logo-theme-aware {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .cv-navigation__route-title {
@@ -1722,7 +1722,7 @@ html[data-theme="dark"] .ui-logo-theme-aware {
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
   pointer-events: auto;
   opacity: 0.72;
   transform: translateX(0);
@@ -2145,7 +2145,7 @@ html[data-detail-overlay-open='true'] body {
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--cv-letter-label);
   line-height: var(--line-height-heading-tight);
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .cv-detail-overlay__title {
