@@ -211,10 +211,14 @@ function renderHero(data) {
   );
   content.querySelector('h1').id='cv-title';
 
-  secondary.replaceChildren(
-    createElement('h2', 'cv-role', data.profile.location),
-    createElement('p', 'cv-summary', data.profile.summary),
-  );
+  const availabilityTitle=createElement('h2','cv-availability__title');
+  data.status.availability.headline.forEach((line,index)=>{
+    const span=createElement('span','cv-availability__line',line);
+    span.style.setProperty('--availability-line-index',index);
+    availabilityTitle.append(span);
+    if(index<data.status.availability.headline.length-1)availabilityTitle.append(document.createTextNode(' '));
+  });
+  secondary.replaceChildren(availabilityTitle,createElement('p','cv-summary',data.status.availability.summary));
 
   if (data.profile.cv.publish !== false) {
     const actions = createElement('div', 'cv-actions');
@@ -251,7 +255,7 @@ function renderFocus(data) {
   );
 }
 
-function bindSectionReveal(selector, visibleAttribute) {
+function bindSectionReveal(selector, visibleAttribute, threshold=0.1) {
   document.querySelectorAll(selector).forEach(section => {
     if (!(section instanceof HTMLElement) || section.dataset.revealBound === 'true') return;
     section.dataset.revealBound = 'true';
@@ -261,7 +265,7 @@ function bindSectionReveal(selector, visibleAttribute) {
     }
     const observer = new IntersectionObserver(([entry]) => {
       section.dataset[visibleAttribute] = entry.isIntersecting ? 'true' : 'false';
-    }, {threshold: 0.1});
+    }, {threshold});
     observer.observe(section);
   });
 }
@@ -663,6 +667,7 @@ export async function renderCv() {
   const data = await loadCvData();
 
   renderHero(data);
+  bindSectionReveal('.cv-page--availability','availabilityVisible',0.45);
   renderFocus(data);
   bindFocusReveal();
   renderProjects(data);

@@ -43,6 +43,9 @@
   --cv-focus-number-entry-scale: 0.4;
   --cv-project-logo-width: 12rem;
   --cv-project-logo-entry-scale: 0.94;
+  --cv-availability-title-size: var(--font-size-display-2);
+  --cv-availability-motion-duration: var(--nav-institutional-motion-panel-slow);
+  --cv-availability-entry-scale: 0.94;
 
   /* Controls */
   --cv-control-height: var(--control-height-md);
@@ -58,5 +61,6 @@
     --cv-page-width: var(--site-rail-width-mobile);
     --cv-page-padding-inline: var(--site-shell-inline-padding-mobile);
     --cv-project-logo-width: 9rem;
+    --cv-availability-title-size: var(--font-size-h2);
   }
 }
