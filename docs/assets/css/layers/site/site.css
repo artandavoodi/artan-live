@@ -1390,16 +1390,20 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   block-size: auto;
   filter: none;
   opacity: 0;
-  transform: scale(var(--cv-project-logo-entry-scale));
+  transform: translateY(var(--spacing-lg)) scale(var(--cv-project-logo-entry-scale));
   transform-origin: center;
   transition:
-    opacity 720ms var(--cv-motion-ease),
-    transform 720ms var(--cv-motion-ease);
+    opacity var(--cv-project-logo-motion-duration) var(--cv-motion-ease),
+    transform var(--cv-project-logo-motion-duration) var(--cv-motion-ease);
 }
 
-.cv-page--work[data-work-visible='true'] .cv-brand-logo {
+.cv-brand-logo[data-logo-size='compact'] {
+  inline-size: min(100%,var(--cv-project-logo-compact-width));
+}
+
+.cv-card__title--brand[data-logo-visible='true'] .cv-brand-logo {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0) scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {

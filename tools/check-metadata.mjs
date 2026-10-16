@@ -26,6 +26,7 @@ assert.deepEqual(sections,['profile','availability','focus','work','record-label
 const projects=JSON.parse(await read('docs/assets/data/cv/projects.json'));
 const label=projects.items.find(project=>project.name==='Artan Records');
 assert.equal(label.icon,'artan-records');
+assert.equal(label.logoSize,'compact');
 assert.ok(label.logo&&label.darkLogo,'Label wordmark must support both themes');
 assert.ok(label.scope.some(item=>item.href==='https://docs.artanrecords.com/'));
 const aliases=await read('docs/assets/css/core/01-tokens/source/artan-live.aliases.css');
@@ -42,11 +43,16 @@ const projectSections=[new Section(),new Section()];
 const observed=[];
 const revealContext=vm.createContext({HTMLElement:Section,document:{querySelectorAll:()=>projectSections},window:{IntersectionObserver:true},IntersectionObserver:class {
   constructor(callback){this.callback=callback;}
-  observe(section){observed.push(section);this.callback([{isIntersecting:true}]);}
+  observe(section){observed.push(section);section.reveal=this.callback;this.callback([{isIntersecting:true,intersectionRatio:1}]);}
 }});
 vm.runInContext(revealSource+'\nbindSectionReveal(".cv-page--work","workVisible"); bindSectionReveal(".cv-page--work","workVisible");',revealContext);
 assert.equal(observed.length,2,'Each project section must bind exactly once');
 assert.ok(projectSections.every(section=>section.dataset.workVisible==='true'));
+projectSections[0].reveal([{isIntersecting:true,intersectionRatio:0.05}]);
+assert.equal(projectSections[0].dataset.workVisible,'false','Barely intersecting targets must not trigger their reveal early');
+projectSections[0].reveal([{isIntersecting:true,intersectionRatio:1}]);
+assert.equal(projectSections[0].dataset.workVisible,'true','Re-entry must replay the entrance');
+assert.match(renderer,/bindSectionReveal\('\.cv-card__title--brand','logoVisible',0\.65\)/,'Logo entrances must observe stable heading geometry');
 assert.doesNotMatch(renderer,/bindDesktopSections|addEventListener\('wheel'/,'Section scrolling must not be intercepted');
 const footer=await read('docs/assets/fragments/footer.html');
 assert.ok(footer.indexOf('Privacy notice')<footer.indexOf('cv-footer__copyright'),'Copyright must be last');

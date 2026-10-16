@@ -41,6 +41,7 @@
     },
     {
       "name": "Artan Records",
+      "logoSize": "compact",
       "icon": "artan-records",
       "logo": "./assets/brand/logo/artan-records-wordmark-black.svg",
       "darkLogo": "./assets/brand/logo/artan-records-wordmark-white.svg",

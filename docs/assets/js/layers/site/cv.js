@@ -264,7 +264,7 @@ function bindSectionReveal(selector, visibleAttribute, threshold=0.1) {
       return;
     }
     const observer = new IntersectionObserver(([entry]) => {
-      section.dataset[visibleAttribute] = entry.isIntersecting ? 'true' : 'false';
+      section.dataset[visibleAttribute] = entry.isIntersecting && entry.intersectionRatio>=threshold ? 'true' : 'false';
     }, {threshold});
     observer.observe(section);
   });
@@ -276,6 +276,7 @@ function bindFocusReveal() {
 
 function bindWorkReveal() {
   bindSectionReveal('.cv-page--work', 'workVisible');
+  bindSectionReveal('.cv-card__title--brand','logoVisible',0.65);
 }
 
 function bindDetailsReveal() {
@@ -317,6 +318,7 @@ function renderProjects(data) {
 
       if (project.logo) {
         const logo=createBrandLogo(project.logo,project.name);
+        if(project.logoSize)logo.dataset.logoSize=project.logoSize;
         if(project.darkLogo){
           logo.dataset.lightSrc=project.logo;
           logo.dataset.darkSrc=project.darkLogo;
