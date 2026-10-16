@@ -41,6 +41,7 @@
   --cv-letter-label: var(--letter-spacing-label);
   --cv-focus-number-size: var(--font-size-h2);
   --cv-focus-number-entry-scale: 0.4;
+  --cv-project-logo-width: 16rem;
 
   /* Controls */
   --cv-control-height: var(--control-height-md);
@@ -55,5 +56,6 @@
   :root {
     --cv-page-width: var(--site-rail-width-mobile);
     --cv-page-padding-inline: var(--site-shell-inline-padding-mobile);
+    --cv-project-logo-width: 12rem;
   }
 }

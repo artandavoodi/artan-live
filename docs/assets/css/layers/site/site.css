@@ -1276,12 +1276,6 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
     transition: none;
   }
 
-  .cv-brand-logo {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
   .cv-detail-trigger {
     opacity: 1;
     transform: none;
@@ -1373,7 +1367,7 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
 
 .cv-brand-logo {
   display: block;
-  inline-size: min(18rem, 72vw);
+  inline-size: min(100%, var(--cv-project-logo-width));
   block-size: auto;
   filter: none;
   opacity: 0;
@@ -1386,6 +1380,14 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
 .cv-page--work[data-work-visible='true'] .cv-brand-logo {
   opacity: 1;
   transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-brand-logo {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .cv-card__title,
@@ -2494,10 +2496,6 @@ html[data-detail-overlay-open='true'] body {
 
   .cv-card--project {
     max-inline-size: 100%;
-  }
-
-  .cv-brand-logo {
-    inline-size: min(68vw, 14rem);
   }
 
   .cv-project-scope-row {
