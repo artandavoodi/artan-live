@@ -75,3 +75,11 @@ Mobile/tablet and coarse-pointer views use natural scrolling, never section
 snapping or touch interception. Desktop section navigation must remain optional.
 The privacy notice is built from `docs/assets/data/cv/privacy.json` and carries
 explicit effective and last-updated dates.
+
+## Homepage sections
+The homepage shell owns the order: profile, availability, four focus areas,
+Neuroartan, Artan Records, then professional details and footer. Profile and
+project copy remain owned by `assets/data/cv/`; `cv.js` renders each named mount.
+Desktop uses native proximity snapping without intercepting wheel or keyboard
+input. The final details/footer region does not snap. Mobile and tablet remain
+continuous, natural scrolling.

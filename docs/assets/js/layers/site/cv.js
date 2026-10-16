@@ -23,7 +23,6 @@ const DETAIL_FRAGMENT_PATHS = {
 };
 
 let detailOverlayScrollY = 0;
-let heroTouchStartY = 0;
 
 const ICON_PATHS = {
   website: './assets/brand/logo/symbol-artan.svg',
@@ -204,16 +203,17 @@ function renderHero(data) {
   media.append(image);
 
   const content = createElement('div', 'cv-hero__content');
-  const secondary = createElement('div', 'cv-hero__secondary');
+  const secondary = document.querySelector('[data-cv-section="availability"]');
 
   content.append(
     createElement('h1', 'cv-title', data.profile.identity.displayName),
     createElement('p', 'cv-role', data.profile.headline),
     createElement('p', 'cv-subtitle', data.profile.subtitle),
   );
+  content.querySelector('h1').id='cv-title';
 
-  secondary.append(
-    createElement('p', 'cv-location', data.profile.location),
+  secondary.replaceChildren(
+    createElement('h2', 'cv-role', data.profile.location),
     createElement('p', 'cv-summary', data.profile.summary),
   );
 
@@ -224,107 +224,7 @@ function renderHero(data) {
     secondary.append(actions);
   }
 
-  content.append(secondary);
   target.replaceChildren(media, content);
-}
-
-function setHeroStage(isExpanded) {
-  document.documentElement.dataset.heroStage = isExpanded ? 'expanded' : 'compact';
-}
-
-function isHeroStageCandidate() {
-  if (!window.matchMedia('(min-width: 1025px) and (hover: hover) and (pointer: fine)').matches) return false;
-  const hero = document.querySelector('.cv-page--hero');
-
-  if (!(hero instanceof HTMLElement)) {
-    return false;
-  }
-
-  const bounds = hero.getBoundingClientRect();
-  return bounds.top <= 8 && bounds.bottom > window.innerHeight * 0.58;
-}
-
-function expandHeroStage() {
-  if (document.documentElement.dataset.heroStage === 'expanded') {
-    return false;
-  }
-
-  setHeroStage(true);
-  return true;
-}
-
-function collapseHeroStage() {
-  if (document.documentElement.dataset.heroStage !== 'expanded') {
-    return false;
-  }
-
-  setHeroStage(false);
-  return true;
-}
-
-function bindHeroStageReveal() {
-  setHeroStage(false);
-
-  window.addEventListener('wheel', (event) => {
-    if (!isHeroStageCandidate()) {
-      return;
-    }
-
-    if (event.deltaY > 0 && expandHeroStage()) {
-      event.preventDefault();
-      return;
-    }
-
-    if (event.deltaY < 0 && collapseHeroStage()) {
-      event.preventDefault();
-    }
-  }, { passive: false });
-
-  window.addEventListener('touchstart', (event) => {
-    heroTouchStartY = event.touches[0]?.clientY || 0;
-  }, { passive: true });
-
-  window.addEventListener('touchmove', (event) => {
-    const currentY = event.touches[0]?.clientY || 0;
-    const movement = heroTouchStartY - currentY;
-
-    if (!isHeroStageCandidate()) {
-      return;
-    }
-
-    if (movement > 18 && expandHeroStage()) {
-      event.preventDefault();
-      return;
-    }
-
-    if (movement < -18 && collapseHeroStage()) {
-      event.preventDefault();
-    }
-  }, { passive: false });
-
-  window.addEventListener('keydown', (event) => {
-    const revealKeys = ['ArrowDown', 'PageDown', ' '];
-    const collapseKeys = ['ArrowUp', 'PageUp'];
-
-    if (!isHeroStageCandidate()) {
-      return;
-    }
-
-    if (revealKeys.includes(event.key) && expandHeroStage()) {
-      event.preventDefault();
-      return;
-    }
-
-    if (collapseKeys.includes(event.key) && collapseHeroStage()) {
-      event.preventDefault();
-    }
-  });
-
-  window.addEventListener('scroll', () => {
-    if ((window.scrollY || document.documentElement.scrollTop || 0) <= 2) {
-      setHeroStage(false);
-    }
-  }, { passive: true });
 }
 
 function renderFocus(data) {
@@ -353,30 +253,18 @@ function renderFocus(data) {
 }
 
 function bindSectionReveal(selector, visibleAttribute) {
-  const section = document.querySelector(selector);
-
-  if (!(section instanceof HTMLElement) || section.dataset.revealBound === 'true') {
-    return;
-  }
-
-  section.dataset.revealBound = 'true';
-
-  if (!('IntersectionObserver' in window)) {
-    section.dataset[visibleAttribute] = 'true';
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    ([entry]) => {
+  document.querySelectorAll(selector).forEach(section => {
+    if (!(section instanceof HTMLElement) || section.dataset.revealBound === 'true') return;
+    section.dataset.revealBound = 'true';
+    if (!('IntersectionObserver' in window)) {
+      section.dataset[visibleAttribute] = 'true';
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
       section.dataset[visibleAttribute] = entry.isIntersecting ? 'true' : 'false';
-    },
-    {
-      root: null,
-      threshold: 0.42,
-    },
-  );
-
-  observer.observe(section);
+    }, {threshold: 0.1});
+    observer.observe(section);
+  });
 }
 
 function bindFocusReveal() {
@@ -418,14 +306,9 @@ function createProjectScopeRow(item, index) {
 }
 
 function renderProjects(data) {
-  const target = document.querySelector('[data-cv-list="projects"]');
-
-  if (!target) {
-    return;
-  }
-
-  target.replaceChildren(
-    ...data.projects.items.map((project) => {
+  data.projects.items.forEach((project) => {
+      const target=document.querySelector(`[data-cv-project="${project.name}"]`);
+      if(!target)return;
       const article = createElement('article', 'cv-card cv-card--project');
       const title = createElement('h3', 'cv-card__title cv-card__title--brand');
 
@@ -445,9 +328,8 @@ function renderProjects(data) {
       article.append(meta);
 
       article.append(createLink({ href: project.url, label: 'Visit project', className: 'cv-card__link', icon: 'platform' }));
-      return article;
-    }),
-  );
+      target.replaceChildren(article);
+    });
 }
 
 function createDetailTrigger({ key, label, description, icon }, index = 0) {
@@ -776,7 +658,6 @@ export async function renderCv() {
   const data = await loadCvData();
 
   renderHero(data);
-  bindHeroStageReveal();
   renderFocus(data);
   bindFocusReveal();
   renderProjects(data);

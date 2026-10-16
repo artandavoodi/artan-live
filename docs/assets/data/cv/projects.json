@@ -36,6 +36,18 @@
         }
       ],
       "accuracyNote": "This is presented as AI-assisted product and interface development, not as a conventional software engineering portfolio"
+    },
+    {
+      "name": "Artan Records",
+      "url": "https://artanrecords.com/",
+      "summary": "An independent record label bringing together music, recordings, and creative collaboration, with a lasting home for artists and their work",
+      "role": "Founder",
+      "scope": [
+        {"label": "releases", "href": "https://artanrecords.com/releases/"},
+        {"label": "artists", "href": "https://artanrecords.com/artists/"},
+        {"label": "artist development", "href": "https://artanrecords.com/for-artists/"},
+        {"label": "creative collaboration", "href": "https://artanrecords.com/collaborate/"}
+      ]
     }
   ]
 }
