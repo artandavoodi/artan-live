@@ -80,7 +80,7 @@ explicit effective and last-updated dates.
 The homepage shell owns the order: profile, availability, four focus areas,
 Neuroartan, Artan Records, then professional details and footer. Profile and
 project copy remain owned by `assets/data/cv/`; `cv.js` renders each named mount.
-Desktop uses native proximity snapping only, without wheel interception, gesture
+Desktop uses native centered section snapping only, without wheel interception, gesture
 timers, or JavaScript scroll locks. Oversized sections remain naturally readable.
-The final details/footer region does not snap. Mobile and tablet remain continuous,
+The final details/footer composition is centered and participates in desktop snapping. Mobile and tablet remain continuous,
 natural scrolling. Copyright is the last item in the shared footer.

@@ -42,6 +42,7 @@
   --cv-focus-number-size: var(--font-size-h2);
   --cv-focus-number-entry-scale: 0.4;
   --cv-project-logo-width: 12rem;
+  --cv-project-logo-entry-scale: 0.94;
 
   /* Controls */
   --cv-control-height: var(--control-height-md);

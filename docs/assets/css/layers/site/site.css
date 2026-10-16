@@ -12,7 +12,7 @@
 }
 
 html {
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
@@ -28,7 +28,8 @@ html {
   min-block-size: 100vh;
   margin-inline: auto;
   box-sizing: border-box;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 
 .cv-page--hero {
@@ -48,12 +49,11 @@ html {
 
 .cv-page--details {
   min-block-size: 100svh;
-  scroll-snap-align: none;
   display: grid;
-  grid-template-rows: 1fr auto;
-  align-content: stretch;
-  align-items: stretch;
-  padding-block: var(--cv-page-padding-block) 0;
+  grid-template-rows: auto auto;
+  align-content: center;
+  align-items: center;
+  gap: var(--spacing-xl);
 }
 
 .cv-section--details {
@@ -1348,15 +1348,11 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   inline-size: 100%;
   max-inline-size: var(--cv-reading-width);
   opacity: 0;
-  transform: translateY(-0.45rem);
-  transition:
-    opacity var(--site-menu-motion-duration) var(--site-navigation-ease),
-    transform var(--site-menu-motion-duration) var(--site-navigation-ease);
+  transition: opacity var(--site-menu-motion-duration) var(--site-navigation-ease);
 }
 
 .cv-page--work[data-work-visible='true'] .cv-card--project {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .cv-card__title--brand {
@@ -1369,7 +1365,8 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   block-size: auto;
   filter: none;
   opacity: 0;
-  transform: translateX(-0.75rem);
+  transform: scale(var(--cv-project-logo-entry-scale));
+  transform-origin: center;
   transition:
     opacity 720ms var(--cv-motion-ease),
     transform 720ms var(--cv-motion-ease);
@@ -1377,7 +1374,7 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
 
 .cv-page--work[data-work-visible='true'] .cv-brand-logo {
   opacity: 1;
-  transform: translateX(0);
+  transform: scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1940,7 +1937,7 @@ html[data-menu-open] .cv-site-menu__link {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
-  margin-block-end: var(--cv-section-gap);
+  margin-block-end: var(--spacing-xl);
 }
 
 .cv-detail-trigger {
