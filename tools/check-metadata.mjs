@@ -53,6 +53,7 @@ assert.equal(projectSections[0].dataset.workVisible,'false','Barely intersecting
 projectSections[0].reveal([{isIntersecting:true,intersectionRatio:1}]);
 assert.equal(projectSections[0].dataset.workVisible,'true','Re-entry must replay the entrance');
 assert.match(renderer,/bindSectionReveal\('\.cv-card__title--brand','logoVisible',0\.65\)/,'Logo entrances must observe stable heading geometry');
+assert.match(renderer,/bindSectionReveal\('\.cv-focus-row','numberVisible',0\.65\)/,'Number growth must begin when its own row enters view');
 assert.doesNotMatch(renderer,/bindDesktopSections|addEventListener\('wheel'/,'Section scrolling must not be intercepted');
 const footer=await read('docs/assets/fragments/footer.html');
 assert.ok(footer.indexOf('Privacy notice')<footer.indexOf('cv-footer__copyright'),'Copyright must be last');

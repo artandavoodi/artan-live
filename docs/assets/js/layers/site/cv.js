@@ -272,6 +272,7 @@ function bindSectionReveal(selector, visibleAttribute, threshold=0.1) {
 
 function bindFocusReveal() {
   bindSectionReveal('.cv-page--focus', 'focusVisible');
+  bindSectionReveal('.cv-focus-row','numberVisible',0.65);
 }
 
 function bindWorkReveal() {

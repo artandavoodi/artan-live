@@ -1234,11 +1234,11 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
   line-height: var(--line-height-heading-tight);
   transform: scale(var(--cv-focus-number-entry-scale));
   transform-origin: left top;
-  transition: transform var(--site-menu-motion-duration) var(--site-navigation-ease);
+  transition: transform var(--cv-focus-number-motion-duration) var(--cv-focus-number-motion-ease);
   transition-delay: calc(var(--focus-row-index) * 90ms);
 }
 
-.cv-page--focus[data-focus-visible='true'] .cv-focus-row__number {
+.cv-focus-row[data-number-visible='true'] .cv-focus-row__number {
   transform: scale(1);
 }
 

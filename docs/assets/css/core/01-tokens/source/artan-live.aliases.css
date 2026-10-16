@@ -39,8 +39,10 @@
   --cv-line-body: var(--line-height-body);
   --cv-line-heading: var(--line-height-heading-tight);
   --cv-letter-label: var(--letter-spacing-label);
-  --cv-focus-number-size: var(--font-size-h2);
-  --cv-focus-number-entry-scale: 0.4;
+  --cv-focus-number-size: calc(var(--font-size-h2) * 1.12);
+  --cv-focus-number-entry-scale: 0.15;
+  --cv-focus-number-motion-duration: calc(var(--nav-institutional-motion-panel-slow) * 3);
+  --cv-focus-number-motion-ease: ease-in-out;
   --cv-project-logo-width: 12rem;
   --cv-project-logo-entry-scale: 0.82;
   --cv-project-logo-compact-width: 10rem;
