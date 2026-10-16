@@ -45,7 +45,6 @@ const ICON_PATHS = {
   links: './registry/icons/public/assets/system/cv/links.svg',
   plus: './registry/icons/public/assets/core/actions/create/plus.svg',
   minus: './registry/icons/public/assets/core/actions/minus/minus.svg',
-  neuroartanLogo: './assets/brand/neuroartan/logo-typo.svg',
 };
 
 function createElement(tag, className, text) {
@@ -271,6 +270,43 @@ function bindFocusReveal() {
   bindSectionReveal('.cv-page--focus', 'focusVisible');
 }
 
+function bindDesktopSections() {
+  if(document.documentElement.hasAttribute('data-desktop-sections-ready'))return;
+  document.documentElement.setAttribute('data-desktop-sections-ready','');
+  const desktop=window.matchMedia('(min-width: 1025px) and (hover: hover) and (pointer: fine)');
+  const sections=[...document.querySelectorAll('.cv-main > .cv-page')];
+  let moving=false,settle;
+  const duration=getComputedStyle(document.documentElement).getPropertyValue('--cv-motion-duration').trim();
+  const idle=parseFloat(duration)*(duration.endsWith('ms')?1:1000);
+  const release=()=>{
+    clearTimeout(settle);
+    settle=setTimeout(()=>{moving=false;},idle);
+  };
+  window.addEventListener('scroll',()=>{if(moving)release();},{passive:true});
+  window.addEventListener('wheel',event=>{
+    if(!desktop.matches||event.ctrlKey||event.metaKey||Math.abs(event.deltaX)>Math.abs(event.deltaY)||!event.deltaY)return;
+    if(document.documentElement.matches('[data-menu-open],[data-detail-overlay-open]'))return;
+    if(event.target.closest('input,select,textarea,[contenteditable="true"]'))return;
+    if(moving){event.preventDefault();release();return;}
+    const index=sections.findIndex(section=>{
+      const bounds=section.getBoundingClientRect();
+      return bounds.top<=innerHeight/2&&bounds.bottom>innerHeight/2;
+    });
+    const section=sections[index];
+    if(!section||section.classList.contains('cv-page--details'))return;
+    const bounds=section.getBoundingClientRect();
+    const direction=Math.sign(event.deltaY);
+    // Read oversized sections naturally before advancing to the next section.
+    if(direction>0&&bounds.bottom>innerHeight+1||direction<0&&bounds.top < -1)return;
+    const next=sections[index+direction];
+    if(!next)return;
+    event.preventDefault();
+    moving=true;
+    next.scrollIntoView({block:'start',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+    release();
+  },{passive:false});
+}
+
 function bindWorkReveal() {
   bindSectionReveal('.cv-page--work', 'workVisible');
 }
@@ -312,8 +348,14 @@ function renderProjects(data) {
       const article = createElement('article', 'cv-card cv-card--project');
       const title = createElement('h3', 'cv-card__title cv-card__title--brand');
 
-      if (project.name === 'Neuroartan') {
-        title.append(createBrandLogo(ICON_PATHS.neuroartanLogo, project.name));
+      if (project.logo) {
+        const logo=createBrandLogo(project.logo,project.name);
+        if(project.darkLogo){
+          logo.dataset.lightSrc=project.logo;
+          logo.dataset.darkSrc=project.darkLogo;
+          logo.src=document.documentElement.dataset.theme==='dark'?project.darkLogo:project.logo;
+        }
+        title.append(logo);
       } else {
         title.textContent = project.name;
       }
@@ -327,7 +369,7 @@ function renderProjects(data) {
       project.scope.forEach((item, index) => meta.append(createProjectScopeRow(item, index)));
       article.append(meta);
 
-      article.append(createLink({ href: project.url, label: 'Visit project', className: 'cv-card__link', icon: 'platform' }));
+      article.append(createLink({ href: project.url, label: 'Visit project', className: 'cv-card__link', icon: project.icon }));
       target.replaceChildren(article);
     });
 }
@@ -664,6 +706,7 @@ export async function renderCv() {
   bindWorkReveal();
   renderDetailTriggers(data);
   bindDetailsReveal();
+  bindDesktopSections();
   renderLinks(data);
   renderFooterLinks(data);
   renderSectionIcons();

@@ -2,6 +2,8 @@
   "items": [
     {
       "name": "Neuroartan",
+      "icon": "platform",
+      "logo": "./assets/brand/neuroartan/logo-typo.svg",
       "type": "",
       "startYear": "2026",
       "endYear": "Present",
@@ -39,6 +41,9 @@
     },
     {
       "name": "Artan Records",
+      "icon": "artan-records",
+      "logo": "./assets/brand/logo/artan-records-wordmark-black.svg",
+      "darkLogo": "./assets/brand/logo/artan-records-wordmark-white.svg",
       "url": "https://artanrecords.com/",
       "summary": "An independent record label bringing together music, recordings, and creative collaboration, with a lasting home for artists and their work",
       "role": "Founder",
@@ -46,7 +51,8 @@
         {"label": "releases", "href": "https://artanrecords.com/releases/"},
         {"label": "artists", "href": "https://artanrecords.com/artists/"},
         {"label": "artist development", "href": "https://artanrecords.com/for-artists/"},
-        {"label": "creative collaboration", "href": "https://artanrecords.com/collaborate/"}
+        {"label": "creative collaboration", "href": "https://artanrecords.com/collaborate/"},
+        {"label": "artist documentation", "href": "https://docs.artanrecords.com/"}
       ]
     }
   ]

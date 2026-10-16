@@ -13,10 +13,10 @@
 
   /* Layout */
   --cv-page-width: var(--site-rail-width);
-  --cv-reading-width: min(var(--content-width-reading), var(--site-rail-width));
+  --cv-reading-width: min(var(--reading-width-md), 100%);
   --cv-page-padding-inline: var(--site-shell-inline-padding);
-  --cv-page-padding-block: clamp(var(--spacing-3xl), 8vw, var(--spacing-6xl));
-  --cv-section-gap: clamp(var(--spacing-3xl), 8vw, var(--spacing-6xl));
+  --cv-page-padding-block: clamp(var(--spacing-3xl), 8vw, var(--spacing-4xl));
+  --cv-section-gap: clamp(var(--spacing-3xl), 8vw, var(--spacing-4xl));
   --cv-content-gap: var(--spacing-xl);
   --cv-grid-gap: var(--spacing-xl);
   --cv-record-gap: var(--spacing-md);
@@ -39,6 +39,8 @@
   --cv-line-body: var(--line-height-body);
   --cv-line-heading: var(--line-height-heading-tight);
   --cv-letter-label: var(--letter-spacing-label);
+  --cv-focus-number-size: var(--font-size-h2);
+  --cv-focus-number-entry-scale: 0.4;
 
   /* Controls */
   --cv-control-height: var(--control-height-md);
@@ -52,7 +54,6 @@
 @media (max-width: 860px) {
   :root {
     --cv-page-width: var(--site-rail-width-mobile);
-    --cv-reading-width: min(var(--content-width-reading), var(--site-rail-width-mobile));
     --cv-page-padding-inline: var(--site-shell-inline-padding-mobile);
   }
 }
