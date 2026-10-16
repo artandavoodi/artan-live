@@ -12,7 +12,7 @@
 }
 
 html {
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
 }
 
@@ -29,7 +29,6 @@ html {
   margin-inline: auto;
   box-sizing: border-box;
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .cv-page--hero {
@@ -49,8 +48,7 @@ html {
 
 .cv-page--details {
   min-block-size: 100svh;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
+  scroll-snap-align: none;
   display: grid;
   grid-template-rows: 1fr auto;
   align-content: stretch;
