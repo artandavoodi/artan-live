@@ -233,6 +233,7 @@ function setHeroStage(isExpanded) {
 }
 
 function isHeroStageCandidate() {
+  if (!window.matchMedia('(min-width: 1025px) and (hover: hover) and (pointer: fine)').matches) return false;
   const hero = document.querySelector('.cv-page--hero');
 
   if (!(hero instanceof HTMLElement)) {

@@ -69,3 +69,9 @@ clean; the institutional root and Applied-Data-Science-Capstone had existing
 changes. The `software/` directory did not contain its own `.git` entry.
 This was an inventory, not a behavioral audit of every neighboring repository.
 Only `artan-live` remote branch freshness was checked against GitHub.
+
+## Shared interaction rules
+Mobile/tablet and coarse-pointer views use natural scrolling, never section
+snapping or touch interception. Desktop section navigation must remain optional.
+The privacy notice is built from `docs/assets/data/cv/privacy.json` and carries
+explicit effective and last-updated dates.

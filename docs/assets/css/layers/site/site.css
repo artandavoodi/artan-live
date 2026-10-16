@@ -2275,7 +2275,7 @@ html[data-detail-overlay-open='true'] body {
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1024px), (hover: none), (pointer: coarse) {
   html {
     scroll-snap-type: none;
   }
