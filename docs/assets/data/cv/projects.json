@@ -53,7 +53,8 @@
         {"label": "artists", "href": "https://artanrecords.com/artists/"},
         {"label": "artist development", "href": "https://artanrecords.com/for-artists/"},
         {"label": "creative collaboration", "href": "https://artanrecords.com/collaborate/"},
-        {"label": "artist documentation", "href": "https://docs.artanrecords.com/"}
+        {"label": "artist documentation", "href": "https://docs.artanrecords.com/"},
+        {"label": "Artan Store", "href": "https://store.artandavoodi.com/"}
       ]
     }
   ]
