@@ -24,18 +24,18 @@ assert.match(renderer,/bindSectionReveal\('\.cv-page--availability','availabilit
 const sections=[...before.matchAll(/<section class="cv-page[^\"]*" id="([^\"]+)"/g)].map(match=>match[1]);
 assert.deepEqual(sections,['profile','availability','focus','work','record-label','details']);
 const projects=JSON.parse(await read('docs/assets/data/cv/projects.json'));
-const label=projects.items.find(project=>project.name==='Artan Records');
+const label=projects.items.find(project=>project.name==='Artanrecords');
 assert.equal(label.icon,'artan-records');
 assert.equal(label.logoSize,'compact');
 assert.ok(label.logo&&label.darkLogo,'Label wordmark must support both themes');
 assert.ok(label.scope.some(item=>item.href==='https://docs.artanrecords.com/'));
 const aliases=await read('docs/assets/css/core/01-tokens/source/artan-live.aliases.css');
 assert.doesNotMatch(aliases,/--content-width-reading|--spacing-6xl/,'Layout aliases must use existing source tokens');
-for(const name of ['Neuroartan','Artan Records']){
+for(const name of ['Neuroartan','Artanrecords']){
   assert.ok(projects.items.some(project=>project.name===name));
   assert.ok(before.includes(`data-cv-project="${name}"`));
 }
-assert.match(profile.subtitle,/Neuroartan and Artan Records/);
+assert.match(profile.subtitle,/Neuroartan and Artanrecords/);
 assert.doesNotMatch(renderer,/bindHeroStageReveal|addEventListener\('touchmove'/,'Touch scrolling must remain natural');
 const revealSource=renderer.slice(renderer.indexOf('function bindSectionReveal('),renderer.indexOf('function bindFocusReveal('));
 class Section { constructor(){this.dataset={};} }
@@ -58,7 +58,7 @@ assert.doesNotMatch(renderer,/bindDesktopSections|addEventListener\('wheel'/,'Se
 const footer=await read('docs/assets/fragments/footer.html');
 assert.ok(footer.indexOf('Privacy notice')<footer.indexOf('cv-footer__copyright'),'Copyright must be last');
 const experience=JSON.parse(await read('docs/assets/data/cv/experience.json'));
-assert.ok(experience.items.some(item=>item.organization==='Artan Records'&&item.startDate==='2025'&&item.location.includes('Bremen')&&item.location.includes('Zagreb')));
+assert.ok(experience.items.some(item=>item.organization==='Artanrecords'&&item.startDate==='2025'&&item.location.includes('Bremen')&&item.location.includes('Zagreb')));
 const triggerSource=renderer.slice(renderer.indexOf('function renderDetailTriggers('),renderer.indexOf('function createRecordList('));
 let visible=[];
 const context={document:{querySelector:()=>({replaceChildren:(...items)=>{visible=items;}})},createDetailTrigger:trigger=>trigger.key};
