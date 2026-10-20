@@ -1398,7 +1398,7 @@ html:has(.cv-page--article) .cv-article__header:has(.cv-about-name) .cv-role {
 }
 
 .cv-brand-logo[data-logo-size='compact'] {
-  inline-size: min(100%,var(--cv-project-logo-compact-width));
+  inline-size: min(100%,var(--artanrecords-wordmark-showcase-width));
 }
 
 .cv-card__title--brand[data-logo-visible='true'] .cv-brand-logo {
