@@ -1,5 +1,9 @@
 # artan.live
 
+## Development Registration
+
+Every major and minor development change must follow the canonical [Control Center development-registration policy](https://github.com/artandavoodi/control-center/blob/main/docs/development-registration.md). Commit in the owning repository; never copy code, tokens or vectors to register a change. Private repository history remains private until its authorized connector is available.
+
 Personal professional website for Artan Davoodi. The public files are in `docs/`;
 the existing domain is recorded in `docs/CNAME` and is unchanged.
 
